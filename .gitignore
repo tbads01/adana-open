@@ -42,8 +42,3 @@ next-env.d.ts
 
 # heavy source exports (PDFs / raw deck renders)
 /assets/source/
-
-# unused for coming soon
-/public/venue/
-/public/hero-ball.jpg
-/public/hero-court.jpg

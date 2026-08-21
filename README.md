@@ -1,13 +1,12 @@
 # Adana Open — adanaopen.com
 
-Coming soon landing page for **Adana Open** (WTA 125), 26 September – 4 October 2026 at ATDSK.
+Official site for **Adana Open** (WTA 125), hosted by ATDSK · 26 September – 4 October 2026.
 
 ## Stack
 
 - Next.js (App Router)
 - Tailwind CSS v4
-- Three.js / React Three Fiber
-- TR / EN
+- Bilingual TR / EN
 
 ## Develop
 
@@ -23,6 +22,6 @@ npm run build
 npm start
 ```
 
-## Domain
+## Contact
 
-[adanaopen.com](https://adanaopen.com)
+info@adanaopen.com
