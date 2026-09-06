@@ -13,6 +13,16 @@ export type Messages = {
     contact: string;
     tickets: string;
   };
+  countdown: {
+    kicker: string;
+    until: string;
+    live: string;
+    ended: string;
+    days: string;
+    hours: string;
+    minutes: string;
+    seconds: string;
+  };
   hero: {
     kicker: string;
     headline: string;
@@ -170,6 +180,16 @@ export const content: Record<Locale, Messages> = {
       partners: "Sponsorluk",
       contact: "İletişim",
       tickets: "Biletler",
+    },
+    countdown: {
+      kicker: "Geri sayım",
+      until: "Turnuvaya kalan süre",
+      live: "Turnuva başladı.",
+      ended: "Adana Open 2026 sona erdi.",
+      days: "Gün",
+      hours: "Saat",
+      minutes: "Dakika",
+      seconds: "Saniye",
     },
     hero: {
       kicker: "İlk kez · WTA 125",
@@ -490,6 +510,16 @@ export const content: Record<Locale, Messages> = {
       partners: "Partners",
       contact: "Contact",
       tickets: "Tickets",
+    },
+    countdown: {
+      kicker: "Countdown",
+      until: "Time until the tournament",
+      live: "The tournament has started.",
+      ended: "Adana Open 2026 has ended.",
+      days: "Days",
+      hours: "Hours",
+      minutes: "Minutes",
+      seconds: "Seconds",
     },
     hero: {
       kicker: "Inaugural edition · WTA 125",

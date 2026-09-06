@@ -251,3 +251,18 @@ a {
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+@keyframes count-seconds {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.count-seconds {
+  display: inline-block;
+  animation: count-seconds 1s ease-in-out infinite;
+}
