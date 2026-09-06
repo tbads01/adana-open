@@ -3,52 +3,59 @@
 import Image from "next/image";
 import { useLanguage } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
+import { SectionHeading } from "./SectionHeading";
 
 export function About() {
   const { t } = useLanguage();
 
   return (
-    <section id="about" className="relative bg-paper-soft py-24 md:py-32">
-      <div className="section-pad mx-auto max-w-[1280px]">
-        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <Reveal>
-            <p className="eyebrow">{t.about.eyebrow}</p>
-            <h2 className="mt-4 font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.05] font-semibold tracking-[-0.03em] text-ink">
-              {t.about.title}
-            </h2>
-            <div className="mt-6 space-y-5 text-base leading-relaxed text-ink-soft/80 sm:text-lg">
+    <section id="about" className="bg-paper py-24 text-ink md:py-32">
+      <div className="section-pad mx-auto max-w-[1400px]">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
+          <Reveal className="lg:col-span-6">
+            <SectionHeading
+              tone="dark"
+              eyebrow={t.about.eyebrow}
+              title={t.about.title}
+              accent={t.about.titleAccent}
+            />
+            <div className="mt-6 max-w-xl space-y-4 text-[1rem] leading-relaxed text-ink/70">
               {t.about.body.map((p) => (
                 <p key={p}>{p}</p>
               ))}
             </div>
           </Reveal>
 
-          <Reveal delay={100}>
-            <div className="relative overflow-hidden border border-line bg-surface shadow-[0_18px_50px_rgba(18,32,24,0.06)]">
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src="/brand-ball.jpg"
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="(max-width:1024px) 100vw, 45vw"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-px border-t border-line bg-line sm:grid-cols-3">
-                {t.about.facts.map((fact) => (
-                  <div key={fact.label} className="bg-surface p-4">
-                    <p className="text-[0.62rem] tracking-[0.14em] text-muted uppercase">
-                      {fact.label}
-                    </p>
-                    <p className="mt-1.5 font-display text-base font-semibold text-ink sm:text-lg">
-                      {fact.value}
-                    </p>
-                  </div>
-                ))}
-              </div>
+          <Reveal delay={80} className="lg:col-span-6">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[1.6rem]">
+              <Image
+                src="/media/drone/drone-08.jpg"
+                alt=""
+                fill
+                className="object-cover object-top"
+                sizes="(max-width:1024px) 100vw, 50vw"
+              />
             </div>
           </Reveal>
         </div>
+
+        <Reveal delay={60}>
+          <div className="mt-10 grid grid-cols-2 overflow-hidden rounded-[1.4rem] border border-line-dark bg-surface md:grid-cols-3 lg:grid-cols-6">
+            {t.about.facts.map((fact) => (
+              <div
+                key={fact.label}
+                className="border-r border-b border-line-dark p-5 last:border-r-0 lg:border-b-0 lg:[&:nth-child(6n)]:border-r-0"
+              >
+                <p className="text-[0.62rem] tracking-[0.16em] text-ink/45 uppercase">
+                  {fact.label}
+                </p>
+                <p className="mt-2 font-display text-2xl font-semibold tracking-[-0.03em] text-ink">
+                  {fact.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

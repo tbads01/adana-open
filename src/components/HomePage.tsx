@@ -1,16 +1,18 @@
 "use client";
 
 import { useEffect } from "react";
-import { LanguageProvider, useLanguage } from "@/lib/i18n";
+import { useLanguage } from "@/lib/i18n";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
 import { About } from "./About";
+import { Players } from "./Players";
 import { Venue } from "./Venue";
 import { Schedule } from "./Schedule";
 import { Experience } from "./Experience";
 import { Partners } from "./Partners";
 import { Contact } from "./Contact";
 import { Footer } from "./Footer";
+import { HostBand } from "./HostBand";
 
 function DocumentTitle() {
   const { t } = useLanguage();
@@ -24,12 +26,14 @@ function DocumentTitle() {
 
 export function HomePage() {
   return (
-    <LanguageProvider>
+    <>
       <DocumentTitle />
       <Header />
       <main>
         <Hero />
         <About />
+        <HostBand />
+        <Players />
         <Venue />
         <Schedule />
         <Experience />
@@ -37,6 +41,6 @@ export function HomePage() {
         <Contact />
       </main>
       <Footer />
-    </LanguageProvider>
+    </>
   );
 }
