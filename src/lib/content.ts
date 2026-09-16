@@ -1,3 +1,5 @@
+import type { CourtId, MatchRound } from "./match-plan";
+
 export type Locale = "tr" | "en";
 
 export type Messages = {
@@ -77,7 +79,24 @@ export type Messages = {
     title: string;
     titleAccent: string;
     note: string;
-    days: { day: string; date: string; items: string }[];
+    matchEyebrow: string;
+    matchTitle: string;
+    matchAccent: string;
+    matchNote: string;
+    startsLabel: string;
+    followedBy: string;
+    matchCount: string;
+    legendQual: string;
+    legendSingles: string;
+    legendDoubles: string;
+    courts: Record<CourtId, string>;
+    rounds: Record<MatchRound, string>;
+    days: {
+      weekday: string;
+      date: string;
+      stage: string;
+      events: { time: string; title: string; tag: "match" | "music" | "event" }[];
+    }[];
   };
   experience: {
     eyebrow: string;
@@ -309,27 +328,118 @@ export const content: Record<Locale, Messages> = {
       eyebrow: "Program",
       title: "Dokuz gün,",
       titleAccent: "bir şampiyon.",
-      note: "Detaylı order of play ve seans saatleri turnuvaya yaklaştıkça yayınlanacaktır.",
+      note: "Yan etkinlikler duyurulmuştur. Maç saatleri aşağıdaki WTA taslak planına göredir.",
+      matchEyebrow: "Maç takvimi",
+      matchTitle: "Saatler ve",
+      matchAccent: "turlar.",
+      matchNote:
+        "Taslak WTA Match Schedule Plan. İlk maç saati kesin; sonraki maçlar ardından oynanır. Günlük sıra turnuva haftasında yayınlanır.",
+      startsLabel: "İlk maç",
+      followedBy: "Ardından",
+      matchCount: "maç",
+      legendQual: "Eleme",
+      legendSingles: "Tekler",
+      legendDoubles: "Çiftler",
+      courts: { cc: "Merkez Kort", c1: "Kort 1", c2: "Kort 2" },
+      rounds: {
+        QS1: "Eleme 1. tur",
+        QSF: "Eleme finali",
+        MS1: "Tekler 1. tur",
+        MS2: "Tekler 2. tur",
+        MSQF: "Tekler çeyrek final",
+        MSSF: "Tekler yarı final",
+        MSF: "Tekler final",
+        MD1: "Çiftler 1. tur",
+        MDQF: "Çiftler çeyrek final",
+        MDSF: "Çiftler yarı final",
+        MDF: "Çiftler final",
+      },
       days: [
         {
-          day: "Cumartesi–Pazar",
-          date: "26–27 Eylül",
-          items: "Eleme turları",
+          weekday: "Cumartesi",
+          date: "26 Eylül",
+          stage: "Ön eleme",
+          events: [
+            { time: "08:00–13:00", title: "Yogakioo Yoga", tag: "event" },
+            { time: "08:00–13:00", title: "Lansman · Teras", tag: "event" },
+            { time: "08:00–13:00", title: "Inf Kahve", tag: "event" },
+            { time: "10:30", title: "Eleme 1. tur · 3 kort", tag: "match" },
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+          ],
         },
         {
-          day: "Pazartesi",
+          weekday: "Pazar",
+          date: "27 Eylül",
+          stage: "Ön eleme",
+          events: [
+            { time: "10:30", title: "Eleme finalleri · 2 kort", tag: "match" },
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+          ],
+        },
+        {
+          weekday: "Pazartesi",
           date: "28 Eylül",
-          items: "Ana tablo başlangıcı · Tekler & çiftler",
+          stage: "Ana etap · ilk gün",
+          events: [
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "16:30", title: "Tekler ve çiftler 1. tur", tag: "match" },
+          ],
         },
         {
-          day: "Hafta içi",
-          date: "29 Eylül – 3 Ekim",
-          items: "Ana tablo · Çeyrek ve yarı finaller",
+          weekday: "Salı",
+          date: "29 Eylül",
+          stage: "2. gün",
+          events: [
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "17:00", title: "Tekler 1. tur", tag: "match" },
+          ],
         },
         {
-          day: "Pazar",
+          weekday: "Çarşamba",
+          date: "30 Eylül",
+          stage: "3. gün",
+          events: [
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "17:00", title: "Tekler 2. tur · Çiftler 1. tur", tag: "match" },
+          ],
+        },
+        {
+          weekday: "Perşembe",
+          date: "1 Ekim",
+          stage: "4. gün",
+          events: [
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "17:00", title: "Tekler 2. tur · Çiftler çeyrek final", tag: "match" },
+          ],
+        },
+        {
+          weekday: "Cuma",
+          date: "2 Ekim",
+          stage: "Çeyrek final",
+          events: [
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "17:00", title: "Tekler çeyrek final · Çiftler yarı final", tag: "match" },
+          ],
+        },
+        {
+          weekday: "Cumartesi",
+          date: "3 Ekim",
+          stage: "Yarı final",
+          events: [
+            { time: "08:00–10:00", title: "Cardio Fitness · Coffee Disco · DJ Yusuf Erdem", tag: "event" },
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "17:00", title: "Tekler yarı final · Çiftler final", tag: "match" },
+          ],
+        },
+        {
+          weekday: "Pazar",
           date: "4 Ekim",
-          items: "Final günü · Şampiyonluk",
+          stage: "Final",
+          events: [
+            { time: "08:00–13:00", title: "Yogakioo Yoga", tag: "event" },
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "18:00", title: "Tekler final · Merkez Kort", tag: "match" },
+          ],
         },
       ],
     },
@@ -639,27 +749,118 @@ export const content: Record<Locale, Messages> = {
       eyebrow: "Schedule",
       title: "Nine days.",
       titleAccent: "One champion.",
-      note: "Detailed order of play and session times will be published closer to the event.",
+      note: "Side events are announced. Match times follow the draft WTA plan below.",
+      matchEyebrow: "Match schedule",
+      matchTitle: "Times and",
+      matchAccent: "rounds.",
+      matchNote:
+        "Draft WTA Match Schedule Plan. First-match times are set; later matches follow. Daily order of play is published during tournament week.",
+      startsLabel: "First match",
+      followedBy: "Then",
+      matchCount: "matches",
+      legendQual: "Qualifying",
+      legendSingles: "Singles",
+      legendDoubles: "Doubles",
+      courts: { cc: "Centre Court", c1: "Court 1", c2: "Court 2" },
+      rounds: {
+        QS1: "Qualifying R1",
+        QSF: "Qualifying final",
+        MS1: "Singles R1",
+        MS2: "Singles R2",
+        MSQF: "Singles quarterfinal",
+        MSSF: "Singles semifinal",
+        MSF: "Singles final",
+        MD1: "Doubles R1",
+        MDQF: "Doubles quarterfinal",
+        MDSF: "Doubles semifinal",
+        MDF: "Doubles final",
+      },
       days: [
         {
-          day: "Saturday–Sunday",
-          date: "26–27 September",
-          items: "Qualifying rounds",
+          weekday: "Saturday",
+          date: "26 September",
+          stage: "Qualifying",
+          events: [
+            { time: "08:00–13:00", title: "Yogakioo Yoga", tag: "event" },
+            { time: "08:00–13:00", title: "Launch · Terrace", tag: "event" },
+            { time: "08:00–13:00", title: "Inf Kahve", tag: "event" },
+            { time: "10:30", title: "Qualifying R1 · 3 courts", tag: "match" },
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+          ],
         },
         {
-          day: "Monday",
+          weekday: "Sunday",
+          date: "27 September",
+          stage: "Qualifying",
+          events: [
+            { time: "10:30", title: "Qualifying finals · 2 courts", tag: "match" },
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+          ],
+        },
+        {
+          weekday: "Monday",
           date: "28 September",
-          items: "Main draw begins · Singles & doubles",
+          stage: "Main draw · day 1",
+          events: [
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "16:30", title: "Singles and doubles R1", tag: "match" },
+          ],
         },
         {
-          day: "Weekdays",
-          date: "29 September – 3 October",
-          items: "Main draw · Quarters & semifinals",
+          weekday: "Tuesday",
+          date: "29 September",
+          stage: "Day 2",
+          events: [
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "17:00", title: "Singles R1", tag: "match" },
+          ],
         },
         {
-          day: "Sunday",
+          weekday: "Wednesday",
+          date: "30 September",
+          stage: "Day 3",
+          events: [
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "17:00", title: "Singles R2 · Doubles R1", tag: "match" },
+          ],
+        },
+        {
+          weekday: "Thursday",
+          date: "1 October",
+          stage: "Day 4",
+          events: [
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "17:00", title: "Singles R2 · Doubles quarterfinals", tag: "match" },
+          ],
+        },
+        {
+          weekday: "Friday",
+          date: "2 October",
+          stage: "Quarterfinals",
+          events: [
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "17:00", title: "Singles quarterfinals · Doubles semifinals", tag: "match" },
+          ],
+        },
+        {
+          weekday: "Saturday",
+          date: "3 October",
+          stage: "Semifinals",
+          events: [
+            { time: "08:00–10:00", title: "Cardio Fitness · Coffee Disco · DJ Yusuf Erdem", tag: "event" },
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "17:00", title: "Singles semifinals · Doubles final", tag: "match" },
+          ],
+        },
+        {
+          weekday: "Sunday",
           date: "4 October",
-          items: "Finals day · Champions crowned",
+          stage: "Final",
+          events: [
+            { time: "08:00–13:00", title: "Yogakioo Yoga", tag: "event" },
+            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "18:00", title: "Singles final · Centre Court", tag: "match" },
+          ],
         },
       ],
     },
