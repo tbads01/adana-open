@@ -2,7 +2,7 @@ export function SectionHeading({
   eyebrow,
   title,
   accent,
-  tone = "light",
+  tone = "dark",
   className = "",
 }: {
   eyebrow?: string;

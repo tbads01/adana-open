@@ -10,7 +10,7 @@ export function About({ hideIntro = false }: { hideIntro?: boolean }) {
   const body = hideIntro ? t.about.body.slice(1) : t.about.body;
 
   return (
-    <section id="about" className={`bg-paper text-ink ${hideIntro ? "py-16 md:py-20" : "py-24 md:py-32"}`}>
+    <section id="about" className={`bg-paper text-ink ${hideIntro ? "pb-16 md:pb-20" : "py-24 md:py-32"}`}>
       <div className="section-pad mx-auto max-w-[1400px]">
         {hideIntro ? (
           <Reveal>
@@ -37,7 +37,7 @@ export function About({ hideIntro = false }: { hideIntro?: boolean }) {
             </Reveal>
 
             <Reveal delay={80} className="lg:col-span-6">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-[0.85rem]">
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   src="/media/drone/drone-08.jpg"
                   alt=""
@@ -51,7 +51,7 @@ export function About({ hideIntro = false }: { hideIntro?: boolean }) {
         )}
 
         <Reveal delay={60}>
-          <div className="mt-10 grid grid-cols-2 overflow-hidden rounded-[0.85rem] border border-line-dark bg-surface md:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-10 grid grid-cols-2 overflow-hidden border border-line-dark bg-surface md:grid-cols-3 lg:grid-cols-6">
             {t.about.facts.map((fact) => (
               <div
                 key={fact.label}

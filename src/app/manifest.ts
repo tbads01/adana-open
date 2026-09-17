@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Adana Open, ATDSK ev sahipliğinde WTA 125 kadınlar tenis turnuvası. 26 Eylül – 4 Ekim 2026, Adana.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0c1638",
-    theme_color: "#0c1638",
+    background_color: "#f3efe6",
+    theme_color: "#f3efe6",
     lang: "tr",
     icons: [
       { src: "/favicon.png", sizes: "64x64", type: "image/png" },

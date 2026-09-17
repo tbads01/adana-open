@@ -22,14 +22,14 @@ export function ClubHighlights() {
   const c = t.club;
 
   return (
-    <section id="club" className="bg-paper py-16 text-ink md:py-20">
+    <section id="club" className="bg-paper py-16 text-ink md:py-24">
       <div className="section-pad mx-auto max-w-[1400px]">
         <div className="grid items-end gap-8 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
             <SectionHeading tone="dark" eyebrow={c.kicker} title={c.title} accent={c.titleAccent} />
             <p className="mt-5 max-w-2xl text-[1.05rem] leading-relaxed text-ink/70">{c.lead}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href={ROUTES.atdsk} className="btn btn-dark text-white">
+              <Link href={ROUTES.atdsk} className="btn btn-primary">
                 {t.venue.clubCta}
               </Link>
               <a href={MAPS_URL} target="_blank" rel="noreferrer" className="btn btn-ghost">
@@ -39,13 +39,13 @@ export function ClubHighlights() {
           </Reveal>
 
           <Reveal delay={80} className="lg:col-span-5">
-            <div className="overflow-hidden rounded-[0.85rem] bg-ink text-paper">
+            <div className="overflow-hidden border border-line-dark bg-surface text-ink">
               {c.facts.slice(0, 4).map((fact) => (
                 <div
                   key={fact.label}
-                  className="flex items-baseline justify-between gap-4 border-b border-white/10 px-5 py-3.5 last:border-b-0"
+                  className="flex items-baseline justify-between gap-4 border-b border-line-dark px-5 py-3.5 last:border-b-0"
                 >
-                  <p className="text-[0.68rem] tracking-[0.14em] text-white/40 uppercase">{fact.label}</p>
+                  <p className="text-[0.68rem] tracking-[0.14em] text-ink/40 uppercase">{fact.label}</p>
                   <p className="font-display text-lg font-semibold tracking-[-0.03em]">{fact.value}</p>
                 </div>
               ))}
@@ -56,7 +56,7 @@ export function ClubHighlights() {
         <Reveal delay={40}>
           <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
             {shots.map((src) => (
-              <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-[0.85rem]">
+              <div key={src} className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={src}
                   alt=""

@@ -20,7 +20,7 @@ export function Venue({ hideIntro = false }: { hideIntro?: boolean }) {
   const { t } = useLanguage();
 
   return (
-    <section id="venue" className={`bg-void ${hideIntro ? "py-14 md:py-16" : "py-24 md:py-32"}`}>
+    <section id="venue" className={`bg-paper text-ink ${hideIntro ? "pb-16 md:pb-20" : "py-24 md:py-32"}`}>
       <div className="section-pad mx-auto max-w-[1400px]">
         {hideIntro ? null : (
           <Reveal>
@@ -31,7 +31,7 @@ export function Venue({ hideIntro = false }: { hideIntro?: boolean }) {
                 accent={t.venue.titleAccent}
                 className="max-w-2xl"
               />
-              <p className="max-w-md text-base leading-relaxed text-paper/60">
+              <p className="max-w-md text-base leading-relaxed text-ink/60">
                 {t.venue.body}
               </p>
             </div>
@@ -43,7 +43,7 @@ export function Venue({ hideIntro = false }: { hideIntro?: boolean }) {
             {gallery.map((item) => (
               <div
                 key={item.src}
-                className={`group relative overflow-hidden rounded-[0.85rem] ${item.className}`}
+                className={`group relative overflow-hidden ${item.className}`}
               >
                 <Image
                   src={item.src}
@@ -58,7 +58,7 @@ export function Venue({ hideIntro = false }: { hideIntro?: boolean }) {
         </Reveal>
 
         <Reveal delay={80}>
-          <div className="mt-6 grid gap-4 rounded-[0.85rem] border border-white/8 bg-panel p-6 md:grid-cols-[1.3fr_1fr] md:p-8">
+          <div className="mt-6 grid gap-4 border border-line-dark bg-surface p-6 md:grid-cols-[1.3fr_1fr] md:p-8">
             <div>
               <div className="flex items-center gap-3">
                 <Image
@@ -69,29 +69,29 @@ export function Venue({ hideIntro = false }: { hideIntro?: boolean }) {
                   className="h-11 w-11 object-contain"
                 />
                 <div>
-                  <p className="text-[0.62rem] tracking-[0.16em] text-paper/40 uppercase">
+                  <p className="text-[0.62rem] tracking-[0.16em] text-ink/40 uppercase">
                     {t.contact.hostLabel}
                   </p>
-                  <p className="font-medium text-paper">{t.venue.host}</p>
+                  <p className="font-medium text-ink">{t.venue.host}</p>
                 </div>
               </div>
-              <p className="mt-4 text-sm text-paper/60">{t.venue.address}</p>
+              <p className="mt-4 text-sm text-ink/60">{t.venue.address}</p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/atdsk" className="btn btn-ghost-light !px-4 !py-2 text-xs">
+                <Link href="/atdsk" className="btn btn-ghost !px-4 !py-2 text-xs">
                   {t.venue.clubCta}
                 </Link>
-                <a href={MAPS_URL} target="_blank" rel="noreferrer" className="btn btn-ghost-light !px-4 !py-2 text-xs">
+                <a href={MAPS_URL} target="_blank" rel="noreferrer" className="btn btn-ghost !px-4 !py-2 text-xs">
                   {t.venue.mapCta} ↗
                 </a>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-3">
               {t.venue.clubFacts.map((f) => (
-                <div key={f.label} className="rounded-xl bg-white/4 p-4">
-                  <p className="text-[0.6rem] tracking-[0.14em] text-paper/40 uppercase">
+                <div key={f.label} className="bg-paper-soft p-4">
+                  <p className="text-[0.6rem] tracking-[0.14em] text-ink/40 uppercase">
                     {f.label}
                   </p>
-                  <p className="mt-1 font-serif text-xl text-paper">
+                  <p className="mt-1 font-display text-xl text-ink">
                     {f.value}
                   </p>
                 </div>

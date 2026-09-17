@@ -137,7 +137,7 @@ export function Partners() {
         </Reveal>
 
         <Reveal delay={60}>
-          <div className="relative mt-10 overflow-hidden rounded-[0.85rem] bg-ink text-paper">
+          <div className="relative mt-10 overflow-hidden bg-ink text-paper">
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-6 px-5 pt-9 pb-2 sm:gap-x-8 sm:px-10 sm:pt-11 md:gap-x-10 md:px-12 md:pt-12">
               {MAINS.map((logo, i) => (
                 <div key={logo.alt} className="flex items-center gap-5 sm:gap-8 md:gap-10">

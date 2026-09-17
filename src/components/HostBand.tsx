@@ -22,7 +22,7 @@ export function HostBand() {
             className="h-12 w-12 object-contain md:h-14 md:w-14"
           />
           <div>
-            <p className="text-[0.62rem] tracking-[0.18em] text-yellow uppercase">
+            <p className="text-[0.62rem] tracking-[0.18em] text-paper/50 uppercase">
               {t.contact.hostLabel}
             </p>
             <p className="mt-1 font-display text-3xl font-semibold tracking-[-0.03em] text-paper md:text-4xl">{t.venue.host}</p>

@@ -69,62 +69,39 @@ function PlayerCard({
   const { first, last } = splitName(player);
 
   return (
-    <a
-      href={player.wtaUrl}
-      target="_blank"
-      rel="noreferrer"
-      className={`group relative block overflow-hidden rounded-2xl bg-panel ${
-        featured ? "ring-2 ring-yellow shadow-[0_0_0_1px_rgba(248,200,40,0.35)]" : ""
-      }`}
-    >
-      <div className={`relative bg-panel-2 ${featured ? "aspect-[4/5]" : "aspect-[3/4]"}`}>
+    <a href={player.wtaUrl} target="_blank" rel="noreferrer" className="group block">
+      <div className={`relative overflow-hidden bg-paper-soft ${featured ? "aspect-[4/5]" : "aspect-[3/4]"}`}>
         {player.image ? (
           <Image
             src={player.image}
             alt={player.name}
             fill
-            className="object-cover object-top transition duration-500 group-hover:scale-[1.04]"
+            className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
             sizes="(max-width:768px) 50vw, 25vw"
           />
         ) : (
           <div className="flex h-full items-center justify-center">
-            <span className={`font-display font-bold text-yellow/80 ${featured ? "text-5xl" : "text-4xl"}`}>
+            <span className={`font-display font-medium text-ink/25 ${featured ? "text-5xl" : "text-4xl"}`}>
               {initials(player.name)}
             </span>
           </div>
         )}
-        <div
-          className={`absolute inset-0 ${
-            featured
-              ? "bg-gradient-to-t from-void via-void/35 to-transparent"
-              : "bg-gradient-to-t from-void via-void/15 to-transparent"
+        <p className="absolute top-2.5 right-2.5 text-sm drop-shadow-sm">
+          {FLAGS[player.country] ?? player.country}
+        </p>
+      </div>
+      <div className="mt-3">
+        <p className="text-[0.62rem] font-semibold tracking-[0.12em] text-ink/40 uppercase">
+          {featured ? "TR · " : ""}
+          {rankLabel} {player.rank ?? "—"}
+        </p>
+        <h3
+          className={`mt-1 font-display leading-tight font-medium tracking-[-0.03em] text-ink ${
+            featured ? "text-[1.15rem] md:text-[1.3rem]" : "text-[1.02rem]"
           }`}
-        />
-        <p className="absolute top-2.5 right-2.5 text-sm">{FLAGS[player.country] ?? player.country}</p>
-        {featured ? (
-          <span className="absolute top-2.5 left-2.5 rounded-full bg-yellow px-2.5 py-1 text-[0.62rem] font-bold tracking-wide text-ink">
-            TR
-          </span>
-        ) : null}
-        <div className={`absolute inset-x-0 bottom-0 ${featured ? "p-4" : "p-3"}`}>
-          <p className="text-[0.62rem] font-bold tracking-wide text-yellow">
-            {rankLabel} {player.rank ?? "—"}
-          </p>
-          <p
-            className={`mt-0.5 font-medium tracking-wide text-white/65 uppercase ${
-              featured ? "text-[0.72rem]" : "text-[0.65rem]"
-            }`}
-          >
-            {first}
-          </p>
-          <h3
-            className={`font-display leading-none font-bold tracking-[-0.03em] text-white ${
-              featured ? "text-[1.25rem] md:text-[1.45rem]" : "text-[1.05rem] md:text-[1.15rem]"
-            }`}
-          >
-            {last}
-          </h3>
-        </div>
+        >
+          {first} {last}
+        </h3>
       </div>
     </a>
   );
@@ -138,22 +115,22 @@ function PlayerRow({ player, rankLabel }: { player: Player; rankLabel: string })
       href={player.wtaUrl}
       target="_blank"
       rel="noreferrer"
-      className="flex items-center gap-3 rounded-xl bg-panel px-2.5 py-2 transition hover:bg-panel-2"
+      className="flex items-center gap-3 border border-line-dark bg-surface px-2.5 py-2 transition hover:bg-paper-soft"
     >
       <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-panel-2">
         {player.image ? (
           <Image src={player.image} alt="" fill className="object-cover object-top" sizes="48px" />
         ) : (
-          <span className="flex h-full items-center justify-center font-display text-xs font-bold text-yellow">
+          <span className="flex h-full items-center justify-center font-display text-xs font-medium text-ink/30">
             {initials(player.name)}
           </span>
         )}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="truncate font-display text-sm font-semibold tracking-[-0.02em] text-paper">
+        <p className="truncate font-display text-sm font-semibold tracking-[-0.02em] text-ink">
           {first} {last}
         </p>
-        <p className="mt-0.5 text-[0.65rem] text-yellow">
+        <p className="mt-0.5 text-[0.65rem] text-ink/50">
           {rankLabel} {player.rank ?? "—"} · {player.country}
         </p>
       </div>
@@ -170,7 +147,7 @@ export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
   const watch = spotlight.filter((p) => p.country !== "TUR");
 
   return (
-    <section id="players" className={`bg-void ${hideIntro ? "py-14 md:py-16" : "py-24 md:py-32"}`}>
+    <section id="players" className={`bg-paper text-ink ${hideIntro ? "pb-16 md:pb-20" : "py-24 md:py-32"}`}>
       <div className="section-pad mx-auto max-w-[1400px]">
         {hideIntro ? null : (
           <Reveal>
@@ -180,13 +157,13 @@ export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
               accent={t.players.titleAccent}
               className="max-w-3xl"
             />
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-paper/65">{t.players.lead}</p>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink/65">{t.players.lead}</p>
           </Reveal>
         )}
 
         {turkish.length > 0 ? (
-          <div className={`${hideIntro ? "mt-0" : "mt-12"} rounded-[0.85rem] bg-panel/70 p-4 ring-1 ring-yellow/30 sm:p-6 md:p-8`}>
-            <p className="font-display text-2xl font-bold tracking-[-0.03em] text-paper md:text-[1.85rem]">
+          <div className={`${hideIntro ? "mt-0" : "mt-12"}`}>
+            <p className="font-display text-2xl font-medium tracking-[-0.03em] text-ink md:text-[1.85rem]">
               {t.players.turkeyLabel}
             </p>
             <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
@@ -200,7 +177,7 @@ export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
         ) : null}
 
         <div className="mt-14">
-          <p className="text-[0.68rem] font-bold tracking-[0.2em] text-yellow uppercase">
+          <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-ink/40 uppercase">
             {t.players.mainLabel}
           </p>
           <div className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
@@ -214,7 +191,7 @@ export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
 
         {watch.length > 0 ? (
           <div className="mt-10">
-            <p className="text-[0.68rem] font-bold tracking-[0.2em] text-yellow uppercase">
+            <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-ink/40 uppercase">
               {t.players.watchLabel}
             </p>
             <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
@@ -225,13 +202,13 @@ export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
           </div>
         ) : null}
 
-        <p className="mt-8 text-xs leading-relaxed text-paper/40">
+        <p className="mt-8 text-xs leading-relaxed text-ink/40">
           {t.players.note}{" "}
           <a
             href="https://www.wtatennis.com/tournaments/1179/adana-125/2026"
             target="_blank"
             rel="noreferrer"
-            className="text-yellow hover:underline"
+            className="text-ink underline underline-offset-2 hover:opacity-70"
           >
             wtatennis.com
           </a>

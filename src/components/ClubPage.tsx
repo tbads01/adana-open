@@ -32,8 +32,8 @@ export function ClubPage() {
 
   return (
     <main id="main-content">
-        <section className="relative isolate min-h-[72svh] overflow-hidden bg-void">
-          <div className="absolute inset-0">
+        <section className="bg-paper">
+          <div className="relative h-[46svh] min-h-[280px] w-full md:h-[56svh]">
             <Image
               src="/media/drone/drone-02.jpg"
               alt=""
@@ -42,19 +42,13 @@ export function ClubPage() {
               className="object-cover object-[50%_30%]"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-void/72 via-void/20 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-void/85 via-transparent to-void/15" />
           </div>
-          <div className="section-pad relative mx-auto flex min-h-[72svh] max-w-[1400px] flex-col justify-end pb-16 pt-28">
-            <p className="inline-flex items-center gap-3 text-[0.72rem] font-bold tracking-[0.22em] text-yellow uppercase">
-              <span className="h-px w-8 bg-yellow" />
-              {c.kicker}
-            </p>
-            <h1 className="mt-5 max-w-3xl font-display text-[clamp(2.6rem,6vw,4.8rem)] font-bold leading-[0.94] tracking-[-0.045em] text-white">
-              {c.title}
-              <span className="mt-1 block font-semibold text-yellow">{c.titleAccent}</span>
+          <div className="section-pad mx-auto max-w-[1180px] py-10 md:py-14">
+            <p className="eyebrow">{c.kicker}</p>
+            <h1 className="mt-4 max-w-3xl font-display text-[clamp(2.1rem,4.6vw,3.8rem)] font-medium leading-[1.08] tracking-[-0.03em] text-ink">
+              {c.title} <em className="font-normal">{c.titleAccent}</em>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/78">{c.lead}</p>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink/65">{c.lead}</p>
           </div>
         </section>
 
@@ -115,10 +109,11 @@ export function ClubPage() {
           </div>
         </section>
 
-        <section className="bg-void py-24 md:py-32">
-          <div className="section-pad mx-auto max-w-[1400px]">
+        <section className="border-t border-line-dark bg-paper py-16 text-ink md:py-24">
+          <div className="section-pad mx-auto max-w-[1180px]">
             <Reveal>
               <SectionHeading
+                tone="dark"
                 eyebrow={c.kicker}
                 title={c.facilitiesLabel}
                 accent={c.facilitiesAccent}
@@ -128,7 +123,7 @@ export function ClubPage() {
             <Reveal delay={40}>
               <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3">
                 {gallery.map((src) => (
-                  <div key={src} className="group relative aspect-[4/3] overflow-hidden rounded-[0.85rem]">
+                  <div key={src} className="group relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={src}
                       alt=""
@@ -144,8 +139,8 @@ export function ClubPage() {
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {c.facilities.map((item, i) => (
                 <Reveal key={item.title} delay={i * 30}>
-                  <h3 className="font-serif text-xl text-paper">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-paper/55">{item.desc}</p>
+                  <h3 className="font-display text-xl text-ink">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/55">{item.desc}</p>
                 </Reveal>
               ))}
             </div>
@@ -154,15 +149,16 @@ export function ClubPage() {
 
         <Significance />
 
-        <section className="bg-ink py-20 md:py-24">
-          <div className="section-pad mx-auto grid max-w-[1400px] gap-8 lg:grid-cols-12 lg:items-end">
+        <section className="border-t border-line-dark bg-paper py-16 md:py-20">
+          <div className="section-pad mx-auto grid max-w-[1180px] gap-8 lg:grid-cols-12 lg:items-end">
             <Reveal className="lg:col-span-7">
               <SectionHeading
+                tone="dark"
                 eyebrow={c.missionEyebrow}
                 title={c.visionTitle}
                 accent={c.visionAccent}
               />
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-paper/65">{c.visionBody}</p>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink/65">{c.visionBody}</p>
             </Reveal>
             <Reveal delay={80} className="lg:col-span-5 lg:text-right">
               <Link href="/oyuncular" className="btn btn-primary">

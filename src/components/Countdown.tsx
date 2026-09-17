@@ -1,9 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/i18n";
-import { ROUTES } from "@/lib/routes";
 import { TOURNAMENT_END, TOURNAMENT_START } from "@/lib/site";
 
 type Parts = { days: number; hours: number; minutes: number; seconds: number };
@@ -40,66 +38,43 @@ export function Countdown() {
 
   const units = remaining
     ? [
-        { label: t.countdown.days, value: pad(remaining.days), pulse: false },
-        { label: t.countdown.hours, value: pad(remaining.hours), pulse: false },
-        { label: t.countdown.minutes, value: pad(remaining.minutes), pulse: false },
-        { label: t.countdown.seconds, value: pad(remaining.seconds), pulse: true },
+        { label: t.countdown.days, value: pad(remaining.days) },
+        { label: t.countdown.hours, value: pad(remaining.hours) },
+        { label: t.countdown.minutes, value: pad(remaining.minutes) },
+        { label: t.countdown.seconds, value: pad(remaining.seconds) },
       ]
     : [
-        { label: t.countdown.days, value: "––", pulse: false },
-        { label: t.countdown.hours, value: "––", pulse: false },
-        { label: t.countdown.minutes, value: "––", pulse: false },
-        { label: t.countdown.seconds, value: "––", pulse: false },
+        { label: t.countdown.days, value: "––" },
+        { label: t.countdown.hours, value: "––" },
+        { label: t.countdown.minutes, value: "––" },
+        { label: t.countdown.seconds, value: "––" },
       ];
 
   return (
-    <section
-      id="countdown"
-      className="relative overflow-hidden bg-yellow text-ink"
-      aria-live="polite"
-    >
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-[42%] opacity-40">
-        <div className="brand-stripes h-full w-full" />
-      </div>
-      <div className="section-pad relative mx-auto max-w-[1400px] py-7 md:py-9">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p className="text-[0.68rem] font-bold tracking-[0.22em] uppercase">
-              {t.countdown.kicker}
-              <span className="mx-2 text-ink/30">·</span>
-              {t.hero.date}
-            </p>
-            <h2 className="mt-2 font-display text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold tracking-[-0.04em]">
-              {ended ? t.countdown.ended : live ? t.countdown.live : t.countdown.until}
-            </h2>
-          </div>
-
-          {ended || live ? (
-            <Link href={ROUTES.program} className="btn whitespace-nowrap bg-ink text-yellow">
-              {t.nav.schedule}
-            </Link>
-          ) : (
-            <div className="grid grid-cols-4 gap-2 sm:gap-3">
-              {units.map((unit) => (
-                <div
-                  key={unit.label}
-                  className="min-w-[4rem] rounded-xl bg-ink px-2 py-3 text-center sm:min-w-[5.25rem] sm:px-3 sm:py-4"
-                >
-                  <p
-                    className={`font-display text-[clamp(1.7rem,5.4vw,3.2rem)] leading-none font-bold tracking-[-0.06em] text-yellow tabular-nums ${
-                      unit.pulse ? "count-seconds" : ""
-                    }`}
-                  >
-                    {unit.value}
-                  </p>
-                  <p className="mt-2 text-[0.58rem] font-bold tracking-[0.16em] text-yellow/70 uppercase">
-                    {unit.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
+    <section id="countdown" className="border-y border-line-dark bg-surface" aria-live="polite">
+      <div className="section-pad mx-auto flex max-w-[1180px] flex-col gap-6 py-8 md:flex-row md:items-end md:justify-between md:py-10">
+        <div>
+          <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-ink/40 uppercase">
+            {t.countdown.kicker}
+            <span className="mx-2 text-ink/20">·</span>
+            {t.hero.date}
+          </p>
+          <h2 className="mt-2 font-display text-[1.7rem] font-medium tracking-[-0.03em] md:text-[2rem]">
+            {ended ? t.countdown.ended : live ? t.countdown.live : t.countdown.until}
+          </h2>
         </div>
+        {ended || live ? null : (
+          <div className="grid grid-cols-4 gap-6 md:gap-10">
+            {units.map((unit) => (
+              <div key={unit.label} className="text-left">
+                <p className="font-display text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-medium tabular-nums">
+                  {unit.value}
+                </p>
+                <p className="mt-1 text-[0.62rem] tracking-[0.14em] text-ink/40 uppercase">{unit.label}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

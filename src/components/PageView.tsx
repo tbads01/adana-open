@@ -23,7 +23,6 @@ export function PageView({
   return (
     <main
       id="main-content"
-      className={masthead ? undefined : "[&>section:first-of-type]:!pt-32 md:[&>section:first-of-type]:!pt-40"}
     >
       {masthead}
       {masthead ? null : <h1 className="sr-only">{title}</h1>}
