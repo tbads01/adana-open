@@ -13,54 +13,96 @@ type Logo = {
   className: string;
 };
 
-const mains: Logo[] = [
+const MAINS: Logo[] = [
   {
-    src: "/media/partners/adana-buyuksehir.png",
-    alt: "Adana Büyükşehir Belediyesi",
-    width: 1684,
-    height: 1032,
-    className: "h-14 max-w-[11rem] sm:h-16 sm:max-w-[13rem] md:h-[4.75rem] md:max-w-[14.5rem]",
-  },
-  {
-    src: "/media/partners/bulutlar.png",
+    src: "/media/partners/bulutlar.png?v=2",
     alt: "Bulutlar Kuruyemiş",
     width: 1819,
     height: 628,
-    className: "h-11 max-w-[12rem] sm:h-14 sm:max-w-[14rem] md:h-16 md:max-w-[15.5rem]",
+    className: "h-11 max-w-[10.5rem] sm:h-14 sm:max-w-[13rem] md:h-16 md:max-w-[15.5rem]",
+  },
+  {
+    src: "/media/partners/adana-buyuksehir.png?v=2",
+    alt: "Adana Büyükşehir Belediyesi",
+    width: 1684,
+    height: 1032,
+    className: "h-14 max-w-[9.5rem] sm:h-16 sm:max-w-[12rem] md:h-[4.75rem] md:max-w-[14rem]",
+  },
+  {
+    src: "/media/partners/atdsk-seal.png",
+    alt: "ATDSK",
+    width: 124,
+    height: 119,
+    className: "h-16 sm:h-[4.5rem] md:h-[5.25rem]",
   },
 ];
 
-const rest: Logo[] = [
+const REST: Logo[] = [
   {
-    src: "/media/partners/acibadem.png",
-    alt: "Acıbadem",
-    width: 1726,
-    height: 226,
-    className: "h-4 max-w-[5.25rem] sm:h-5 sm:max-w-[7.5rem] md:h-6 md:max-w-[8.5rem]",
+    src: "/media/partners/qnb.png",
+    alt: "QNB",
+    width: 104,
+    height: 41,
+    className: "h-6 max-w-[4.75rem] sm:h-7 sm:max-w-[6rem] md:h-8 md:max-w-[6.75rem]",
   },
   {
-    src: "/media/partners/lexus-seyhan.png",
+    src: "/media/partners/agrivolt.png",
+    alt: "Agrivolt",
+    width: 86,
+    height: 64,
+    className: "h-10 sm:h-11",
+  },
+  {
+    src: "/media/partners/acibadem-adana.png",
+    alt: "Acıbadem Adana",
+    width: 123,
+    height: 34,
+    className: "h-6 max-w-[5.75rem] sm:h-7 sm:max-w-[7rem] md:h-8 md:max-w-[8rem]",
+  },
+  {
+    src: "/media/partners/lexus-seyhan.png?v=2",
     alt: "Lexus Seyhan",
     width: 1209,
     height: 562,
-    className: "h-7 max-w-[4.75rem] sm:h-9 sm:max-w-[6.25rem] md:h-10 md:max-w-[6.75rem]",
+    className: "h-8 max-w-[5.25rem] sm:h-9 sm:max-w-[6.25rem] md:h-10 md:max-w-[6.75rem]",
   },
   {
-    src: "/media/partners/zuber.png",
+    src: "/media/partners/zuber.png?v=2",
     alt: "Züber",
     width: 817,
     height: 333,
     className: "h-6 max-w-[4.25rem] sm:h-8 sm:max-w-[5.25rem] md:h-9 md:max-w-[5.75rem]",
   },
   {
-    src: "/media/partners/gsb-mark.png",
+    src: "/media/partners/keskin.png",
+    alt: "Keskin İnşaat",
+    width: 81,
+    height: 64,
+    className: "h-10 max-w-[5.25rem] sm:h-11 sm:max-w-[6.25rem]",
+  },
+  {
+    src: "/media/partners/sheraton.png",
+    alt: "Sheraton Grand Adana",
+    width: 74,
+    height: 60,
+    className: "h-11 sm:h-12",
+  },
+  {
+    src: "/media/partners/ezc.png",
+    alt: "EZC Organizasyon",
+    width: 76,
+    height: 37,
+    className: "h-7 max-w-[4.5rem] sm:h-8 sm:max-w-[5.5rem] md:h-9 md:max-w-[6rem]",
+  },
+  {
+    src: "/media/partners/gsb-mark.png?v=2",
     alt: "T.C. Gençlik ve Spor Bakanlığı",
     width: 569,
     height: 594,
-    className: "h-10 sm:h-11",
+    className: "h-11 sm:h-12",
   },
   {
-    src: "/media/partners/ttf.png",
+    src: "/media/partners/ttf.png?v=2",
     alt: "Türkiye Tenis Federasyonu",
     width: 684,
     height: 503,
@@ -68,14 +110,13 @@ const rest: Logo[] = [
   },
 ];
 
-function LogoMark({ logo, priority = false }: { logo: Logo; priority?: boolean }) {
+function LogoMark({ logo }: { logo: Logo }) {
   return (
     <Image
       src={logo.src}
       alt={logo.alt}
       width={logo.width}
       height={logo.height}
-      priority={priority}
       unoptimized
       className={`w-auto object-contain object-center ${logo.className}`}
     />
@@ -97,24 +138,22 @@ export function Partners() {
 
         <Reveal delay={60}>
           <div className="relative mt-10 overflow-hidden rounded-2xl bg-ink text-paper">
-            <div className="flex flex-wrap items-center justify-center gap-x-14 gap-y-8 px-6 py-10 sm:gap-x-20 sm:px-12 sm:py-12 md:gap-x-24">
-              {mains.map((logo) => (
-                <div key={logo.alt} className="flex h-[4.75rem] items-center justify-center sm:h-20">
-                  <LogoMark logo={logo} priority />
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-6 px-5 pt-9 pb-2 sm:gap-x-8 sm:px-10 sm:pt-11 md:gap-x-10 md:px-12 md:pt-12">
+              {MAINS.map((logo, i) => (
+                <div key={logo.alt} className="flex items-center gap-5 sm:gap-8 md:gap-10">
+                  {i > 0 ? <span className="h-12 w-px bg-white/25 md:h-16" aria-hidden /> : null}
+                  <div className="flex h-[4.5rem] items-center justify-center sm:h-20">
+                    <LogoMark logo={logo} />
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div className="mx-10 border-t border-white/10 sm:mx-14 md:mx-16" />
+            <div className="mx-6 border-t border-white/10 sm:mx-10 md:mx-14" />
 
-            <div className="mx-auto grid max-w-3xl grid-cols-6 place-items-center gap-x-3 gap-y-7 px-5 py-9 sm:max-w-4xl sm:gap-x-6 sm:px-10 md:grid-cols-5 md:px-8 md:py-10">
-              {rest.map((logo, i) => (
-                <div
-                  key={logo.alt}
-                  className={`flex h-11 w-full items-center justify-center sm:h-12 ${
-                    i < 3 ? "col-span-2 md:col-span-1" : "col-span-3 md:col-span-1"
-                  }`}
-                >
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-6 px-5 py-8 sm:gap-x-6 sm:px-10 md:gap-x-7 md:px-8 md:py-10">
+              {REST.map((logo) => (
+                <div key={logo.alt} className="flex h-12 items-center justify-center">
                   <LogoMark logo={logo} />
                 </div>
               ))}
