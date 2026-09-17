@@ -39,7 +39,8 @@ export function ClubHighlights() {
           </Reveal>
 
           <Reveal delay={80} className="lg:col-span-5">
-            <div className="overflow-hidden border border-line-dark bg-surface text-ink">
+            <div className="overflow-hidden border border-line-dark bg-paper text-ink">
+              <span className="block h-1 bg-yellow" />
               {c.facts.slice(0, 4).map((fact) => (
                 <div
                   key={fact.label}

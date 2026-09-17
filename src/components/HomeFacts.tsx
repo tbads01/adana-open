@@ -14,7 +14,7 @@ export function HomeFacts() {
             className="border-r border-b border-line-dark px-4 py-5 last:border-r-0 sm:px-5 lg:border-b-0"
           >
             <p className="text-[0.62rem] font-bold tracking-[0.14em] text-ink/40 uppercase">{fact.label}</p>
-            <p className="mt-1.5 font-display text-[1.05rem] font-bold tracking-[-0.02em] text-ink">{fact.value}</p>
+            <p className="mt-1.5 font-display text-[1.15rem] font-extrabold tracking-[-0.03em] text-ink">{fact.value}</p>
           </div>
         ))}
       </div>

@@ -4,47 +4,90 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
 import { MORE_LINKS, NAV_LINKS, ROUTES } from "@/lib/routes";
+import { INSTAGRAM, SITE_EMAIL, WTA_URL } from "@/lib/site";
 
 export function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="border-t border-line-dark bg-paper-soft">
-      <div className="section-pad mx-auto grid max-w-[1200px] gap-10 py-12 md:grid-cols-12">
-        <div className="md:col-span-5">
-          <Image src="/logo-clear.png" alt="Adana Open" width={140} height={112} className="h-12 w-auto" />
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink/60">{t.footer.wta}</p>
-          <p className="mt-3 text-xs text-ink/40">{t.footer.rights}</p>
+    <footer className="bg-ink text-paper">
+      <div className="h-1 bg-yellow" />
+      <div className="section-pad mx-auto max-w-[1200px] py-14 md:py-16">
+        <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <Image src="/logo-clear.png" alt="Adana Open" width={140} height={112} className="h-12 w-auto" />
+            <p className="mt-4 max-w-md font-display text-2xl font-bold tracking-[-0.03em] md:text-3xl">
+              {t.hero.headline} {t.hero.headlineAccent}
+            </p>
+            <p className="mt-3 text-sm text-paper/60">{t.footer.wta}</p>
+            <p className="mt-2 text-sm font-semibold text-paper/80">
+              {t.hero.date}
+              <span className="mx-2 font-normal text-paper/30">·</span>
+              {t.hero.place}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link href={ROUTES.program} className="btn btn-primary">
+              {t.nav.schedule}
+            </Link>
+            <Link href={ROUTES.iletisim} className="btn btn-ghost-light">
+              {t.nav.tickets}
+            </Link>
+          </div>
         </div>
-        <nav className="md:col-span-3" aria-label={t.ui.explore}>
-          <p className="text-[0.68rem] font-bold tracking-[0.14em] text-ink/40 uppercase">{t.ui.explore}</p>
-          <div className="mt-4 grid gap-2 text-sm text-ink/70">
-            <Link href={ROUTES.home} className="hover:text-ink">
-              {t.ui.home}
-            </Link>
-            {[...NAV_LINKS, ...MORE_LINKS].map((link) => (
-              <Link key={link.href} href={link.href} className="hover:text-ink">
-                {t.nav[link.key]}
+
+        <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <nav aria-label={t.ui.explore}>
+            <p className="text-[0.68rem] font-bold tracking-[0.14em] text-yellow uppercase">{t.ui.explore}</p>
+            <div className="mt-4 grid gap-2 text-sm text-paper/70">
+              <Link href={ROUTES.home} className="hover:text-paper">
+                {t.ui.home}
               </Link>
-            ))}
-            <Link href={ROUTES.iletisim} className="hover:text-ink">
-              {t.nav.contact}
+              {[...NAV_LINKS, ...MORE_LINKS].map((link) => (
+                <Link key={link.href} href={link.href} className="hover:text-paper">
+                  {t.nav[link.key]}
+                </Link>
+              ))}
+            </div>
+          </nav>
+          <div>
+            <p className="text-[0.68rem] font-bold tracking-[0.14em] text-yellow uppercase">{t.nav.contact}</p>
+            <div className="mt-4 grid gap-2 text-sm text-paper/70">
+              <a href={`mailto:${SITE_EMAIL}`} className="hover:text-paper">
+                {SITE_EMAIL}
+              </a>
+              <a href="tel:+903222341155" className="hover:text-paper">
+                +90 322 234 11 55
+              </a>
+              <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="hover:text-paper">
+                Instagram
+              </a>
+            </div>
+          </div>
+          <div>
+            <p className="text-[0.68rem] font-bold tracking-[0.14em] text-yellow uppercase">{t.nav.atdsk}</p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/70">{t.venue.host}</p>
+            <Link href={ROUTES.atdsk} className="mt-3 inline-block text-sm font-semibold text-paper hover:text-yellow">
+              {t.venue.clubCta} →
             </Link>
           </div>
-        </nav>
-        <div className="md:col-span-4">
-          <p className="text-[0.68rem] font-bold tracking-[0.14em] text-ink/40 uppercase">{t.nav.contact}</p>
-          <div className="mt-4 grid gap-2 text-sm text-ink/70">
-            <a href="mailto:info@adanaopen.com" className="hover:text-ink">
-              info@adanaopen.com
-            </a>
-            <a href="https://www.instagram.com/adana.open/" target="_blank" rel="noreferrer" className="hover:text-ink">
-              Instagram
-            </a>
-            <a href="tel:+903222341155" className="hover:text-ink">
-              +90 322 234 11 55
+          <div>
+            <p className="text-[0.68rem] font-bold tracking-[0.14em] text-yellow uppercase">WTA</p>
+            <a
+              href={WTA_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-block text-sm leading-relaxed text-paper/70 hover:text-paper"
+            >
+              wtatennis.com
             </a>
           </div>
+        </div>
+      </div>
+      <div className="border-t border-white/10">
+        <div className="section-pad mx-auto flex max-w-[1200px] flex-col gap-2 py-4 text-xs text-paper/40 sm:flex-row sm:items-center sm:justify-between">
+          <p>{t.footer.rights}</p>
+          <p>{t.hero.kicker}</p>
         </div>
       </div>
     </footer>

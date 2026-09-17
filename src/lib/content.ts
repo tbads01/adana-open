@@ -118,6 +118,7 @@ export type Messages = {
     rankLabel: string;
     careerLabel: string;
     topRankLabel: string;
+    nowLabel: string;
     playsLabel: string;
     ageLabel: string;
     wtaCta: string;
@@ -501,6 +502,7 @@ export const content: Record<Locale, Messages> = {
       rankLabel: "WTA",
       careerLabel: "Kariyer",
       topRankLabel: "İlk 100",
+      nowLabel: "Güncel",
       playsLabel: "Oyun",
       ageLabel: "Yaş",
       wtaCta: "WTA sayfası",
@@ -928,6 +930,7 @@ export const content: Record<Locale, Messages> = {
       rankLabel: "WTA",
       careerLabel: "Career high",
       topRankLabel: "Top 100",
+      nowLabel: "Current",
       playsLabel: "Plays",
       ageLabel: "Age",
       wtaCta: "WTA profile",

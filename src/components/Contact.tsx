@@ -30,7 +30,7 @@ export function Contact() {
           />
           <span className="absolute inset-x-0 bottom-0 h-1 bg-yellow" />
         </div>
-        <div className="section-pad mx-auto flex max-w-[1180px] flex-col gap-6 py-10 md:flex-row md:items-end md:justify-between md:py-14">
+        <div className="section-pad mx-auto flex max-w-[1200px] flex-col gap-6 py-10 md:flex-row md:items-end md:justify-between md:py-14">
           <div className="max-w-2xl">
             <SectionHeading tone="dark" title={t.tickets.title} accent={t.tickets.titleAccent || undefined} />
             <p className="mt-3 max-w-lg text-ink/60">{t.tickets.body}</p>
@@ -42,7 +42,7 @@ export function Contact() {
       </section>
 
       <section id="contact" className="border-t border-line-dark bg-paper py-16 md:py-24">
-        <div className="section-pad mx-auto max-w-[1180px]">
+        <div className="section-pad mx-auto max-w-[1200px]">
           <div className="grid gap-12 lg:grid-cols-2">
             <Reveal>
               <SectionHeading

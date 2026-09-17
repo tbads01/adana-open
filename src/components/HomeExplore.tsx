@@ -60,7 +60,7 @@ export function HomeExplore() {
             <Link
               key={card.href}
               href={card.href}
-              className="group overflow-hidden border border-line-dark bg-surface transition hover:border-ink/25"
+              className="group overflow-hidden border border-line-dark bg-surface transition hover:border-ink/20"
             >
               <div className="relative aspect-[16/9]">
                 <Image
@@ -70,6 +70,7 @@ export function HomeExplore() {
                   className={`${card.imageClass} transition duration-500 group-hover:scale-[1.03]`}
                   sizes="(max-width:768px) 100vw, 50vw"
                 />
+                <span className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 bg-yellow transition group-hover:scale-x-100" />
               </div>
               <div className="p-5">
                 <h2 className="font-display text-xl font-bold tracking-[-0.03em]">{t.nav[card.key]}</h2>
