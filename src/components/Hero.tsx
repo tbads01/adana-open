@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
+import { ROUTES } from "@/lib/routes";
 
 export function Hero() {
   const { t } = useLanguage();
@@ -34,27 +35,32 @@ export function Hero() {
         />
       </div>
 
-      <div className="section-pad relative z-[2] mx-auto flex min-h-[100svh] max-w-[1400px] flex-col justify-center pb-20 pt-28">
+      <div className="section-pad relative z-[2] mx-auto flex min-h-[100svh] max-w-[1400px] flex-col justify-center pb-16 pt-24">
         <div className="max-w-[20rem] sm:max-w-[28rem] lg:max-w-[38rem]">
           <p className="animate-rise inline-flex items-center gap-3 text-[0.72rem] font-bold tracking-[0.22em] text-yellow uppercase">
             <span className="h-px w-8 bg-yellow" />
             {t.hero.kicker}
           </p>
-          <h1 className="animate-rise-delay-1 mt-6 font-display text-[clamp(3rem,7.2vw,5.8rem)] font-bold leading-[0.94] tracking-[-0.045em] text-white">
+          <h1 className="animate-rise-delay-1 mt-5 font-display text-[clamp(2.8rem,6.8vw,5.4rem)] font-bold leading-[0.94] tracking-[-0.045em] text-white">
             {t.hero.headline}
             <span className="mt-1 block font-semibold text-yellow">{t.hero.headlineAccent}</span>
           </h1>
-          <p className="animate-rise-delay-2 mt-6 max-w-md text-[1.05rem] leading-relaxed text-white/80">
+          <p className="animate-rise-delay-2 mt-5 max-w-md text-[1.02rem] leading-relaxed text-white/80">
             {t.hero.sub}
           </p>
-          <div className="animate-rise-delay-2 mt-9 flex flex-wrap gap-3">
-            <Link href="/atdsk" className="btn btn-primary">
-              {t.hero.ctaExplore}
+          <div className="animate-rise-delay-2 mt-5 flex flex-wrap gap-x-5 gap-y-1 text-[0.82rem] font-semibold tracking-wide text-white/70">
+            <span>{t.hero.date}</span>
+            <span className="text-yellow/80">·</span>
+            <span>{t.hero.place}</span>
+          </div>
+          <div className="animate-rise-delay-3 mt-8 flex flex-wrap gap-3">
+            <Link href={ROUTES.program} className="btn btn-primary">
+              {t.nav.schedule}
             </Link>
-            <Link href="/oyuncular" className="btn btn-ghost-light">
+            <Link href={ROUTES.oyuncular} className="btn btn-ghost-light">
               {t.nav.players}
             </Link>
-            <Link href="/iletisim" className="btn btn-ghost-light">
+            <Link href={ROUTES.iletisim} className="btn btn-ghost-light">
               {t.hero.ctaTickets}
             </Link>
           </div>

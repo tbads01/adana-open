@@ -7,6 +7,7 @@ import { Countdown } from "./Countdown";
 import { HashRedirect } from "./HashRedirect";
 import { Hero } from "./Hero";
 import { HomeExplore } from "./HomeExplore";
+import { HomeFacts } from "./HomeFacts";
 import { Partners } from "./Partners";
 
 function DocumentTitle() {
@@ -24,8 +25,9 @@ export function HomePage() {
     <>
       <DocumentTitle />
       <HashRedirect />
-      <main>
+      <main id="main-content">
         <Hero />
+        <HomeFacts />
         <Countdown />
         <HomeExplore />
         <ClubHighlights />

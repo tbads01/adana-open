@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { Providers } from "@/components/Providers";
+import { SkipLink } from "@/components/SkipLink";
 import { OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -132,11 +133,13 @@ export default function RootLayout({
   return (
     <html
       lang="tr"
+      data-scroll-behavior="smooth"
       className={`${display.variable} ${body.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-void text-paper">
         <JsonLd />
         <Providers>
+          <SkipLink />
           <Header />
           <div className="flex-1">{children}</div>
           <Footer />

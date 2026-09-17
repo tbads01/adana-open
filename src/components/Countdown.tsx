@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/i18n";
+import { ROUTES } from "@/lib/routes";
 import { TOURNAMENT_END, TOURNAMENT_START } from "@/lib/site";
 
 type Parts = { days: number; hours: number; minutes: number; seconds: number };
@@ -72,25 +74,34 @@ export function Countdown() {
             </h2>
           </div>
 
-          {ended || live ? null : (
-            <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
-              {units.map((unit) => (
-                <div
-                  key={unit.label}
-                  className="min-w-[4.25rem] rounded-2xl bg-ink px-2 py-3 text-center sm:min-w-[5.5rem] sm:px-3 sm:py-4 md:min-w-[6.5rem]"
-                >
-                  <p
-                    className={`font-display text-[clamp(1.85rem,6vw,3.6rem)] leading-none font-bold tracking-[-0.06em] text-yellow tabular-nums ${
-                      unit.pulse ? "count-seconds" : ""
-                    }`}
+          {ended || live ? (
+            <Link href={ROUTES.program} className="btn whitespace-nowrap bg-ink text-yellow">
+              {t.nav.schedule}
+            </Link>
+          ) : (
+            <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end">
+              <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+                {units.map((unit) => (
+                  <div
+                    key={unit.label}
+                    className="min-w-[4.25rem] rounded-[0.85rem] bg-ink px-2 py-3 text-center sm:min-w-[5.5rem] sm:px-3 sm:py-4 md:min-w-[6.5rem]"
                   >
-                    {unit.value}
-                  </p>
-                  <p className="mt-2 text-[0.58rem] font-bold tracking-[0.16em] text-yellow/70 uppercase">
-                    {unit.label}
-                  </p>
-                </div>
-              ))}
+                    <p
+                      className={`font-display text-[clamp(1.85rem,6vw,3.6rem)] leading-none font-bold tracking-[-0.06em] text-yellow tabular-nums ${
+                        unit.pulse ? "count-seconds" : ""
+                      }`}
+                    >
+                      {unit.value}
+                    </p>
+                    <p className="mt-2 text-[0.58rem] font-bold tracking-[0.16em] text-yellow/70 uppercase">
+                      {unit.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <Link href={ROUTES.program} className="btn shrink-0 whitespace-nowrap bg-ink text-yellow !px-4 !py-3 text-[0.7rem]">
+                {t.nav.schedule}
+              </Link>
             </div>
           )}
         </div>

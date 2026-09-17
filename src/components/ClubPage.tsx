@@ -31,7 +31,7 @@ export function ClubPage() {
   }, [c.metaTitle, c.metaDescription]);
 
   return (
-    <main>
+    <main id="main-content">
         <section className="relative isolate min-h-[72svh] overflow-hidden bg-void">
           <div className="absolute inset-0">
             <Image
@@ -97,7 +97,7 @@ export function ClubPage() {
               </Reveal>
 
               <Reveal delay={80} className="lg:col-span-5">
-                <div className="overflow-hidden rounded-[1.5rem] border border-line-dark bg-surface">
+                <div className="overflow-hidden rounded-[0.85rem] border border-line-dark bg-surface">
                   {c.facts.map((fact) => (
                     <div
                       key={fact.label}
@@ -128,7 +128,7 @@ export function ClubPage() {
             <Reveal delay={40}>
               <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3">
                 {gallery.map((src) => (
-                  <div key={src} className="group relative aspect-[4/3] overflow-hidden rounded-[1.2rem]">
+                  <div key={src} className="group relative aspect-[4/3] overflow-hidden rounded-[0.85rem]">
                     <Image
                       src={src}
                       alt=""

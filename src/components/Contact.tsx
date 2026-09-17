@@ -40,7 +40,7 @@ export function Contact() {
             sizes="420px"
           />
         </div>
-        <div className="section-pad relative mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-6 py-24 md:flex-row md:items-center md:py-28">
+        <div className="section-pad relative mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-6 pt-32 pb-20 md:flex-row md:items-center md:pt-40 md:pb-24">
           <div className="max-w-2xl text-white">
             <SectionHeading title={t.tickets.title} accent={t.tickets.titleAccent || undefined} />
             <p className="mt-3 max-w-lg text-white/70">{t.tickets.body}</p>
@@ -90,7 +90,7 @@ export function Contact() {
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 <a
                   href="mailto:info@adanaopen.com"
-                  className="rounded-[1.2rem] border border-white/8 bg-panel p-5"
+                  className="rounded-[0.85rem] border border-white/8 bg-panel p-5"
                 >
                   <p className="text-[0.62rem] tracking-[0.16em] text-paper/40 uppercase">
                     {t.contact.emailLabel}
@@ -103,7 +103,7 @@ export function Contact() {
                   href="https://www.instagram.com/adana.open/"
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-[1.2rem] border border-white/8 bg-panel p-5"
+                  className="rounded-[0.85rem] border border-white/8 bg-panel p-5"
                 >
                   <p className="text-[0.62rem] tracking-[0.16em] text-paper/40 uppercase">
                     Instagram
@@ -114,7 +114,7 @@ export function Contact() {
                 </a>
                 <a
                   href="tel:+903222341155"
-                  className="rounded-[1.2rem] border border-white/8 bg-panel p-5"
+                  className="rounded-[0.85rem] border border-white/8 bg-panel p-5"
                 >
                   <p className="text-[0.62rem] tracking-[0.16em] text-paper/40 uppercase">
                     {t.contact.phoneLabel}
@@ -123,7 +123,7 @@ export function Contact() {
                     +90 322 234 11 55
                   </p>
                 </a>
-                <div className="rounded-[1.2rem] border border-white/8 bg-panel p-5">
+                <div className="rounded-[0.85rem] border border-white/8 bg-panel p-5">
                   <p className="text-[0.62rem] tracking-[0.16em] text-paper/40 uppercase">
                     {t.contact.hostLabel}
                   </p>
@@ -133,7 +133,7 @@ export function Contact() {
             </Reveal>
 
             <Reveal delay={80}>
-              <div className="relative min-h-[420px] overflow-hidden rounded-[1.6rem] lg:min-h-full">
+              <div className="relative min-h-[420px] overflow-hidden rounded-[0.85rem] lg:min-h-full">
                 <Image
                   src="/media/ai/editorial-ball.jpg"
                   alt=""

@@ -5,27 +5,29 @@ import { useLanguage } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
-export function Experience() {
+export function Experience({ hideIntro = false }: { hideIntro?: boolean }) {
   const { t } = useLanguage();
   const [first, ...rest] = t.experience.areas;
 
   return (
-    <section id="experience" className="bg-void py-24 md:py-32">
+    <section id="experience" className={`bg-void ${hideIntro ? "py-14 md:py-16" : "py-24 md:py-32"}`}>
       <div className="section-pad mx-auto max-w-[1400px]">
-        <Reveal>
-          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <SectionHeading
-              eyebrow={t.experience.eyebrow}
-              title={t.experience.title}
-              accent={t.experience.titleAccent}
-            />
-            <p className="max-w-md text-base text-paper/55">{t.experience.body}</p>
-          </div>
-        </Reveal>
+        {hideIntro ? null : (
+          <Reveal>
+            <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <SectionHeading
+                eyebrow={t.experience.eyebrow}
+                title={t.experience.title}
+                accent={t.experience.titleAccent}
+              />
+              <p className="max-w-md text-base text-paper/55">{t.experience.body}</p>
+            </div>
+          </Reveal>
+        )}
 
         <div className="grid gap-3 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
-            <article className="group relative min-h-[340px] overflow-hidden rounded-[1.5rem] md:min-h-[520px]">
+            <article className="group relative min-h-[340px] overflow-hidden rounded-[0.85rem] md:min-h-[520px]">
               <Image
                 src={first.image}
                 alt={first.title}
@@ -46,7 +48,7 @@ export function Experience() {
           <div className="grid gap-3 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
             {rest.slice(0, 4).map((area, i) => (
               <Reveal key={area.title} delay={60 + i * 40}>
-                <article className="group relative aspect-[16/10] overflow-hidden rounded-[1.3rem] lg:aspect-auto lg:min-h-[122px]">
+                <article className="group relative aspect-[16/10] overflow-hidden rounded-[0.85rem] lg:aspect-auto lg:min-h-[122px]">
                   <Image
                     src={area.image}
                     alt={area.title}
@@ -71,7 +73,7 @@ export function Experience() {
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             {rest.slice(4).map((area, i) => (
               <Reveal key={area.title} delay={i * 40}>
-                <article className="group relative aspect-[16/8] overflow-hidden rounded-[1.3rem]">
+                <article className="group relative aspect-[16/8] overflow-hidden rounded-[0.85rem]">
                   <Image
                     src={area.image}
                     alt={area.title}

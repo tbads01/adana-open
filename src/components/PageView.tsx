@@ -5,10 +5,12 @@ import { useEffect, type ReactNode } from "react";
 export function PageView({
   title,
   description,
+  masthead,
   children,
 }: {
   title: string;
   description?: string;
+  masthead?: ReactNode;
   children: ReactNode;
 }) {
   useEffect(() => {
@@ -19,8 +21,12 @@ export function PageView({
   }, [title, description]);
 
   return (
-    <main className="[&>section:first-of-type]:!pt-32 md:[&>section:first-of-type]:!pt-40">
-      <h1 className="sr-only">{title}</h1>
+    <main
+      id="main-content"
+      className={masthead ? undefined : "[&>section:first-of-type]:!pt-32 md:[&>section:first-of-type]:!pt-40"}
+    >
+      {masthead}
+      {masthead ? null : <h1 className="sr-only">{title}</h1>}
       {children}
     </main>
   );

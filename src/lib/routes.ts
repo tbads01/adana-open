@@ -10,13 +10,12 @@ export const ROUTES = {
 } as const;
 
 export const NAV_LINKS = [
-  { href: ROUTES.atdsk, key: "atdsk" as const },
-  { href: ROUTES.turnuva, key: "about" as const },
-  { href: ROUTES.oyuncular, key: "players" as const },
-  { href: ROUTES.mekan, key: "venue" as const },
   { href: ROUTES.program, key: "schedule" as const },
+  { href: ROUTES.oyuncular, key: "players" as const },
+  { href: ROUTES.turnuva, key: "about" as const },
+  { href: ROUTES.mekan, key: "venue" as const },
   { href: ROUTES.deneyim, key: "experience" as const },
-  { href: ROUTES.iletisim, key: "contact" as const },
+  { href: ROUTES.atdsk, key: "atdsk" as const },
 ] as const;
 
 export const PAGE_PATHS = [

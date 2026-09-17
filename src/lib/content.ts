@@ -179,6 +179,11 @@ export type Messages = {
     rights: string;
     wta: string;
   };
+  ui: {
+    home: string;
+    explore: string;
+    skip: string;
+  };
 };
 
 export const content: Record<Locale, Messages> = {
@@ -601,6 +606,11 @@ export const content: Record<Locale, Messages> = {
       rights: "© 2026 Adana Open · adanaopen.com",
       wta: "WTA 125 turnuvası · ATDSK ev sahipliğinde",
     },
+    ui: {
+      home: "Ana sayfa",
+      explore: "Keşfet",
+      skip: "İçeriğe geç",
+    },
   },
   en: {
     meta: {
@@ -1020,6 +1030,11 @@ export const content: Record<Locale, Messages> = {
     footer: {
       rights: "© 2026 Adana Open · adanaopen.com",
       wta: "A WTA 125 tournament · Hosted by ATDSK",
+    },
+    ui: {
+      home: "Home",
+      explore: "Explore",
+      skip: "Skip to content",
     },
   },
 };

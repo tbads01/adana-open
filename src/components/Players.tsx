@@ -162,7 +162,7 @@ function PlayerRow({ player, rankLabel }: { player: Player; rankLabel: string })
   );
 }
 
-export function Players() {
+export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
   const { t } = useLanguage();
   const main = data.mainDraw as Player[];
   const spotlight = data.spotlight as Player[];
@@ -170,20 +170,22 @@ export function Players() {
   const watch = spotlight.filter((p) => p.country !== "TUR");
 
   return (
-    <section id="players" className="bg-void py-24 md:py-32">
+    <section id="players" className={`bg-void ${hideIntro ? "py-14 md:py-16" : "py-24 md:py-32"}`}>
       <div className="section-pad mx-auto max-w-[1400px]">
-        <Reveal>
-          <SectionHeading
-            eyebrow={t.players.eyebrow}
-            title={t.players.title}
-            accent={t.players.titleAccent}
-            className="max-w-3xl"
-          />
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-paper/65">{t.players.lead}</p>
-        </Reveal>
+        {hideIntro ? null : (
+          <Reveal>
+            <SectionHeading
+              eyebrow={t.players.eyebrow}
+              title={t.players.title}
+              accent={t.players.titleAccent}
+              className="max-w-3xl"
+            />
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-paper/65">{t.players.lead}</p>
+          </Reveal>
+        )}
 
         {turkish.length > 0 ? (
-          <div className="mt-12 rounded-3xl bg-panel/70 p-4 ring-1 ring-yellow/30 sm:p-6 md:p-8">
+          <div className={`${hideIntro ? "mt-0" : "mt-12"} rounded-[0.85rem] bg-panel/70 p-4 ring-1 ring-yellow/30 sm:p-6 md:p-8`}>
             <p className="font-display text-2xl font-bold tracking-[-0.03em] text-paper md:text-[1.85rem]">
               {t.players.turkeyLabel}
             </p>

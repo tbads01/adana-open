@@ -16,32 +16,34 @@ const gallery = [
   { src: "/media/drone/drone-11.jpg", className: "md:col-span-2 min-h-[220px]" },
 ];
 
-export function Venue() {
+export function Venue({ hideIntro = false }: { hideIntro?: boolean }) {
   const { t } = useLanguage();
 
   return (
-    <section id="venue" className="bg-void py-24 md:py-32">
+    <section id="venue" className={`bg-void ${hideIntro ? "py-14 md:py-16" : "py-24 md:py-32"}`}>
       <div className="section-pad mx-auto max-w-[1400px]">
-        <Reveal>
-          <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-            <SectionHeading
-              eyebrow={t.venue.eyebrow}
-              title={t.venue.title}
-              accent={t.venue.titleAccent}
-              className="max-w-2xl"
-            />
-            <p className="max-w-md text-base leading-relaxed text-paper/60">
-              {t.venue.body}
-            </p>
-          </div>
-        </Reveal>
+        {hideIntro ? null : (
+          <Reveal>
+            <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <SectionHeading
+                eyebrow={t.venue.eyebrow}
+                title={t.venue.title}
+                accent={t.venue.titleAccent}
+                className="max-w-2xl"
+              />
+              <p className="max-w-md text-base leading-relaxed text-paper/60">
+                {t.venue.body}
+              </p>
+            </div>
+          </Reveal>
+        )}
 
         <Reveal delay={40}>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-2">
             {gallery.map((item) => (
               <div
                 key={item.src}
-                className={`group relative overflow-hidden rounded-[1.2rem] ${item.className}`}
+                className={`group relative overflow-hidden rounded-[0.85rem] ${item.className}`}
               >
                 <Image
                   src={item.src}
@@ -56,7 +58,7 @@ export function Venue() {
         </Reveal>
 
         <Reveal delay={80}>
-          <div className="mt-6 grid gap-4 rounded-[1.5rem] border border-white/8 bg-panel p-6 md:grid-cols-[1.3fr_1fr] md:p-8">
+          <div className="mt-6 grid gap-4 rounded-[0.85rem] border border-white/8 bg-panel p-6 md:grid-cols-[1.3fr_1fr] md:p-8">
             <div>
               <div className="flex items-center gap-3">
                 <Image

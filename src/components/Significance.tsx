@@ -34,7 +34,7 @@ export function Significance() {
           </Reveal>
 
           <Reveal delay={80} className="lg:col-span-5">
-            <div className="relative overflow-hidden rounded-[1.6rem]">
+            <div className="relative overflow-hidden rounded-[0.85rem]">
               <Image
                 src="/media/design/tenis-03.jpg"
                 alt=""
