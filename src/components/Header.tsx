@@ -25,11 +25,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line-dark bg-paper/95 backdrop-blur-md">
-      <div className="mx-auto grid h-[4.25rem] w-full max-w-[1180px] grid-cols-[1fr_auto_1fr] items-center px-4 md:px-8">
-        <Link
-          href="/"
-          className="relative z-20 h-11 w-[4.4rem] min-w-[4.4rem] max-w-[4.4rem] justify-self-start overflow-hidden"
-        >
+      <div className="mx-auto flex h-[4.35rem] w-full max-w-[1200px] items-center justify-between gap-4 px-4 md:px-8">
+        <Link href="/" className="relative z-20 h-11 w-[4.5rem] shrink-0 overflow-hidden">
           <Image
             src="/logo-clear.png"
             alt="Adana Open"
@@ -40,15 +37,15 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-9 lg:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-[0.8rem] tracking-wide transition ${
-                  active ? "text-ink" : "text-ink/50 hover:text-ink"
+                className={`text-[0.82rem] font-semibold tracking-wide transition ${
+                  active ? "text-ink" : "text-ink/55 hover:text-ink"
                 }`}
               >
                 {t.nav[link.key]}
@@ -57,8 +54,8 @@ export function Header() {
           })}
         </nav>
 
-        <div className="z-20 flex items-center justify-self-end gap-4">
-          <div className="flex items-center gap-1.5 text-[0.68rem] font-semibold tracking-wide">
+        <div className="z-20 flex items-center gap-3">
+          <div className="flex items-center gap-1.5 text-[0.68rem] font-bold tracking-wide">
             <button
               type="button"
               onClick={() => setLocale("tr")}
@@ -75,12 +72,11 @@ export function Header() {
               EN
             </button>
           </div>
-          <Link
-            href={ROUTES.iletisim}
-            className="hidden text-[0.8rem] text-ink/70 underline decoration-ink/25 underline-offset-4 hover:text-ink hover:decoration-ink lg:inline"
-          >
-            {t.nav.tickets}
-          </Link>
+          <div className="hidden lg:block">
+            <Link href={ROUTES.iletisim} className="btn btn-primary !px-4 !py-2">
+              {t.nav.tickets}
+            </Link>
+          </div>
           <button
             type="button"
             className="inline-flex h-9 w-9 items-center justify-center lg:hidden"
@@ -98,14 +94,14 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="flex min-h-[calc(100svh-4.25rem)] flex-col bg-paper px-6 py-8 lg:hidden">
+        <div className="flex min-h-[calc(100svh-4.35rem)] flex-col bg-paper px-6 py-8 lg:hidden">
           <div className="flex flex-col">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`border-b border-line-dark py-4 font-display text-[2rem] ${
+                className={`border-b border-line-dark py-4 font-display text-[1.85rem] font-bold ${
                   pathname === link.href ? "text-ink" : "text-ink/70"
                 }`}
               >

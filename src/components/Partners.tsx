@@ -127,8 +127,8 @@ export function Partners() {
   const { t } = useLanguage();
 
   return (
-    <section id="partners" className="bg-paper py-16 text-ink md:py-20">
-      <div className="section-pad mx-auto max-w-[1400px]">
+    <section id="partners" className="bg-paper py-14 text-ink md:py-16">
+      <div className="section-pad mx-auto max-w-[1200px]">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <SectionHeading tone="dark" title={t.partners.title} />

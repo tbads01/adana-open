@@ -9,21 +9,15 @@ export function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="border-t border-line-dark bg-paper">
-      <div className="section-pad mx-auto grid max-w-[1180px] gap-10 py-14 md:grid-cols-12">
+    <footer className="border-t border-line-dark bg-paper-soft">
+      <div className="section-pad mx-auto grid max-w-[1200px] gap-10 py-12 md:grid-cols-12">
         <div className="md:col-span-5">
-          <Image
-            src="/logo-clear.png"
-            alt="Adana Open"
-            width={140}
-            height={112}
-            className="h-12 w-auto"
-          />
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink/55">{t.footer.wta}</p>
-          <p className="mt-3 text-xs text-ink/35">{t.footer.rights}</p>
+          <Image src="/logo-clear.png" alt="Adana Open" width={140} height={112} className="h-12 w-auto" />
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink/60">{t.footer.wta}</p>
+          <p className="mt-3 text-xs text-ink/40">{t.footer.rights}</p>
         </div>
         <nav className="md:col-span-3" aria-label={t.ui.explore}>
-          <p className="text-[0.68rem] font-semibold tracking-[0.14em] text-ink/40 uppercase">{t.ui.explore}</p>
+          <p className="text-[0.68rem] font-bold tracking-[0.14em] text-ink/40 uppercase">{t.ui.explore}</p>
           <div className="mt-4 grid gap-2 text-sm text-ink/70">
             <Link href={ROUTES.home} className="hover:text-ink">
               {t.ui.home}
@@ -39,7 +33,7 @@ export function Footer() {
           </div>
         </nav>
         <div className="md:col-span-4">
-          <p className="text-[0.68rem] font-semibold tracking-[0.14em] text-ink/40 uppercase">{t.nav.contact}</p>
+          <p className="text-[0.68rem] font-bold tracking-[0.14em] text-ink/40 uppercase">{t.nav.contact}</p>
           <div className="mt-4 grid gap-2 text-sm text-ink/70">
             <a href="mailto:info@adanaopen.com" className="hover:text-ink">
               info@adanaopen.com

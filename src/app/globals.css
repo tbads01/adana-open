@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --void: #14161c;
-  --ink: #1c1e24;
-  --panel: #22252d;
-  --panel-2: #2c303a;
-  --paper: #f3efe6;
-  --paper-soft: #eae5da;
-  --surface: #fffcf6;
-  --yellow: #c9a227;
-  --green: #3d8a58;
+  --void: #0c1638;
+  --ink: #1a2751;
+  --panel: #152448;
+  --panel-2: #1e3160;
+  --paper: #ffffff;
+  --paper-soft: #f3f5f9;
+  --surface: #f7f8fb;
+  --yellow: #f8c828;
+  --green: #40b068;
   --green-deep: #2d6b44;
   --blue: #1a62c4;
-  --muted: #6f6a60;
-  --line: rgba(28, 30, 36, 0.08);
-  --line-dark: rgba(28, 30, 36, 0.12);
+  --muted: #5c6785;
+  --line: rgba(26, 39, 81, 0.08);
+  --line-dark: rgba(26, 39, 81, 0.12);
   --background: var(--paper);
   --foreground: var(--ink);
-  --radius: 0.25rem;
+  --radius: 0.4rem;
 }
 
 @theme inline {
@@ -74,34 +74,33 @@ a {
 }
 
 .font-display {
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-display), system-ui, sans-serif;
 }
 
 .font-serif {
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-display), system-ui, sans-serif;
 }
 
 .section-pad {
-  padding-inline: clamp(1.25rem, 5vw, 5.5rem);
+  padding-inline: clamp(1.25rem, 5vw, 4.5rem);
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.5rem;
   color: var(--muted);
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.68rem;
+  font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 .eyebrow::before {
   content: "";
-  width: 1.1rem;
-  height: 1px;
-  background: var(--ink);
-  opacity: 0.35;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--yellow);
 }
 
 .eyebrow-dark {
@@ -109,30 +108,29 @@ a {
 }
 
 .eyebrow-dark::before {
-  background: var(--ink);
+  background: var(--yellow);
 }
 
 .eyebrow-on-dark {
-  color: rgba(243, 239, 230, 0.5);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .eyebrow-on-dark::before {
-  background: var(--paper);
+  background: var(--yellow);
 }
 
 .section-title {
-  font-family: var(--font-display), Georgia, serif;
-  font-weight: 500;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.05;
-  font-size: clamp(1.8rem, 3.4vw, 2.85rem);
+  line-height: 1.08;
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
 }
 
 .section-accent {
   display: inline;
   margin-left: 0.28em;
-  font-style: italic;
-  font-weight: 400;
+  font-weight: 700;
   color: inherit;
 }
 
@@ -141,11 +139,11 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  border-radius: 0.2rem;
-  padding: 0.85rem 1.35rem;
+  border-radius: 999px;
+  padding: 0.8rem 1.35rem;
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   transition:
     background 0.2s ease,
@@ -153,15 +151,22 @@ a {
     border-color 0.2s ease;
 }
 
-.btn-primary,
-.btn-dark {
-  background: var(--ink);
-  color: #f3efe6;
+.btn-primary {
+  background: #f8c828;
+  color: #1a2751;
 }
 
-.btn-primary:hover,
+.btn-primary:hover {
+  background: #ffd54a;
+}
+
+.btn-dark {
+  background: #1a2751;
+  color: #ffffff;
+}
+
 .btn-dark:hover {
-  background: color-mix(in oklab, var(--ink) 88%, white);
+  background: #24356c;
 }
 
 .btn-ghost {
@@ -175,9 +180,9 @@ a {
 }
 
 .btn-ghost-light {
-  border: 1px solid rgba(243, 239, 230, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   background: transparent;
-  color: #f3efe6;
+  color: #ffffff;
 }
 
 .skip-link {
@@ -197,8 +202,8 @@ a {
 }
 
 .reveal {
-  transform: translateY(12px);
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(10px);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {

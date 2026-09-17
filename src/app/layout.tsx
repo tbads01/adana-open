@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Manrope, Outfit } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
@@ -8,11 +8,10 @@ import { SkipLink } from "@/components/SkipLink";
 import { OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const display = Fraunces({
+const display = Outfit({
   variable: "--font-display",
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["500", "600", "700", "800"],
 });
 
 const body = Manrope({
@@ -118,8 +117,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3efe6" },
-    { media: "(prefers-color-scheme: dark)", color: "#14161c" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c1638" },
   ],
   width: "device-width",
   initialScale: 1,

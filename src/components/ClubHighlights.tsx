@@ -22,8 +22,8 @@ export function ClubHighlights() {
   const c = t.club;
 
   return (
-    <section id="club" className="bg-paper py-16 text-ink md:py-24">
-      <div className="section-pad mx-auto max-w-[1400px]">
+    <section id="club" className="bg-paper-soft py-14 text-ink md:py-20">
+      <div className="section-pad mx-auto max-w-[1200px]">
         <div className="grid items-end gap-8 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
             <SectionHeading tone="dark" eyebrow={c.kicker} title={c.title} accent={c.titleAccent} />

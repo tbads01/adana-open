@@ -42,11 +42,12 @@ export function ClubPage() {
               className="object-cover object-[50%_30%]"
               sizes="100vw"
             />
+            <span className="absolute inset-x-0 bottom-0 h-1 bg-yellow" />
           </div>
           <div className="section-pad mx-auto max-w-[1180px] py-10 md:py-14">
             <p className="eyebrow">{c.kicker}</p>
-            <h1 className="mt-4 max-w-3xl font-display text-[clamp(2.1rem,4.6vw,3.8rem)] font-medium leading-[1.08] tracking-[-0.03em] text-ink">
-              {c.title} <em className="font-normal">{c.titleAccent}</em>
+            <h1 className="mt-4 max-w-3xl font-display text-[clamp(2.1rem,4.6vw,3.4rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-ink">
+              {c.title} {c.titleAccent}
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-ink/65">{c.lead}</p>
           </div>
@@ -66,7 +67,7 @@ export function ClubPage() {
                     <p className="text-[0.62rem] tracking-[0.16em] text-ink/40 uppercase">
                       {c.presidentLabel}
                     </p>
-                    <p className="mt-1 font-serif text-2xl">{c.president}</p>
+                    <p className="mt-1 font-display text-2xl font-bold">{c.president}</p>
                     <p className="mt-1 text-sm text-ink/50">{c.presidentSince}</p>
                   </div>
                   <div>
@@ -100,7 +101,7 @@ export function ClubPage() {
                       <p className="text-[0.68rem] tracking-[0.14em] text-ink/40 uppercase">
                         {fact.label}
                       </p>
-                      <p className="font-serif text-xl text-ink">{fact.value}</p>
+                      <p className="font-display text-xl font-bold text-ink">{fact.value}</p>
                     </div>
                   ))}
                 </div>

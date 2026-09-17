@@ -51,26 +51,26 @@ export function Countdown() {
       ];
 
   return (
-    <section id="countdown" className="border-y border-line-dark bg-surface" aria-live="polite">
-      <div className="section-pad mx-auto flex max-w-[1180px] flex-col gap-6 py-8 md:flex-row md:items-end md:justify-between md:py-10">
+    <section id="countdown" className="bg-ink text-paper" aria-live="polite">
+      <div className="section-pad mx-auto flex max-w-[1200px] flex-col gap-6 py-8 md:flex-row md:items-end md:justify-between md:py-9">
         <div>
-          <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-ink/40 uppercase">
+          <p className="text-[0.68rem] font-bold tracking-[0.16em] text-yellow uppercase">
             {t.countdown.kicker}
-            <span className="mx-2 text-ink/20">·</span>
+            <span className="mx-2 text-paper/30">·</span>
             {t.hero.date}
           </p>
-          <h2 className="mt-2 font-display text-[1.7rem] font-medium tracking-[-0.03em] md:text-[2rem]">
+          <h2 className="mt-2 font-display text-[1.55rem] font-bold tracking-[-0.03em] md:text-[1.85rem]">
             {ended ? t.countdown.ended : live ? t.countdown.live : t.countdown.until}
           </h2>
         </div>
         {ended || live ? null : (
-          <div className="grid grid-cols-4 gap-6 md:gap-10">
+          <div className="grid grid-cols-4 gap-5 md:gap-8">
             {units.map((unit) => (
               <div key={unit.label} className="text-left">
-                <p className="font-display text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-medium tabular-nums">
+                <p className="font-display text-[clamp(1.7rem,4vw,2.5rem)] leading-none font-extrabold tabular-nums">
                   {unit.value}
                 </p>
-                <p className="mt-1 text-[0.62rem] tracking-[0.14em] text-ink/40 uppercase">{unit.label}</p>
+                <p className="mt-1 text-[0.62rem] font-bold tracking-[0.14em] text-paper/45 uppercase">{unit.label}</p>
               </div>
             ))}
           </div>

@@ -28,6 +28,7 @@ export function Contact() {
             className="object-cover object-center"
             sizes="100vw"
           />
+          <span className="absolute inset-x-0 bottom-0 h-1 bg-yellow" />
         </div>
         <div className="section-pad mx-auto flex max-w-[1180px] flex-col gap-6 py-10 md:flex-row md:items-end md:justify-between md:py-14">
           <div className="max-w-2xl">
