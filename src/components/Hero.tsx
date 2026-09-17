@@ -5,68 +5,56 @@ import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
 import { ROUTES } from "@/lib/routes";
 
-function HeroCopy() {
+export function Hero() {
   const { t } = useLanguage();
 
   return (
-    <div className="overflow-hidden bg-paper shadow-[0_18px_50px_rgba(12,22,56,0.18)]">
-      <span className="block h-1.5 bg-yellow" />
-      <div className="p-6 md:p-7">
-        <p className="text-[0.68rem] font-bold tracking-[0.16em] text-ink/50 uppercase">{t.hero.kicker}</p>
-        <h1 className="mt-3 font-display text-[clamp(1.85rem,4vw,2.7rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-ink">
-          {t.hero.headline} {t.hero.headlineAccent}
-        </h1>
-        <p className="mt-3 text-sm leading-relaxed text-ink/70 md:text-[0.95rem]">{t.hero.sub}</p>
-        <p className="mt-4 text-sm font-semibold text-ink">
-          {t.hero.date}
-          <span className="mx-2 font-normal text-ink/30">·</span>
-          {t.hero.place}
-        </p>
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          <Link href={ROUTES.program} className="btn btn-primary">
-            {t.nav.schedule}
-          </Link>
-          <Link href={ROUTES.iletisim} className="btn btn-ghost">
-            {t.hero.ctaTickets}
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
+    <section id="top" className="relative min-h-[70vh] overflow-hidden bg-ink md:min-h-[86vh]">
+      <Image
+        src="/media/hero/adana-open-court.jpg"
+        alt=""
+        fill
+        priority
+        className="object-cover object-center"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-ink/45" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/25 md:via-ink/70" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/25" />
 
-export function Hero() {
-  return (
-    <section id="top" className="bg-paper">
-      <div className="relative min-h-[62vh] overflow-hidden md:min-h-[78vh]">
+      <div className="pointer-events-none absolute right-0 bottom-0 h-[55%] w-[58%] sm:inset-y-0 sm:h-auto sm:w-[min(50%,560px)]">
         <Image
-          src="/media/hero/venue-overview.jpg"
+          src="/media/brand/kaplan.webp"
           alt=""
           fill
           priority
-          className="object-cover object-[58%_30%]"
-          sizes="100vw"
+          className="object-contain object-right-bottom"
+          sizes="560px"
         />
-        <div className="pointer-events-none absolute bottom-0 left-0 top-[4.5rem] w-[min(52%,400px)] sm:w-[min(46%,430px)]">
-          <Image
-            src="/media/brand/kaplan.webp"
-            alt=""
-            fill
-            priority
-            className="object-contain object-left-bottom"
-            sizes="460px"
-          />
-        </div>
-        <div className="absolute inset-x-0 bottom-0 hidden lg:block">
-          <div className="mx-auto flex max-w-[1200px] justify-end px-8 pb-8">
-            <div className="w-full max-w-[28.5rem]">
-              <HeroCopy />
-            </div>
+      </div>
+
+      <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-[1200px] items-end px-4 pb-10 pt-24 md:min-h-[86vh] md:px-8 md:pb-14">
+        <div className="max-w-[17.5rem] text-paper sm:max-w-xl">
+          <p className="text-[0.68rem] font-bold tracking-[0.18em] text-yellow uppercase">{t.hero.kicker}</p>
+          <h1 className="mt-4 font-display text-[clamp(2.2rem,5.4vw,4.1rem)] font-extrabold leading-[1.02] tracking-[-0.04em]">
+            {t.hero.headline}
+            <span className="block">{t.hero.headlineAccent}</span>
+          </h1>
+          <p className="mt-4 max-w-md text-[1.02rem] leading-relaxed text-paper/80">{t.hero.sub}</p>
+          <p className="mt-5 text-sm font-semibold text-paper/90">
+            {t.hero.date}
+            <span className="mx-2 font-normal text-paper/35">·</span>
+            {t.hero.place}
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link href={ROUTES.program} className="btn btn-primary">
+              {t.nav.schedule}
+            </Link>
+            <Link href={ROUTES.iletisim} className="btn btn-ghost-light">
+              {t.hero.ctaTickets}
+            </Link>
           </div>
         </div>
-      </div>
-      <div className="lg:hidden">
-        <HeroCopy />
       </div>
     </section>
   );

@@ -14,6 +14,7 @@ type Player = {
   country: string;
   dob: string;
   rank: number | null;
+  careerHigh?: number | null;
   wtaUrl: string;
   image: string | null;
 };
@@ -57,16 +58,50 @@ function splitName(player: Player) {
   return { first, last };
 }
 
+function isTop100(player: Player) {
+  return player.rank != null && player.rank > 0 && player.rank <= 100;
+}
+
+function isCareerPeak(player: Player) {
+  return player.careerHigh != null && player.careerHigh > 0 && player.careerHigh <= 60;
+}
+
+function RankMeta({
+  player,
+  rankLabel,
+  careerLabel,
+}: {
+  player: Player;
+  rankLabel: string;
+  careerLabel: string;
+}) {
+  return (
+    <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.62rem] font-semibold tracking-[0.08em] uppercase">
+      <span className={isTop100(player) ? "text-ink" : "text-ink/45"}>
+        {rankLabel} {player.rank ?? "—"}
+      </span>
+      {player.careerHigh ? (
+        <span className={isCareerPeak(player) ? "text-ink" : "text-ink/40"}>
+          {careerLabel} {player.careerHigh}
+        </span>
+      ) : null}
+    </p>
+  );
+}
+
 function PlayerCard({
   player,
   rankLabel,
+  careerLabel,
   featured = false,
 }: {
   player: Player;
   rankLabel: string;
+  careerLabel: string;
   featured?: boolean;
 }) {
   const { first, last } = splitName(player);
+  const highlight = isTop100(player) || isCareerPeak(player);
 
   return (
     <a href={player.wtaUrl} target="_blank" rel="noreferrer" className="group block">
@@ -89,14 +124,18 @@ function PlayerCard({
         <p className="absolute top-2.5 right-2.5 text-sm drop-shadow-sm">
           {FLAGS[player.country] ?? player.country}
         </p>
+        {highlight ? (
+          <span className="absolute top-2.5 left-2.5 bg-yellow px-2 py-1 text-[0.58rem] font-bold tracking-wide text-ink">
+            {isCareerPeak(player) && player.careerHigh
+              ? `${careerLabel} ${player.careerHigh}`
+              : `${rankLabel} ${player.rank ?? "—"}`}
+          </span>
+        ) : null}
       </div>
       <div className="mt-3">
-        <p className="text-[0.62rem] font-semibold tracking-[0.12em] text-ink/40 uppercase">
-          {featured ? "TR · " : ""}
-          {rankLabel} {player.rank ?? "—"}
-        </p>
+        <RankMeta player={player} rankLabel={rankLabel} careerLabel={careerLabel} />
         <h3
-          className={`mt-1 font-display leading-tight font-medium tracking-[-0.03em] text-ink ${
+          className={`mt-1 font-display leading-tight font-bold tracking-[-0.03em] text-ink ${
             featured ? "text-[1.15rem] md:text-[1.3rem]" : "text-[1.02rem]"
           }`}
         >
@@ -107,7 +146,15 @@ function PlayerCard({
   );
 }
 
-function PlayerRow({ player, rankLabel }: { player: Player; rankLabel: string }) {
+function PlayerRow({
+  player,
+  rankLabel,
+  careerLabel,
+}: {
+  player: Player;
+  rankLabel: string;
+  careerLabel: string;
+}) {
   const { first, last } = splitName(player);
 
   return (
@@ -117,7 +164,7 @@ function PlayerRow({ player, rankLabel }: { player: Player; rankLabel: string })
       rel="noreferrer"
       className="flex items-center gap-3 border border-line-dark bg-surface px-2.5 py-2 transition hover:bg-paper-soft"
     >
-      <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-panel-2">
+      <div className="relative h-12 w-12 shrink-0 overflow-hidden bg-panel-2">
         {player.image ? (
           <Image src={player.image} alt="" fill className="object-cover object-top" sizes="48px" />
         ) : (
@@ -130,9 +177,7 @@ function PlayerRow({ player, rankLabel }: { player: Player; rankLabel: string })
         <p className="truncate font-display text-sm font-semibold tracking-[-0.02em] text-ink">
           {first} {last}
         </p>
-        <p className="mt-0.5 text-[0.65rem] text-ink/50">
-          {rankLabel} {player.rank ?? "—"} · {player.country}
-        </p>
+        <RankMeta player={player} rankLabel={rankLabel} careerLabel={careerLabel} />
       </div>
       <span className="text-sm">{FLAGS[player.country] ?? ""}</span>
     </a>
@@ -144,7 +189,19 @@ export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
   const main = data.mainDraw as Player[];
   const spotlight = data.spotlight as Player[];
   const turkish = spotlight.filter((p) => p.country === "TUR");
-  const watch = spotlight.filter((p) => p.country !== "TUR");
+  const byId = new Map<number, Player>();
+  [...main, ...spotlight].forEach((p) => byId.set(p.id, p));
+  const top100 = [...byId.values()]
+    .filter(isTop100)
+    .sort((a, b) => (a.rank ?? 9999) - (b.rank ?? 9999));
+  const careerPeaks = [...byId.values()]
+    .filter((p) => isCareerPeak(p) && !isTop100(p))
+    .sort((a, b) => (a.careerHigh ?? 9999) - (b.careerHigh ?? 9999));
+  const watch = spotlight.filter((p) => p.country !== "TUR" && !isTop100(p) && !isCareerPeak(p));
+  const topIds = new Set([...top100, ...careerPeaks].map((p) => p.id));
+  const rest = main
+    .filter((p) => !topIds.has(p.id))
+    .sort((a, b) => (a.rank ?? 9999) - (b.rank ?? 9999));
 
   return (
     <section id="players" className={`bg-paper text-ink ${hideIntro ? "pb-16 md:pb-20" : "py-24 md:py-32"}`}>
@@ -163,13 +220,48 @@ export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
 
         {turkish.length > 0 ? (
           <div className={`${hideIntro ? "mt-0" : "mt-12"}`}>
-            <p className="font-display text-2xl font-medium tracking-[-0.03em] text-ink md:text-[1.85rem]">
+            <p className="font-display text-2xl font-bold tracking-[-0.03em] text-ink md:text-[1.85rem]">
               {t.players.turkeyLabel}
             </p>
             <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
               {turkish.map((player, i) => (
                 <Reveal key={player.id} delay={Math.min(i * 30, 120)}>
-                  <PlayerCard player={player} rankLabel={t.players.rankLabel} featured />
+                  <PlayerCard
+                    player={player}
+                    rankLabel={t.players.rankLabel}
+                    careerLabel={t.players.careerLabel}
+                    featured
+                  />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        {top100.length > 0 ? (
+          <div className="mt-14">
+            <p className="font-display text-2xl font-bold tracking-[-0.03em] text-ink md:text-[1.85rem]">
+              {t.players.topRankLabel}
+            </p>
+            <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+              {top100.map((player, i) => (
+                <Reveal key={player.id} delay={Math.min(i * 24, 120)}>
+                  <PlayerCard player={player} rankLabel={t.players.rankLabel} careerLabel={t.players.careerLabel} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        {careerPeaks.length > 0 ? (
+          <div className="mt-14">
+            <p className="font-display text-2xl font-bold tracking-[-0.03em] text-ink md:text-[1.85rem]">
+              {t.players.careerLabel}
+            </p>
+            <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+              {careerPeaks.map((player, i) => (
+                <Reveal key={player.id} delay={Math.min(i * 24, 120)}>
+                  <PlayerCard player={player} rankLabel={t.players.rankLabel} careerLabel={t.players.careerLabel} />
                 </Reveal>
               ))}
             </div>
@@ -181,9 +273,9 @@ export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
             {t.players.mainLabel}
           </p>
           <div className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {main.map((player, i) => (
+            {rest.map((player, i) => (
               <Reveal key={player.id} delay={Math.min(i * 18, 120)}>
-                <PlayerCard player={player} rankLabel={t.players.rankLabel} />
+                <PlayerCard player={player} rankLabel={t.players.rankLabel} careerLabel={t.players.careerLabel} />
               </Reveal>
             ))}
           </div>
@@ -196,7 +288,12 @@ export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
             </p>
             <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
               {watch.map((player) => (
-                <PlayerRow key={player.id} player={player} rankLabel={t.players.rankLabel} />
+                <PlayerRow
+                  key={player.id}
+                  player={player}
+                  rankLabel={t.players.rankLabel}
+                  careerLabel={t.players.careerLabel}
+                />
               ))}
             </div>
           </div>

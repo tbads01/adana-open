@@ -116,6 +116,8 @@ export type Messages = {
     turkeyLabel: string;
     watchLabel: string;
     rankLabel: string;
+    careerLabel: string;
+    topRankLabel: string;
     playsLabel: string;
     ageLabel: string;
     wtaCta: string;
@@ -492,11 +494,13 @@ export const content: Record<Locale, Messages> = {
       title: "Ana tablo",
       titleAccent: "açıklandı.",
       lead: "Ana tabloya doğrudan kabul edilen 23 oyuncu belli. Dört wildcard, bir special exempt ve dört eleme kazananı henüz açıklanmadı.",
-      note: "Liste 1 Eylül 2026 tarihli WTA commitment listesine göredir; kura yayınlanana kadar değişebilir.",
+      note: "Sıralamalar 17 Eylül 2026 tarihli WTA oyuncu profillerine göredir; kura yayınlanana kadar değişebilir.",
       mainLabel: "Ana tablo · doğrudan kabul",
       turkeyLabel: "Türkiye’den",
       watchLabel: "Takipteki isimler",
       rankLabel: "WTA",
+      careerLabel: "Kariyer",
+      topRankLabel: "İlk 100",
       playsLabel: "Oyun",
       ageLabel: "Yaş",
       wtaCta: "WTA sayfası",
@@ -917,11 +921,13 @@ export const content: Record<Locale, Messages> = {
       title: "The main draw",
       titleAccent: "is set.",
       lead: "Twenty-three direct acceptances into the main draw are confirmed. Four wildcards, one special exempt and four qualifiers are still to be named.",
-      note: "List as of 1 September 2026 from the WTA commitment list. Subject to change until the draw is published.",
+      note: "Rankings as of 17 September 2026 from WTA player profiles. Subject to change until the draw is published.",
       mainLabel: "Main draw · direct acceptances",
       turkeyLabel: "From Türkiye",
       watchLabel: "Names to watch",
       rankLabel: "WTA",
+      careerLabel: "Career high",
+      topRankLabel: "Top 100",
       playsLabel: "Plays",
       ageLabel: "Age",
       wtaCta: "WTA profile",
