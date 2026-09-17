@@ -5,23 +5,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/i18n";
-import { goHomeSection } from "@/lib/nav";
-
-const links = [
-  { href: "/atdsk", key: "atdsk" as const },
-  { href: "/#about", key: "about" as const },
-  { href: "/#players", key: "players" as const },
-  { href: "/#venue", key: "venue" as const },
-  { href: "/#schedule", key: "schedule" as const },
-  { href: "/#experience", key: "experience" as const },
-  { href: "/#contact", key: "contact" as const },
-];
+import { NAV_LINKS } from "@/lib/routes";
 
 export function Header() {
   const { t, locale, setLocale } = useLanguage();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const onHome = pathname === "/";
+  const solid = scrolled || open || !onHome;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -44,7 +36,7 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open ? "border-b border-white/10 bg-void/92 backdrop-blur-xl" : "bg-transparent"
+        solid ? "border-b border-white/10 bg-void/92 backdrop-blur-xl" : "bg-transparent"
       }`}
     >
       <div className="section-pad mx-auto flex h-[4.75rem] max-w-[1400px] items-center justify-between gap-4 md:h-[5.25rem]">
@@ -60,25 +52,16 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-4 lg:flex xl:gap-6">
-          {links.map((link) => {
-            const active = link.href === "/atdsk" && pathname === "/atdsk";
-            const className = `text-[0.82rem] font-medium transition hover:text-yellow ${
-              active ? "text-yellow" : "text-white/78"
-            }`;
-            return link.href.startsWith("/#") ? (
-              <a
+          {NAV_LINKS.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
                 key={link.href}
                 href={link.href}
-                className={className}
-                onClick={(e) => {
-                  e.preventDefault();
-                  goHomeSection(link.href);
-                }}
+                className={`text-[0.82rem] font-medium transition hover:text-yellow ${
+                  active ? "text-yellow" : "text-white/78"
+                }`}
               >
-                {t.nav[link.key]}
-              </a>
-            ) : (
-              <Link key={link.href} href={link.href} className={className}>
                 {t.nav[link.key]}
               </Link>
             );
@@ -118,31 +101,18 @@ export function Header() {
       {open && (
         <div className="border-t border-white/10 bg-void px-6 py-7 lg:hidden">
           <div className="flex flex-col gap-3">
-            {links.map((link) =>
-              link.href.startsWith("/#") ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpen(false);
-                    goHomeSection(link.href);
-                  }}
-                  className="font-display text-3xl font-semibold tracking-[-0.03em] text-paper"
-                >
-                  {t.nav[link.key]}
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="font-display text-3xl font-semibold tracking-[-0.03em] text-paper"
-                >
-                  {t.nav[link.key]}
-                </Link>
-              ),
-            )}
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className={`font-display text-3xl font-semibold tracking-[-0.03em] ${
+                  pathname === link.href ? "text-yellow" : "text-paper"
+                }`}
+              >
+                {t.nav[link.key]}
+              </Link>
+            ))}
           </div>
         </div>
       )}

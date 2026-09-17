@@ -127,7 +127,6 @@ export type Messages = {
     title: string;
     titleAccent: string;
     body: string;
-    soon: string;
     mainLabel: string;
     restLabel: string;
   };
@@ -504,7 +503,6 @@ export const content: Record<Locale, Messages> = {
       title: "Partnerler ve sponsorlar",
       titleAccent: "",
       body: "Kort kenarı görünürlüğünde yer alan isimler. Yeni anlaşmalar açıklandıkça bu liste güncellenecek.",
-      soon: "Daha fazla partner yakında.",
       mainLabel: "Ana sponsorlar",
       restLabel: "Partnerler",
     },
@@ -925,7 +923,6 @@ export const content: Record<Locale, Messages> = {
       title: "Partners and sponsors",
       titleAccent: "",
       body: "Names appearing on court-side branding. This list will grow as further agreements are announced.",
-      soon: "More partners coming soon.",
       mainLabel: "Title partners",
       restLabel: "Partners",
     },

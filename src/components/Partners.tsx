@@ -29,34 +29,34 @@ const MAINS: Logo[] = [
     className: "h-14 max-w-[9.5rem] sm:h-16 sm:max-w-[12rem] md:h-[4.75rem] md:max-w-[14rem]",
   },
   {
-    src: "/media/partners/atdsk-seal.png",
+    src: "/media/partners/atdsk-seal.png?v=3",
     alt: "ATDSK",
-    width: 124,
-    height: 119,
+    width: 698,
+    height: 706,
     className: "h-16 sm:h-[4.5rem] md:h-[5.25rem]",
   },
 ];
 
 const REST: Logo[] = [
   {
-    src: "/media/partners/qnb.png",
+    src: "/media/partners/qnb.png?v=3",
     alt: "QNB",
-    width: 104,
-    height: 41,
+    width: 840,
+    height: 246,
     className: "h-6 max-w-[4.75rem] sm:h-7 sm:max-w-[6rem] md:h-8 md:max-w-[6.75rem]",
   },
   {
-    src: "/media/partners/agrivolt.png",
+    src: "/media/partners/agrivolt.png?v=3",
     alt: "Agrivolt",
-    width: 86,
-    height: 64,
+    width: 450,
+    height: 295,
     className: "h-10 sm:h-11",
   },
   {
-    src: "/media/partners/acibadem-adana.png",
+    src: "/media/partners/acibadem-adana.png?v=3",
     alt: "Acıbadem Adana",
-    width: 123,
-    height: 34,
+    width: 1270,
+    height: 219,
     className: "h-6 max-w-[5.75rem] sm:h-7 sm:max-w-[7rem] md:h-8 md:max-w-[8rem]",
   },
   {
@@ -74,24 +74,24 @@ const REST: Logo[] = [
     className: "h-6 max-w-[4.25rem] sm:h-8 sm:max-w-[5.25rem] md:h-9 md:max-w-[5.75rem]",
   },
   {
-    src: "/media/partners/keskin.png",
+    src: "/media/partners/keskin.png?v=3",
     alt: "Keskin İnşaat",
-    width: 81,
-    height: 64,
+    width: 600,
+    height: 687,
     className: "h-10 max-w-[5.25rem] sm:h-11 sm:max-w-[6.25rem]",
   },
   {
-    src: "/media/partners/sheraton.png",
+    src: "/media/partners/sheraton.png?v=3",
     alt: "Sheraton Grand Adana",
-    width: 74,
-    height: 60,
+    width: 291,
+    height: 228,
     className: "h-11 sm:h-12",
   },
   {
-    src: "/media/partners/ezc.png",
+    src: "/media/partners/ezc.png?v=3",
     alt: "EZC Organizasyon",
-    width: 76,
-    height: 37,
+    width: 310,
+    height: 175,
     className: "h-7 max-w-[4.5rem] sm:h-8 sm:max-w-[5.5rem] md:h-9 md:max-w-[6rem]",
   },
   {
@@ -159,7 +159,6 @@ export function Partners() {
               ))}
             </div>
           </div>
-          <p className="mt-5 text-center text-sm text-ink/45">{t.partners.soon}</p>
         </Reveal>
       </div>
     </section>

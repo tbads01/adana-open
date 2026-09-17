@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Outfit } from "next/font/google";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { Providers } from "@/components/Providers";
 import { OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -134,7 +136,11 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col bg-void text-paper">
         <JsonLd />
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

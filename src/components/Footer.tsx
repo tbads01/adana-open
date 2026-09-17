@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
+import { NAV_LINKS } from "@/lib/routes";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -33,9 +34,11 @@ export function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap gap-5 text-sm text-paper/55">
-          <Link href="/atdsk" className="hover:text-yellow">
-            ATDSK
-          </Link>
+          {NAV_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} className="hover:text-yellow">
+              {t.nav[link.key]}
+            </Link>
+          ))}
           <a href="https://www.instagram.com/adana.open/" target="_blank" rel="noreferrer" className="hover:text-yellow">
             Instagram
           </a>

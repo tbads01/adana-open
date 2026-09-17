@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { PAGE_PATHS } from "./src/lib/routes";
 
 const nextConfig: NextConfig = {
   async headers() {
@@ -9,10 +10,7 @@ const nextConfig: NextConfig = {
       },
     ];
 
-    return [
-      { source: "/", headers: htmlCache },
-      { source: "/atdsk", headers: htmlCache },
-    ];
+    return PAGE_PATHS.map((source) => ({ source, headers: htmlCache }));
   },
 };
 

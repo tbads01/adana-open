@@ -1,19 +1,14 @@
 import type { MetadataRoute } from "next";
+import { PAGE_PATHS } from "@/lib/routes";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: SITE_URL,
-      lastModified: new Date("2026-09-06"),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${SITE_URL}/atdsk`,
-      lastModified: new Date("2026-09-06"),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-  ];
+  const lastModified = new Date("2026-09-17");
+
+  return PAGE_PATHS.map((path) => ({
+    url: path === "/" ? SITE_URL : `${SITE_URL}${path}`,
+    lastModified,
+    changeFrequency: path === "/" ? "weekly" : "monthly",
+    priority: path === "/" ? 1 : path === "/atdsk" || path === "/program" ? 0.8 : 0.7,
+  }));
 }

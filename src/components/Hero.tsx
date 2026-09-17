@@ -51,12 +51,12 @@ export function Hero() {
             <Link href="/atdsk" className="btn btn-primary">
               {t.hero.ctaExplore}
             </Link>
-            <a href="#players" className="btn btn-ghost-light">
+            <Link href="/oyuncular" className="btn btn-ghost-light">
               {t.nav.players}
-            </a>
-            <a href="#tickets" className="btn btn-ghost-light">
+            </Link>
+            <Link href="/iletisim" className="btn btn-ghost-light">
               {t.hero.ctaTickets}
-            </a>
+            </Link>
           </div>
         </div>
       </div>

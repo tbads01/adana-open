@@ -1,11 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
 import { useLanguage } from "@/lib/i18n";
-import { goHomeSection } from "@/lib/nav";
-import { Header } from "./Header";
-import { Footer } from "./Footer";
 import { Reveal } from "./Reveal";
 import { Significance } from "./Significance";
 import { SectionHeading } from "./SectionHeading";
@@ -33,9 +31,7 @@ export function ClubPage() {
   }, [c.metaTitle, c.metaDescription]);
 
   return (
-    <>
-      <Header />
-      <main>
+    <main>
         <section className="relative isolate min-h-[72svh] overflow-hidden bg-void">
           <div className="absolute inset-0">
             <Image
@@ -94,16 +90,9 @@ export function ClubPage() {
                   <a href="https://atdsk.com" target="_blank" rel="noreferrer" className="btn btn-ghost">
                     {c.websiteCta} ↗
                   </a>
-                  <a
-                    href="/#about"
-                    className="btn btn-ghost"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      goHomeSection("/#about");
-                    }}
-                  >
+                  <Link href="/turnuva" className="btn btn-ghost">
                     {c.tournamentCta}
-                  </a>
+                  </Link>
                 </div>
               </Reveal>
 
@@ -176,21 +165,12 @@ export function ClubPage() {
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-paper/65">{c.visionBody}</p>
             </Reveal>
             <Reveal delay={80} className="lg:col-span-5 lg:text-right">
-              <a
-                href="/#players"
-                className="btn btn-primary"
-                onClick={(e) => {
-                  e.preventDefault();
-                  goHomeSection("/#players");
-                }}
-              >
+              <Link href="/oyuncular" className="btn btn-primary">
                 {t.nav.players}
-              </a>
+              </Link>
             </Reveal>
           </div>
         </section>
       </main>
-      <Footer />
-    </>
   );
 }
