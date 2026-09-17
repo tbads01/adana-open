@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
-import { NAV_LINKS, ROUTES } from "@/lib/routes";
+import { MORE_LINKS, NAV_LINKS, ROUTES } from "@/lib/routes";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -40,7 +40,7 @@ export function Footer() {
             <Link href={ROUTES.home} className="hover:text-yellow">
               {t.ui.home}
             </Link>
-            {NAV_LINKS.map((link) => (
+            {[...NAV_LINKS, ...MORE_LINKS].map((link) => (
               <Link key={link.href} href={link.href} className="hover:text-yellow">
                 {t.nav[link.key]}
               </Link>

@@ -14,6 +14,9 @@ export const NAV_LINKS = [
   { href: ROUTES.oyuncular, key: "players" as const },
   { href: ROUTES.turnuva, key: "about" as const },
   { href: ROUTES.mekan, key: "venue" as const },
+] as const;
+
+export const MORE_LINKS = [
   { href: ROUTES.deneyim, key: "experience" as const },
   { href: ROUTES.atdsk, key: "atdsk" as const },
 ] as const;
