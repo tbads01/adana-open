@@ -58,3 +58,33 @@ export function IconClub(props: IconProps) {
     </Svg>
   );
 }
+
+export function IconTrophy(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M8 4h8v3.2a4 4 0 0 1-4 4 4 4 0 0 1-4-4V4z" />
+      <path d="M8 6.2H5.5A2.5 2.5 0 0 0 8 8.6" />
+      <path d="M16 6.2h2.5A2.5 2.5 0 0 1 16 8.6" />
+      <path d="M12 11.2V15" />
+      <path d="M9 20h6M10.5 15h3L14 20h-4l.5-5z" />
+    </Svg>
+  );
+}
+
+export function IconSpark(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M12 3.5 13.6 9l5.9 1.6-5.9 1.6L12 17.7l-1.6-5.5L4.5 10.6 10.4 9z" />
+      <path d="M18.5 15.5 19.3 18l2.5.7-2.5.7-.8 2.5-.8-2.5-2.5-.7 2.5-.7z" />
+    </Svg>
+  );
+}
+
+export function IconMail(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="3.5" y="5.5" width="17" height="13" rx="1.6" />
+      <path d="m4.2 7.2 7.8 6.2 7.8-6.2" />
+    </Svg>
+  );
+}

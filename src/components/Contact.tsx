@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useState, type FormEvent } from "react";
 import { useLanguage } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
+import { VectorCover } from "./VectorCover";
+import { IconMail } from "./Icons";
 
 export function Contact() {
   const { t } = useLanguage();
@@ -94,15 +95,11 @@ export function Contact() {
             </Reveal>
 
             <Reveal delay={80}>
-              <div className="relative min-h-[420px] overflow-hidden lg:min-h-full">
-                <Image
-                  src="/media/ai/editorial-ball.jpg"
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="(max-width:1024px) 100vw, 50vw"
-                />
-              </div>
+              <VectorCover className="min-h-[420px] h-full">
+                <div className="relative flex min-h-[420px] items-end p-8 lg:min-h-full">
+                  <IconMail className="pointer-events-none absolute right-6 top-8 h-28 w-28 text-yellow/20" />
+                </div>
+              </VectorCover>
             </Reveal>
           </div>
         </div>

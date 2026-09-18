@@ -8,6 +8,7 @@ import { Reveal } from "./Reveal";
 import { Significance } from "./Significance";
 import { SectionHeading } from "./SectionHeading";
 import { PageMasthead } from "./PageMasthead";
+import { IconClub } from "./Icons";
 
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Adana+Tenis+Da%C4%9F+ve+Su+Sporlar%C4%B1+Kul%C3%BCb%C3%BC";
@@ -33,7 +34,7 @@ export function ClubPage() {
 
   return (
     <main id="main-content">
-        <PageMasthead eyebrow={t.hero.kicker} title={t.nav.atdsk} />
+        <PageMasthead eyebrow={t.hero.kicker} title={t.nav.atdsk} icon={IconClub} />
 
         <section className="bg-paper py-12 text-ink md:py-16">
           <div className="section-pad mx-auto max-w-[1400px]">
