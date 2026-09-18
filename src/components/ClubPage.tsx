@@ -7,6 +7,7 @@ import { useLanguage } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
 import { Significance } from "./Significance";
 import { SectionHeading } from "./SectionHeading";
+import { PageMasthead } from "./PageMasthead";
 
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Adana+Tenis+Da%C4%9F+ve+Su+Sporlar%C4%B1+Kul%C3%BCb%C3%BC";
@@ -32,28 +33,9 @@ export function ClubPage() {
 
   return (
     <main id="main-content">
-        <section className="bg-paper">
-          <div className="relative h-[46svh] min-h-[280px] w-full md:h-[56svh]">
-            <Image
-              src="/media/drone/drone-02.jpg"
-              alt=""
-              fill
-              priority
-              className="object-cover object-[50%_30%]"
-              sizes="100vw"
-            />
-            <span className="absolute inset-x-0 bottom-0 h-1 bg-yellow" />
-          </div>
-          <div className="section-pad mx-auto max-w-[1180px] py-10 md:py-14">
-            <p className="eyebrow">{c.kicker}</p>
-            <h1 className="mt-4 max-w-3xl font-display text-[clamp(2.1rem,4.6vw,3.4rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-ink">
-              {c.title} {c.titleAccent}
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink/65">{c.lead}</p>
-          </div>
-        </section>
+        <PageMasthead eyebrow={t.hero.kicker} title={t.nav.atdsk} />
 
-        <section className="bg-paper py-24 text-ink md:py-32">
+        <section className="bg-paper py-12 text-ink md:py-16">
           <div className="section-pad mx-auto max-w-[1400px]">
             <div className="grid gap-12 lg:grid-cols-12">
               <Reveal className="lg:col-span-7">

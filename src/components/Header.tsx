@@ -55,7 +55,7 @@ export function Header() {
   const line = home ? "border-white/10" : "border-line-dark";
 
   return (
-    <header className={`sticky top-0 z-50 overflow-x-hidden ${bar}`}>
+    <header className={`sticky top-0 z-50 ${bar}`}>
       <PlayerTicker />
 
       <div className={`border-b ${line}`}>

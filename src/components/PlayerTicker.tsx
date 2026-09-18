@@ -38,32 +38,25 @@ export function PlayerTicker() {
   const { t } = useLanguage();
 
   return (
-    <div className="bg-yellow text-ink">
+    <div className="w-full bg-yellow text-ink">
       <p className="sr-only">
         {t.players.mainLabel}. {t.nav.players}.
       </p>
-      <div className="flex min-w-0 items-stretch">
-        <Link
-          href={ROUTES.oyuncular}
-          className="relative z-10 flex shrink-0 items-center bg-ink px-2.5 text-[0.58rem] font-bold tracking-[0.12em] text-yellow uppercase sm:px-3 sm:text-[0.62rem] sm:tracking-[0.14em]"
-        >
-          {t.players.title}
-        </Link>
-        <div className="marquee-viewport relative min-w-0 flex-1 overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-6 bg-gradient-to-r from-yellow to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-6 bg-gradient-to-l from-yellow to-transparent" />
-          <div className="marquee-track flex w-max items-center" aria-hidden>
-            {[0, 1].map((copy) => (
-              <div key={copy} className={copy === 1 ? "marquee-dup flex" : "flex"}>
-                {PLAYERS.map((player) => (
-                  <span key={`${copy}-${player.id}`} className="flex items-center">
-                    <PlayerChip player={player} />
-                    <span className="h-3 w-px bg-ink/15" />
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
+      <Link href={ROUTES.oyuncular} className="sr-only">
+        {t.players.title}
+      </Link>
+      <div className="marquee-viewport relative w-full overflow-hidden">
+        <div className="marquee-track flex w-max items-center" aria-hidden>
+          {[0, 1].map((copy) => (
+            <div key={copy} className={copy === 1 ? "marquee-dup flex" : "flex"}>
+              {PLAYERS.map((player) => (
+                <span key={`${copy}-${player.id}`} className="flex items-center">
+                  <PlayerChip player={player} />
+                  <span className="h-3 w-px bg-ink/15" />
+                </span>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </div>

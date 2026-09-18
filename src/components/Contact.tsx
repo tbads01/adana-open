@@ -20,16 +20,6 @@ export function Contact() {
   return (
     <>
       <section id="tickets" className="bg-paper">
-        <div className="relative h-[38svh] min-h-[240px] w-full md:h-[46svh]">
-          <Image
-            src="/media/drone/drone-06.jpg"
-            alt=""
-            fill
-            className="object-cover object-center"
-            sizes="100vw"
-          />
-          <span className="absolute inset-x-0 bottom-0 h-1 bg-yellow" />
-        </div>
         <div className="section-pad mx-auto flex max-w-[1200px] flex-col gap-6 py-10 md:flex-row md:items-end md:justify-between md:py-14">
           <div className="max-w-2xl">
             <SectionHeading tone="dark" title={t.tickets.title} accent={t.tickets.titleAccent || undefined} />
