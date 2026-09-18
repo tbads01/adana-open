@@ -47,7 +47,7 @@ export function Hero() {
             {t.hero.place}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link href={ROUTES.program} className="btn btn-primary">
+            <Link href={`${ROUTES.program}#match-plan`} className="btn btn-primary">
               {t.nav.schedule}
             </Link>
             <Link href={ROUTES.iletisim} className="btn btn-ghost-light">

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
-import { MORE_LINKS, NAV_LINKS, ROUTES } from "@/lib/routes";
+import { NAV_LINKS, ROUTES } from "@/lib/routes";
 import { INSTAGRAM, SITE_EMAIL, WTA_URL } from "@/lib/site";
 
 export function Footer() {
@@ -40,14 +40,14 @@ export function Footer() {
           <nav aria-label={t.ui.explore}>
             <p className="text-[0.68rem] font-bold tracking-[0.14em] text-yellow uppercase">{t.ui.explore}</p>
             <div className="mt-4 grid gap-2 text-sm text-paper/70">
-              <Link href={ROUTES.home} className="hover:text-paper">
-                {t.ui.home}
-              </Link>
-              {[...NAV_LINKS, ...MORE_LINKS].map((link) => (
+              {NAV_LINKS.map((link) => (
                 <Link key={link.href} href={link.href} className="hover:text-paper">
                   {t.nav[link.key]}
                 </Link>
               ))}
+              <Link href={ROUTES.mekan} className="hover:text-paper">
+                {t.nav.venue}
+              </Link>
             </div>
           </nav>
           <div>

@@ -5,10 +5,12 @@ export type Locale = "tr" | "en";
 export type Messages = {
   meta: { title: string; description: string };
   nav: {
+    home: string;
     atdsk: string;
     about: string;
     players: string;
     venue: string;
+    events: string;
     schedule: string;
     experience: string;
     partners: string;
@@ -197,12 +199,14 @@ export const content: Record<Locale, Messages> = {
         "Adana Open, ATDSK ev sahipliğinde WTA 125 kadınlar tenis turnuvası. 26 Eylül – 4 Ekim 2026, Seyhan Baraj Gölü, Adana. Ödül havuzu 115.000 USD.",
     },
     nav: {
-      atdsk: "ATDSK",
-      about: "Turnuva",
+      home: "Ana sayfa",
+      atdsk: "ATDSK hakkında",
+      about: "Turnuva hakkında",
       players: "Oyuncular",
       venue: "Mekan",
-      schedule: "Program",
-      experience: "Deneyim",
+      events: "Etkinlikler",
+      schedule: "Maç programı",
+      experience: "Neler var?",
       partners: "Sponsorluk",
       contact: "İletişim",
       tickets: "Biletler",
@@ -625,12 +629,14 @@ export const content: Record<Locale, Messages> = {
         "Adana Open is a WTA 125 women’s tennis tournament hosted by ATDSK. 26 September – 4 October 2026 at Seyhan Dam Lake, Adana. Prize money USD 115,000.",
     },
     nav: {
-      atdsk: "ATDSK",
-      about: "Tournament",
+      home: "Home",
+      atdsk: "About ATDSK",
+      about: "About the tournament",
       players: "Players",
       venue: "Venue",
-      schedule: "Schedule",
-      experience: "Experience",
+      events: "Events",
+      schedule: "Match schedule",
+      experience: "What's on",
       partners: "Partners",
       contact: "Contact",
       tickets: "Tickets",

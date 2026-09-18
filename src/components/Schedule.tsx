@@ -54,7 +54,7 @@ export function Schedule({ hideIntro = false }: { hideIntro?: boolean }) {
           </Reveal>
         )}
 
-        <div className={`relative -mx-2 ${hideIntro ? "mt-0" : "mt-10"}`}>
+        <div id="etkinlikler" className={`relative -mx-2 scroll-mt-36 ${hideIntro ? "mt-0" : "mt-10"}`}>
           <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-8 bg-gradient-to-r from-paper to-transparent md:w-4" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-8 bg-gradient-to-l from-paper to-transparent md:w-4" />
           <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-2 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -98,7 +98,7 @@ export function Schedule({ hideIntro = false }: { hideIntro?: boolean }) {
         </div>
 
         <Reveal className="mt-16">
-          <div id="match-plan" className="overflow-hidden bg-ink text-paper">
+          <div id="match-plan" className="scroll-mt-36 overflow-hidden bg-ink text-paper">
             <div className="px-5 py-8 sm:px-8 md:px-10 md:py-12">
               <p className="eyebrow eyebrow-on-dark">{s.matchEyebrow}</p>
               <h3 className="section-title mt-4 text-[clamp(2rem,4.2vw,3.4rem)] text-paper">

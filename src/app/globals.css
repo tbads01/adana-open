@@ -48,7 +48,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 9.5rem;
 }
 
 body {
@@ -220,9 +220,27 @@ a {
 }
 
 .marquee-track {
-  animation: marquee 36s linear infinite;
+  animation: marquee 55s linear infinite;
 }
 
 .marquee-track:hover {
   animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .marquee-dup {
+    display: none;
+  }
+
+  .marquee-viewport {
+    overflow-x: auto;
+  }
 }

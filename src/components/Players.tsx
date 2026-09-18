@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { FLAGS } from "@/lib/flags";
 import { useLanguage } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
@@ -17,29 +18,6 @@ type Player = {
   careerHigh?: number | null;
   wtaUrl: string;
   image: string | null;
-};
-
-const FLAGS: Record<string, string> = {
-  ARG: "🇦🇷",
-  ARM: "🇦🇲",
-  AND: "🇦🇩",
-  CAN: "🇨🇦",
-  COL: "🇨🇴",
-  CRO: "🇭🇷",
-  CZE: "🇨🇿",
-  FRA: "🇫🇷",
-  GEO: "🇬🇪",
-  GER: "🇩🇪",
-  HUN: "🇭🇺",
-  ITA: "🇮🇹",
-  LAT: "🇱🇻",
-  NED: "🇳🇱",
-  POL: "🇵🇱",
-  RUS: "🇷🇺",
-  SRB: "🇷🇸",
-  SUI: "🇨🇭",
-  TUR: "🇹🇷",
-  USA: "🇺🇸",
 };
 
 function initials(name: string) {
