@@ -21,15 +21,17 @@ export function Partners() {
 
       <Reveal delay={60}>
         <div className="mt-10 bg-ink">
-          <Image
-            src="/media/partners/sponsor-strip.webp"
-            alt={t.partners.title}
-            width={2400}
-            height={449}
-            sizes="100vw"
-            quality={75}
-            className="mx-auto h-auto w-full max-w-[1400px]"
-          />
+          <div className="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12">
+            <Image
+              src="/media/partners/sponsors.webp"
+              alt={t.partners.title}
+              width={1211}
+              height={402}
+              sizes="(max-width:1200px) 100vw, 1200px"
+              quality={75}
+              className="h-auto w-full"
+            />
+          </div>
         </div>
       </Reveal>
     </section>
