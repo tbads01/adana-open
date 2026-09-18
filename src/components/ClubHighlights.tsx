@@ -64,6 +64,7 @@ export function ClubHighlights() {
                   fill
                   className="object-cover transition duration-700 hover:scale-[1.04]"
                   sizes="(max-width:768px) 50vw, 25vw"
+                  loading="lazy"
                 />
               </div>
             ))}

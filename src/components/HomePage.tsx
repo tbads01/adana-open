@@ -1,14 +1,16 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import { useLanguage } from "@/lib/i18n";
-import { ClubHighlights } from "./ClubHighlights";
 import { Countdown } from "./Countdown";
 import { HashRedirect } from "./HashRedirect";
 import { Hero } from "./Hero";
-import { HomeExplore } from "./HomeExplore";
 import { HomeFacts } from "./HomeFacts";
-import { Partners } from "./Partners";
+
+const HomeExplore = dynamic(() => import("./HomeExplore").then((m) => ({ default: m.HomeExplore })));
+const ClubHighlights = dynamic(() => import("./ClubHighlights").then((m) => ({ default: m.ClubHighlights })));
+const Partners = dynamic(() => import("./Partners").then((m) => ({ default: m.Partners })));
 
 function DocumentTitle() {
   const { t } = useLanguage();

@@ -10,15 +10,15 @@ export function Hero() {
 
   return (
     <section id="top" className="relative min-h-[70vh] overflow-hidden bg-ink md:min-h-[86vh]">
-      <Image
-        src="/media/hero/adana-open-court.jpg"
-        alt=""
-        fill
-        priority
-        className="object-cover object-center"
-        sizes="100vw"
-        quality={75}
-      />
+        <Image
+          src="/media/hero/adana-open-court.webp"
+          alt=""
+          fill
+          priority
+          fetchPriority="high"
+          className="object-cover object-center"
+          sizes="100vw"
+        />
       <div className="absolute inset-0 bg-ink/45" />
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/25 md:via-ink/70" />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/25" />
@@ -30,6 +30,7 @@ export function Hero() {
           fill
           className="object-contain object-right-bottom"
           sizes="(max-width:640px) 220px, 560px"
+          loading="lazy"
         />
       </div>
 

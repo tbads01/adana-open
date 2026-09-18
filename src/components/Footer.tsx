@@ -27,10 +27,10 @@ export function Footer() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href={ROUTES.program} className="btn btn-primary">
+            <Link href={ROUTES.program} prefetch={false} className="btn btn-primary">
               {t.nav.schedule}
             </Link>
-            <Link href={ROUTES.iletisim} className="btn btn-ghost-light">
+            <Link href={ROUTES.iletisim} prefetch={false} className="btn btn-ghost-light">
               {t.nav.tickets}
             </Link>
           </div>
@@ -41,11 +41,11 @@ export function Footer() {
             <p className="text-[0.68rem] font-bold tracking-[0.14em] text-yellow uppercase">{t.ui.explore}</p>
             <div className="mt-4 grid gap-2 text-sm text-paper/70">
               {NAV_LINKS.map((link) => (
-                <Link key={link.href} href={link.href} className="hover:text-paper">
+                <Link key={link.href} href={link.href} prefetch={false} className="hover:text-paper">
                   {t.nav[link.key]}
                 </Link>
               ))}
-              <Link href={ROUTES.mekan} className="hover:text-paper">
+              <Link href={ROUTES.mekan} prefetch={false} className="hover:text-paper">
                 {t.nav.venue}
               </Link>
             </div>
@@ -67,7 +67,7 @@ export function Footer() {
           <div>
             <p className="text-[0.68rem] font-bold tracking-[0.14em] text-yellow uppercase">{t.nav.atdsk}</p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/70">{t.venue.host}</p>
-            <Link href={ROUTES.atdsk} className="mt-3 inline-block text-sm font-semibold text-paper hover:text-yellow">
+            <Link href={ROUTES.atdsk} prefetch={false} className="mt-3 inline-block text-sm font-semibold text-paper hover:text-yellow">
               {t.venue.clubCta} →
             </Link>
           </div>

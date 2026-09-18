@@ -30,6 +30,7 @@ export function Partners() {
               sizes="(max-width:1200px) 100vw, 1200px"
               quality={75}
               className="h-auto w-full"
+              loading="lazy"
             />
           </div>
         </div>

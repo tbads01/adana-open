@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const HERO = "/media/hero/adana-open-court.jpg";
+const HERO = "/media/hero/adana-open-court.webp";
 
 export function PageMasthead({
   eyebrow,

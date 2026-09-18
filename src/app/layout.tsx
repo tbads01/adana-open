@@ -11,13 +11,15 @@ import "./globals.css";
 const display = Outfit({
   variable: "--font-display",
   subsets: ["latin", "latin-ext"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["700", "800"],
+  display: "swap",
 });
 
 const body = Manrope({
   variable: "--font-body",
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
 const title = "Adana Open | WTA 125 Adana 2026";
@@ -136,6 +138,15 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${display.variable} ${body.variable} h-full antialiased`}
     >
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/media/hero/adana-open-court.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
+      </head>
       <body className="flex min-h-full flex-col bg-paper text-ink">
         <JsonLd />
         <Providers>

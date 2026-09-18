@@ -3,23 +3,18 @@
 import Link from "next/link";
 import { FLAGS } from "@/lib/flags";
 import { useLanguage } from "@/lib/i18n";
-import data from "@/lib/players.json";
+import ticker from "@/lib/ticker.json";
 import { ROUTES } from "@/lib/routes";
 
 type DrawPlayer = {
   id: number;
-  name: string;
-  lastName: string;
   firstName: string;
+  lastName: string;
   country: string;
   rank: number | null;
 };
 
-const PLAYERS = [...(data.mainDraw as DrawPlayer[])].sort((a, b) => {
-  const ar = a.rank && a.rank > 0 ? a.rank : 9999;
-  const br = b.rank && b.rank > 0 ? b.rank : 9999;
-  return ar - br;
-});
+const PLAYERS = ticker as DrawPlayer[];
 
 function PlayerChip({ player }: { player: DrawPlayer }) {
   const rank = player.rank && player.rank > 0 ? player.rank : null;
@@ -42,7 +37,7 @@ export function PlayerTicker() {
       <p className="sr-only">
         {t.players.mainLabel}. {t.nav.players}.
       </p>
-      <Link href={ROUTES.oyuncular} className="sr-only">
+      <Link href={ROUTES.oyuncular} prefetch={false} className="sr-only">
         {t.players.title}
       </Link>
       <div className="marquee-viewport relative w-full overflow-hidden">

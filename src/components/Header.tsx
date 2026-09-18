@@ -60,7 +60,7 @@ export function Header() {
 
       <div className={`border-b ${line}`}>
         <div className="mx-auto flex h-[3.75rem] w-full max-w-[1280px] items-center gap-2 px-3 sm:gap-3 sm:px-4 md:h-16 md:px-6">
-          <Link href="/" className="relative z-20 flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3">
+          <Link href="/" prefetch={false} className="relative z-20 flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3">
             <span className="relative h-9 w-[3.6rem] overflow-hidden sm:h-10 sm:w-[4.1rem] md:h-11 md:w-[4.4rem]">
               <Image
                 src="/logo-clear.png"
@@ -104,7 +104,7 @@ export function Header() {
                 EN
               </button>
             </div>
-            <Link href={ROUTES.iletisim} className="btn btn-primary !px-2.5 !py-1.5 text-[0.62rem] sm:!px-3 sm:text-[0.65rem] md:!px-4 md:!py-2">
+            <Link href={ROUTES.iletisim} prefetch={false} className="btn btn-primary !px-2.5 !py-1.5 text-[0.62rem] sm:!px-3 sm:text-[0.65rem] md:!px-4 md:!py-2">
               {t.nav.tickets}
             </Link>
             <button
@@ -134,6 +134,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  prefetch={false}
                   className={`relative shrink-0 py-2.5 text-[0.68rem] font-semibold tracking-wide whitespace-nowrap transition xl:text-[0.78rem] ${
                     active ? strong : muted
                   }`}
@@ -154,6 +155,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
+                prefetch={false}
                 onClick={() => setOpen(false)}
                 className={`border-b py-3.5 font-display text-[1.45rem] font-bold ${line} ${
                   isActive(link.href) ? "" : home ? "text-paper/70" : "text-ink/70"
@@ -185,7 +187,7 @@ export function Header() {
               </button>
             </div>
           </div>
-          <Link href={ROUTES.iletisim} onClick={() => setOpen(false)} className="btn btn-primary mt-6 w-full">
+          <Link href={ROUTES.iletisim} prefetch={false} onClick={() => setOpen(false)} className="btn btn-primary mt-6 w-full">
             {t.nav.tickets}
           </Link>
         </div>

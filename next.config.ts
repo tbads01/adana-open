@@ -2,24 +2,21 @@ import type { NextConfig } from "next";
 import { PAGE_PATHS } from "./src/lib/routes";
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   images: {
-    formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 2_592_000,
-    qualities: [70, 75],
-    deviceSizes: [640, 828, 1080, 1280, 1600],
-    imageSizes: [40, 64, 96, 128, 256, 384],
+    unoptimized: true,
   },
   async headers() {
     const htmlCache = [
       {
         key: "Cache-Control",
-        value: "public, max-age=0, s-maxage=300, must-revalidate",
+        value: "public, max-age=60, s-maxage=300, stale-while-revalidate=600",
       },
     ];
     const mediaCache = [
       {
         key: "Cache-Control",
-        value: "public, max-age=604800, stale-while-revalidate=86400",
+        value: "public, max-age=2592000, stale-while-revalidate=86400",
       },
     ];
 
