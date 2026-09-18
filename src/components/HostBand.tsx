@@ -19,6 +19,8 @@ export function HostBand() {
             alt="ATDSK"
             width={56}
             height={56}
+            sizes="56px"
+            quality={75}
             className="h-12 w-12 object-contain md:h-14 md:w-14"
           />
           <div>

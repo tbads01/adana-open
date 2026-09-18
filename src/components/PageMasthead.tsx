@@ -18,7 +18,7 @@ export function PageMasthead({
   return (
     <section className="bg-paper">
       <div className="relative h-[36svh] min-h-[240px] w-full md:h-[44svh]">
-        <Image src={image} alt="" fill priority className={imageClassName} sizes="100vw" />
+        <Image src={image} alt="" fill priority className={imageClassName} sizes="100vw" quality={75} />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/35 to-transparent" />
         <span className="absolute inset-x-0 bottom-0 h-1 bg-yellow" />
       </div>

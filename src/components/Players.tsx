@@ -121,7 +121,8 @@ function PlayerCard({
             alt={player.name}
             fill
             className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
-            sizes="(max-width:768px) 50vw, 25vw"
+            sizes="(max-width:768px) 50vw, 20vw"
+            quality={70}
           />
         ) : (
           <div className="flex h-full items-center justify-center">
@@ -183,7 +184,7 @@ function RankBoard({
                 <span className="flex min-w-0 items-center gap-3">
                   <span className="relative h-10 w-10 shrink-0 overflow-hidden bg-panel-2">
                     {player.image ? (
-                      <Image src={player.image} alt="" fill className="object-cover object-top" sizes="40px" />
+                      <Image src={player.image} alt="" fill className="object-cover object-top" sizes="40px" quality={70} />
                     ) : (
                       <span className="flex h-full items-center justify-center font-display text-[0.65rem] text-paper/40">
                         {initials(player.name)}

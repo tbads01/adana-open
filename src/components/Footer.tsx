@@ -15,7 +15,7 @@ export function Footer() {
       <div className="section-pad mx-auto max-w-[1200px] py-14 md:py-16">
         <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <Image src="/logo-clear.png" alt="Adana Open" width={140} height={112} className="h-12 w-auto" />
+            <Image src="/logo-clear.png" alt="Adana Open" width={140} height={112} sizes="140px" quality={75} className="h-12 w-auto" />
             <p className="mt-4 max-w-md font-display text-2xl font-bold tracking-[-0.03em] md:text-3xl">
               {t.hero.headline} {t.hero.headlineAccent}
             </p>

@@ -17,6 +17,7 @@ export function Hero() {
         priority
         className="object-cover object-center"
         sizes="100vw"
+        quality={75}
       />
       <div className="absolute inset-0 bg-ink/45" />
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/25 md:via-ink/70" />
@@ -27,9 +28,8 @@ export function Hero() {
           src="/media/brand/kaplan.webp"
           alt=""
           fill
-          priority
           className="object-contain object-right-bottom"
-          sizes="560px"
+          sizes="(max-width:640px) 220px, 560px"
         />
       </div>
 

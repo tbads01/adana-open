@@ -15,21 +15,21 @@ type Logo = {
 
 const MAINS: Logo[] = [
   {
-    src: "/media/partners/bulutlar.png?v=2",
+    src: "/media/partners/bulutlar.png",
     alt: "Bulutlar Kuruyemiş",
     width: 1819,
     height: 628,
     className: "h-11 max-w-[10.5rem] sm:h-14 sm:max-w-[13rem] md:h-16 md:max-w-[15.5rem]",
   },
   {
-    src: "/media/partners/adana-buyuksehir.png?v=2",
+    src: "/media/partners/adana-buyuksehir.png",
     alt: "Adana Büyükşehir Belediyesi",
     width: 1684,
     height: 1032,
     className: "h-14 max-w-[9.5rem] sm:h-16 sm:max-w-[12rem] md:h-[4.75rem] md:max-w-[14rem]",
   },
   {
-    src: "/media/partners/atdsk-seal.png?v=3",
+    src: "/media/partners/atdsk-seal.png",
     alt: "ATDSK",
     width: 698,
     height: 706,
@@ -39,70 +39,70 @@ const MAINS: Logo[] = [
 
 const REST: Logo[] = [
   {
-    src: "/media/partners/qnb.png?v=3",
+    src: "/media/partners/qnb.png",
     alt: "QNB",
     width: 840,
     height: 246,
     className: "h-6 max-w-[4.75rem] sm:h-7 sm:max-w-[6rem] md:h-8 md:max-w-[6.75rem]",
   },
   {
-    src: "/media/partners/agrivolt.png?v=3",
+    src: "/media/partners/agrivolt.png",
     alt: "Agrivolt",
     width: 450,
     height: 295,
     className: "h-10 sm:h-11",
   },
   {
-    src: "/media/partners/acibadem-adana.png?v=3",
+    src: "/media/partners/acibadem-adana.png",
     alt: "Acıbadem Adana",
     width: 1270,
     height: 219,
     className: "h-6 max-w-[5.75rem] sm:h-7 sm:max-w-[7rem] md:h-8 md:max-w-[8rem]",
   },
   {
-    src: "/media/partners/lexus-seyhan.png?v=2",
+    src: "/media/partners/lexus-seyhan.png",
     alt: "Lexus Seyhan",
     width: 1209,
     height: 562,
     className: "h-8 max-w-[5.25rem] sm:h-9 sm:max-w-[6.25rem] md:h-10 md:max-w-[6.75rem]",
   },
   {
-    src: "/media/partners/zuber.png?v=2",
+    src: "/media/partners/zuber.png",
     alt: "Züber",
     width: 817,
     height: 333,
     className: "h-6 max-w-[4.25rem] sm:h-8 sm:max-w-[5.25rem] md:h-9 md:max-w-[5.75rem]",
   },
   {
-    src: "/media/partners/keskin.png?v=3",
+    src: "/media/partners/keskin.png",
     alt: "Keskin İnşaat",
     width: 600,
     height: 687,
     className: "h-10 max-w-[5.25rem] sm:h-11 sm:max-w-[6.25rem]",
   },
   {
-    src: "/media/partners/sheraton.png?v=3",
+    src: "/media/partners/sheraton.png",
     alt: "Sheraton Grand Adana",
     width: 291,
     height: 228,
     className: "h-11 sm:h-12",
   },
   {
-    src: "/media/partners/ezc.png?v=3",
+    src: "/media/partners/ezc.png",
     alt: "EZC Organizasyon",
     width: 310,
     height: 175,
     className: "h-7 max-w-[4.5rem] sm:h-8 sm:max-w-[5.5rem] md:h-9 md:max-w-[6rem]",
   },
   {
-    src: "/media/partners/gsb-mark.png?v=2",
+    src: "/media/partners/gsb-mark.png",
     alt: "T.C. Gençlik ve Spor Bakanlığı",
     width: 569,
     height: 594,
     className: "h-11 sm:h-12",
   },
   {
-    src: "/media/partners/ttf.png?v=2",
+    src: "/media/partners/ttf.png",
     alt: "Türkiye Tenis Federasyonu",
     width: 684,
     height: 503,
@@ -117,7 +117,8 @@ function LogoMark({ logo }: { logo: Logo }) {
       alt={logo.alt}
       width={logo.width}
       height={logo.height}
-      unoptimized
+      sizes="180px"
+      quality={75}
       className={`w-auto object-contain object-center ${logo.className}`}
     />
   );
