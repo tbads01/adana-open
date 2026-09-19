@@ -1,7 +1,11 @@
+/** Neutral world mark used where national flags are barred (RUS / BLR). */
+export const WORLD_FLAG = "🌐";
+
 export const FLAGS: Record<string, string> = {
   ARG: "🇦🇷",
   ARM: "🇦🇲",
   AND: "🇦🇩",
+  BLR: WORLD_FLAG,
   CAN: "🇨🇦",
   COL: "🇨🇴",
   CRO: "🇭🇷",
@@ -14,7 +18,7 @@ export const FLAGS: Record<string, string> = {
   LAT: "🇱🇻",
   NED: "🇳🇱",
   POL: "🇵🇱",
-  RUS: "🇷🇺",
+  RUS: WORLD_FLAG,
   SRB: "🇷🇸",
   SUI: "🇨🇭",
   TUR: "🇹🇷",
