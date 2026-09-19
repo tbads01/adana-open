@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FLAGS } from "@/lib/flags";
+import { FLAGS, countryLabel } from "@/lib/flags";
 import { useLanguage } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
@@ -136,6 +136,7 @@ function RankBoard({
   nowLabel: string;
   careerLabel: string;
 }) {
+  const { t } = useLanguage();
   return (
     <div className="overflow-hidden bg-ink text-paper">
       <div className="h-1 bg-yellow" />
@@ -174,7 +175,7 @@ function RankBoard({
                       {first} {last}
                     </span>
                     <span className="text-[0.68rem] text-paper/45">
-                      {FLAGS[player.country] ?? ""} {player.country}
+                      {FLAGS[player.country] ?? ""} {countryLabel(player.country, t.ui.world)}
                     </span>
                   </span>
                 </span>

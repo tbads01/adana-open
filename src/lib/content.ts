@@ -188,6 +188,7 @@ export type Messages = {
     home: string;
     explore: string;
     skip: string;
+    world: string;
   };
 };
 
@@ -620,6 +621,7 @@ export const content: Record<Locale, Messages> = {
       home: "Ana sayfa",
       explore: "Keşfet",
       skip: "İçeriğe geç",
+      world: "Dünya",
     },
   },
   en: {
@@ -1050,6 +1052,7 @@ export const content: Record<Locale, Messages> = {
       home: "Home",
       explore: "Explore",
       skip: "Skip to content",
+      world: "World",
     },
   },
 };
