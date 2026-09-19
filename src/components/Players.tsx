@@ -175,7 +175,7 @@ function RankBoard({
                       {first} {last}
                     </span>
                     <span className="text-[0.68rem] text-paper/45">
-                      {FLAGS[player.country] ?? ""} {countryLabel(player.country, t.ui.world)}
+                      {FLAGS[player.country] ?? ""} {countryLabel(player.country, t.ui.world || "Dünya")}
                     </span>
                   </span>
                 </span>
