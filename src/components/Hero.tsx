@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
 import { ROUTES } from "@/lib/routes";
+import { TicketsLink } from "./TicketsLink";
 
 export function Hero() {
   const { t } = useLanguage();
@@ -51,9 +52,9 @@ export function Hero() {
             <Link href={`${ROUTES.program}#match-plan`} className="btn btn-primary">
               {t.nav.schedule}
             </Link>
-            <Link href={ROUTES.iletisim} className="btn btn-ghost-light">
+            <TicketsLink className="btn btn-ghost-light">
               {t.hero.ctaTickets}
-            </Link>
+            </TicketsLink>
           </div>
         </div>
       </div>

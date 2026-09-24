@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
 import { NAV_LINKS, ROUTES } from "@/lib/routes";
 import { INSTAGRAM, SITE_EMAIL, WTA_URL } from "@/lib/site";
+import { TicketsLink } from "./TicketsLink";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -30,9 +31,9 @@ export function Footer() {
             <Link href={ROUTES.program} prefetch={false} className="btn btn-primary">
               {t.nav.schedule}
             </Link>
-            <Link href={ROUTES.iletisim} prefetch={false} className="btn btn-ghost-light">
+            <TicketsLink className="btn btn-ghost-light">
               {t.nav.tickets}
-            </Link>
+            </TicketsLink>
           </div>
         </div>
 

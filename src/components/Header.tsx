@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/i18n";
 import { NAV_LINKS, ROUTES } from "@/lib/routes";
 import { PlayerTicker } from "./PlayerTicker";
+import { TicketsLink } from "./TicketsLink";
 
 function linkPath(href: string) {
   return href.split("#")[0] || "/";
@@ -104,9 +105,9 @@ export function Header() {
                 EN
               </button>
             </div>
-            <Link href={ROUTES.iletisim} prefetch={false} className="btn btn-primary !px-2.5 !py-1.5 text-[0.62rem] sm:!px-3 sm:text-[0.65rem] md:!px-4 md:!py-2">
+            <TicketsLink className="btn btn-primary !px-2.5 !py-1.5 text-[0.62rem] sm:!px-3 sm:text-[0.65rem] md:!px-4 md:!py-2">
               {t.nav.tickets}
-            </Link>
+            </TicketsLink>
             <button
               type="button"
               className="inline-flex h-9 w-9 items-center justify-center lg:hidden"
@@ -187,9 +188,9 @@ export function Header() {
               </button>
             </div>
           </div>
-          <Link href={ROUTES.iletisim} prefetch={false} onClick={() => setOpen(false)} className="btn btn-primary mt-6 w-full">
+          <TicketsLink onClick={() => setOpen(false)} className="btn btn-primary mt-6 w-full">
             {t.nav.tickets}
-          </Link>
+          </TicketsLink>
         </div>
       )}
     </header>

@@ -6,6 +6,7 @@ import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { VectorCover } from "./VectorCover";
 import { IconMail } from "./Icons";
+import { TicketsLink } from "./TicketsLink";
 
 export function Contact() {
   const { t } = useLanguage();
@@ -26,9 +27,7 @@ export function Contact() {
             <SectionHeading tone="dark" title={t.tickets.title} accent={t.tickets.titleAccent || undefined} />
             <p className="mt-3 max-w-lg text-ink/60">{t.tickets.body}</p>
           </div>
-          <a href="#contact" className="btn btn-primary">
-            {t.hero.ctaNotify}
-          </a>
+          <TicketsLink className="btn btn-primary">{t.tickets.cta}</TicketsLink>
         </div>
       </section>
 

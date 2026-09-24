@@ -153,6 +153,7 @@ export type Messages = {
     title: string;
     titleAccent: string;
     body: string;
+    cta: string;
   };
   club: {
     metaTitle: string;
@@ -326,7 +327,7 @@ export const content: Record<Locale, Messages> = {
       capacityLabel: "Merkez Kort",
       capacity: "1.250–1.500 kişi · 2 seyirci + 1 protokol tribünü",
       courtsLabel: "İpek & Çağla Kortları",
-      courts: "500 kişi kapasiteli yan kortlar",
+      courts: "Kort A Çağla Büyükakçay Kortu · Kort B İpek Soylu Kortu · 500 kişi",
       clubFacts: [
         { label: "Kulüp kortları", value: "16 kort" },
         { label: "Kapalı / sert / toprak", value: "2 · 10 · 6" },
@@ -340,19 +341,19 @@ export const content: Record<Locale, Messages> = {
       eyebrow: "Program",
       title: "Dokuz gün,",
       titleAccent: "bir şampiyon.",
-      note: "Yan etkinlikler duyurulmuştur. Maç saatleri aşağıdaki WTA taslak planına göredir.",
+      note: "Eleme maçları saat 10:30’da başlar. Ana tablo saatleri 28 Eylül’den itibaren duyurulacaktır.",
       matchEyebrow: "Maç takvimi",
       matchTitle: "Saatler ve",
       matchAccent: "turlar.",
       matchNote:
-        "Taslak WTA Match Schedule Plan. İlk maç saati kesin; sonraki maçlar ardından oynanır. Günlük sıra turnuva haftasında yayınlanır.",
+        "Eleme 1. tur 26 Eylül saat 10:30’da Merkez Kort, Çağla Büyükakçay Kortu ve İpek Soylu Kortu’nda oynanır. İlk maç saati kesin; sonraki maçlar ardından gelir. Ana tablo saatleri 28 Eylül’den itibaren duyurulur.",
       startsLabel: "İlk maç",
       followedBy: "Ardından",
       matchCount: "maç",
       legendQual: "Eleme",
       legendSingles: "Tekler",
       legendDoubles: "Çiftler",
-      courts: { cc: "Merkez Kort", c1: "Kort 1", c2: "Kort 2" },
+      courts: { cc: "Merkez Kort", c1: "Çağla Büyükakçay Kortu", c2: "İpek Soylu Kortu" },
       rounds: {
         QS1: "Eleme 1. tur",
         QSF: "Eleme finali",
@@ -367,6 +368,12 @@ export const content: Record<Locale, Messages> = {
         MDF: "Çiftler final",
       },
       days: [
+        {
+          weekday: "Cuma",
+          date: "25 Eylül",
+          stage: "Basın toplantısı",
+          events: [{ time: "18:00", title: "Basın toplantısı · Taş Köprü", tag: "event" }],
+        },
         {
           weekday: "Cumartesi",
           date: "26 Eylül",
@@ -465,7 +472,7 @@ export const content: Record<Locale, Messages> = {
       areas: [
         {
           title: "Fan Zone",
-          desc: "Yeşil-beyaz stantlar, yeme-içme ve seyirci alanı.",
+          desc: "Yeşil-beyaz stantlar, yeme-içme ve seyirci alanı. Giriş ücretsizdir; maç izlemek için günün bileti gerekir.",
           image: "/media/ai/concept-03.jpg",
         },
         {
@@ -485,7 +492,7 @@ export const content: Record<Locale, Messages> = {
         },
         {
           title: "Food Court",
-          desc: "Yeme-içme alanları.",
+          desc: "Gün boyunca açık. Dokuz stand: Bun the Bun, Taco Maco, Ico Fried Chicken, Hayat Büfe, Bowl Art, Doğan Kaymaklı, Hüsnü Usta Et Döner, Major Chocolate, Maki.",
           image: "/media/ai/food-court.jpg",
         },
         {
@@ -539,7 +546,8 @@ export const content: Record<Locale, Messages> = {
     tickets: {
       title: "Biletler",
       titleAccent: "",
-      body: "Detaylı bilgi yakında.",
+      body: "Günlük maç biletleri Biletix üzerinden ve kulüp satış noktalarından alınabilir. Fan Zone, food court ve yan etkinlikler için bilet gerekmez. Maç izlemek için ilgili günün bileti alınmalıdır. Bilet tribünde koltuk garantisi vermez.",
+      cta: "Biletix’te al",
     },
     club: {
       metaTitle: "ATDSK | Adana Open",
@@ -757,7 +765,7 @@ export const content: Record<Locale, Messages> = {
       capacityLabel: "Center Court",
       capacity: "1,250–1,500 seats · 2 spectator + 1 protocol stand",
       courtsLabel: "İpek & Çağla Courts",
-      courts: "Side courts with 500-seat capacity",
+      courts: "Court A Çağla Büyükakçay Court · Court B İpek Soylu Court · 500 seats",
       clubFacts: [
         { label: "Club courts", value: "16 courts" },
         { label: "Indoor / hard / clay", value: "2 · 10 · 6" },
@@ -771,19 +779,19 @@ export const content: Record<Locale, Messages> = {
       eyebrow: "Schedule",
       title: "Nine days.",
       titleAccent: "One champion.",
-      note: "Side events are announced. Match times follow the draft WTA plan below.",
+      note: "Qualifying matches start at 10:30. Main-draw times will be announced from 28 September.",
       matchEyebrow: "Match schedule",
       matchTitle: "Times and",
       matchAccent: "rounds.",
       matchNote:
-        "Draft WTA Match Schedule Plan. First-match times are set; later matches follow. Daily order of play is published during tournament week.",
+        "Qualifying round 1 is on 26 September at 10:30 on Centre Court, Çağla Büyükakçay Court and İpek Soylu Court. First-match times are set; later matches follow. Main-draw times will be announced from 28 September.",
       startsLabel: "First match",
       followedBy: "Then",
       matchCount: "matches",
       legendQual: "Qualifying",
       legendSingles: "Singles",
       legendDoubles: "Doubles",
-      courts: { cc: "Centre Court", c1: "Court 1", c2: "Court 2" },
+      courts: { cc: "Centre Court", c1: "Çağla Büyükakçay Court", c2: "İpek Soylu Court" },
       rounds: {
         QS1: "Qualifying R1",
         QSF: "Qualifying final",
@@ -798,6 +806,12 @@ export const content: Record<Locale, Messages> = {
         MDF: "Doubles final",
       },
       days: [
+        {
+          weekday: "Friday",
+          date: "25 September",
+          stage: "Press conference",
+          events: [{ time: "18:00", title: "Press conference · Taş Köprü", tag: "event" }],
+        },
         {
           weekday: "Saturday",
           date: "26 September",
@@ -896,7 +910,7 @@ export const content: Record<Locale, Messages> = {
       areas: [
         {
           title: "Fan Zone",
-          desc: "Green-and-white stalls, food and spectator areas.",
+          desc: "Green-and-white stalls, food and spectator areas. Entry is free; a day’s ticket is required to watch matches.",
           image: "/media/ai/concept-03.jpg",
         },
         {
@@ -916,7 +930,7 @@ export const content: Record<Locale, Messages> = {
         },
         {
           title: "Food Court",
-          desc: "Food and beverage areas.",
+          desc: "Open all day. Nine stands: Bun the Bun, Taco Maco, Ico Fried Chicken, Hayat Büfe, Bowl Art, Doğan Kaymaklı, Hüsnü Usta Et Döner, Major Chocolate, Maki.",
           image: "/media/ai/food-court.jpg",
         },
         {
@@ -970,7 +984,8 @@ export const content: Record<Locale, Messages> = {
     tickets: {
       title: "Tickets",
       titleAccent: "",
-      body: "Detailed information coming soon.",
+      body: "Daily match tickets are available on Biletix and at club sales points. Fan Zone, food court and side events are free. A match ticket is required to watch matches. Tickets do not guarantee a reserved seat.",
+      cta: "Buy on Biletix",
     },
     club: {
       metaTitle: "ATDSK | Adana Open",

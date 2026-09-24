@@ -39,7 +39,7 @@ export const HASH_REDIRECTS: Record<string, string> = {
   schedule: `${ROUTES.program}#match-plan`,
   experience: ROUTES.deneyim,
   contact: ROUTES.iletisim,
-  tickets: ROUTES.iletisim,
+  tickets: `${ROUTES.iletisim}#tickets`,
   club: ROUTES.atdsk,
   significance: ROUTES.turnuva,
   etkinlikler: `${ROUTES.program}#etkinlikler`,
