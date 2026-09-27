@@ -9,6 +9,16 @@ import { VectorCover } from "./VectorCover";
 import { IconMail } from "./Icons";
 import { TicketsLink } from "./TicketsLink";
 
+function announcementHref(href?: string) {
+  if (!href) return undefined;
+  if (href.startsWith("http")) return href;
+  if (href === "/maclar") return "/program#match-plan";
+  if (href === "/etkinlikler") return "/program#etkinlikler";
+  if (href === "/oyuncular") return "/oyuncular";
+  if (href === "/bilgi") return "/iletisim";
+  return href;
+}
+
 export function Contact() {
   const { t, locale } = useLanguage();
   const facts = useFacts();
@@ -32,6 +42,60 @@ export function Contact() {
           <TicketsLink className="btn btn-primary">{t.tickets.cta}</TicketsLink>
         </div>
       </section>
+
+      {(facts.announcements?.length || facts.faqs?.length) ? (
+        <section id="bilgi" className="border-t border-line-dark bg-paper py-16 md:py-20">
+          <div className="section-pad mx-auto grid max-w-[1200px] gap-14 lg:grid-cols-2">
+            {facts.announcements?.length ? (
+              <div>
+                <SectionHeading tone="dark" title={t.contact.newsTitle} />
+                <ul className="mt-8 space-y-4">
+                  {facts.announcements.map((item) => {
+                    const href = announcementHref(item.href);
+                    const body = (
+                      <>
+                        <p className="text-[0.62rem] font-bold tracking-[0.14em] text-ink/40 uppercase">
+                          {item.tag[locale]}
+                          <span className="mx-1.5 text-ink/20">·</span>
+                          {item.date}
+                        </p>
+                        <p className="mt-2 font-display text-xl font-bold tracking-[-0.03em] text-ink">{item.title[locale]}</p>
+                        <p className="mt-2 text-sm leading-relaxed text-ink/60">{item.body[locale]}</p>
+                      </>
+                    );
+                    return (
+                      <li key={item.id} className="border border-line-dark bg-surface p-5">
+                        {href ? (
+                          <a href={href} className="block hover:opacity-80" target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined}>
+                            {body}
+                          </a>
+                        ) : (
+                          body
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ) : null}
+            {facts.faqs?.length ? (
+              <div>
+                <SectionHeading tone="dark" title={t.contact.faqTitle} />
+                <div className="mt-8 divide-y divide-line-dark border border-line-dark bg-surface">
+                  {facts.faqs.map((item) => (
+                    <details key={item.q.tr} className="group px-5 py-4">
+                      <summary className="cursor-pointer list-none font-display text-base font-bold tracking-[-0.02em] text-ink">
+                        {item.q[locale]}
+                      </summary>
+                      <p className="mt-3 text-sm leading-relaxed text-ink/60">{item.a[locale]}</p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
 
       <section id="contact" className="border-t border-line-dark bg-paper py-16 md:py-24">
         <div className="section-pad mx-auto max-w-[1200px]">

@@ -152,6 +152,8 @@ export type Messages = {
     emailLabel: string;
     phoneLabel: string;
     hostLabel: string;
+    newsTitle: string;
+    faqTitle: string;
   };
   tickets: {
     title: string;
@@ -350,7 +352,7 @@ export const content: Record<Locale, Messages> = {
       matchTitle: "Saatler ve",
       matchAccent: "turlar.",
       matchNote:
-        "Eleme 1. tur Cumartesi saat 10:30’da, eleme finalleri Pazar saat 15:00’de başlar. Ana tablo saatleri 28 Eylül’den itibaren duyurulacaktır. Program değişikliklerinde bu sayfa güncellenir.",
+        "Eleme 1. tur Cumartesi saat 10:30’da, eleme finalleri Pazar saat 15:00’de başlar. Ana tablo Pazartesi saat 11:30’da üç kortta açılır. Program değişikliklerinde bu sayfa güncellenir.",
       startsLabel: "İlk maç",
       followedBy: "Ardından",
       matchCount: "maç",
@@ -408,9 +410,9 @@ export const content: Record<Locale, Messages> = {
           date: "28 Eylül",
           stage: "Ana etap · ilk gün",
           events: [
+            { time: "11:30", title: "Tekler 1. tur · üç kort", tag: "match" },
             { time: "12:00", title: "Gösteri maçı · Fan Zone", tag: "match" },
             { time: "15:00 sonrası", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "Duyurulacak", title: "Tekler ve çiftler 1. tur", tag: "match" },
           ],
         },
         {
@@ -555,6 +557,8 @@ export const content: Record<Locale, Messages> = {
       emailLabel: "E-posta",
       phoneLabel: "Telefon",
       hostLabel: "Ev sahibi kulüp",
+      newsTitle: "Duyurular",
+      faqTitle: "Sık sorulan sorular",
     },
     tickets: {
       title: "Biletler",
@@ -792,12 +796,12 @@ export const content: Record<Locale, Messages> = {
       eyebrow: "Schedule",
       title: "Nine days.",
       titleAccent: "One champion.",
-      note: "The side-event programme is published. Match times may change; the current schedule is on this page.",
+      note: "The side-event programme has been announced. Match times may be updated; the latest schedule is on this page.",
       matchEyebrow: "Match schedule",
       matchTitle: "Times and",
       matchAccent: "rounds.",
       matchNote:
-        "Qualifying round one begins Saturday at 10:30; qualifying finals begin Sunday at 15:00. Main-draw start times will be announced from 28 September. This page is updated when the order of play changes.",
+        "Qualifying round one begins Saturday at 10:30; qualifying finals begin Sunday at 15:00. The main draw opens Monday at 11:30 on three courts. This page is updated if the schedule changes.",
       startsLabel: "First match",
       followedBy: "Then",
       matchCount: "matches",
@@ -855,9 +859,9 @@ export const content: Record<Locale, Messages> = {
           date: "28 September",
           stage: "Main draw · day 1",
           events: [
+            { time: "11:30", title: "Singles round 1 · three courts", tag: "match" },
             { time: "12:00", title: "Exhibition match · Fan Zone", tag: "match" },
             { time: "15:00 onwards", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "TBA", title: "Singles and doubles R1", tag: "match" },
           ],
         },
         {
@@ -1002,6 +1006,8 @@ export const content: Record<Locale, Messages> = {
       emailLabel: "Email",
       phoneLabel: "Phone",
       hostLabel: "Host club",
+      newsTitle: "Announcements",
+      faqTitle: "Frequently asked questions",
     },
     tickets: {
       title: "Tickets",

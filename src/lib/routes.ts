@@ -40,6 +40,8 @@ export const HASH_REDIRECTS: Record<string, string> = {
   experience: ROUTES.deneyim,
   contact: ROUTES.iletisim,
   tickets: `${ROUTES.iletisim}#tickets`,
+  bilgi: `${ROUTES.iletisim}#bilgi`,
+  news: `${ROUTES.iletisim}#bilgi`,
   club: ROUTES.atdsk,
   significance: ROUTES.turnuva,
   etkinlikler: `${ROUTES.program}#etkinlikler`,

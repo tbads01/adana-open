@@ -22,6 +22,16 @@ export type SharedFacts = {
   matchPlan: MatchDay[];
   foodCourtStands: string[];
   players: typeof players;
+  faqs?: { q: { tr: string; en: string }; a: { tr: string; en: string } }[];
+  announcements?: {
+    id: string;
+    date: string;
+    pin?: boolean;
+    tag: { tr: string; en: string };
+    title: { tr: string; en: string };
+    body: { tr: string; en: string };
+    href?: string;
+  }[];
 };
 
 export function localFacts(): SharedFacts {
@@ -61,6 +71,8 @@ export function localFacts(): SharedFacts {
       "Maki",
     ],
     players,
+    faqs: [],
+    announcements: [],
   };
 }
 
