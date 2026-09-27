@@ -1,7 +1,8 @@
 "use client";
 
 import { useLanguage } from "@/lib/i18n";
-import { MATCH_PLAN, roundKind, uniqueRounds, type MatchRound } from "@/lib/match-plan";
+import { useFacts } from "@/lib/facts-context";
+import { isStartTba, roundKind, uniqueRounds, type MatchRound } from "@/lib/match-plan";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
@@ -36,8 +37,11 @@ const COURT_COLS: Record<number, string> = {
 };
 
 export function Schedule({ hideIntro = false }: { hideIntro?: boolean }) {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const facts = useFacts();
   const s = t.schedule;
+  const eventDays = facts.days[locale] ?? s.days;
+  const matchPlan = facts.matchPlan;
 
   return (
     <section id="schedule" className={`bg-paper text-ink ${hideIntro ? "pb-16 md:pb-20" : "py-24 md:py-32"}`}>
@@ -50,7 +54,7 @@ export function Schedule({ hideIntro = false }: { hideIntro?: boolean }) {
               title={s.title}
               accent={s.titleAccent}
             />
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink/50">{s.note}</p>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink/50">{facts.scheduleNote[locale] || s.note}</p>
           </Reveal>
         )}
 
@@ -58,7 +62,7 @@ export function Schedule({ hideIntro = false }: { hideIntro?: boolean }) {
           <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-8 bg-gradient-to-r from-paper to-transparent md:w-4" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-8 bg-gradient-to-l from-paper to-transparent md:w-4" />
           <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-2 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {s.days.map((day, i) => (
+            {eventDays.map((day, i) => (
               <article
                 key={`${day.date}-${day.stage}`}
                 className="flex min-h-[30.5rem] w-[min(78vw,16.5rem)] shrink-0 snap-start flex-col overflow-hidden border border-line-dark bg-surface"
@@ -105,7 +109,7 @@ export function Schedule({ hideIntro = false }: { hideIntro?: boolean }) {
                 {s.matchTitle}
                 <span className="section-accent">{s.matchAccent}</span>
               </h3>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-paper/55">{s.matchNote}</p>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-paper/55">{facts.matchNote[locale] || s.matchNote}</p>
 
               <div className="mt-6 flex flex-wrap gap-4 text-[0.68rem] font-bold tracking-[0.12em] uppercase">
                 <span className="inline-flex items-center gap-2">
@@ -123,11 +127,12 @@ export function Schedule({ hideIntro = false }: { hideIntro?: boolean }) {
               </div>
 
               <div className="mt-10 space-y-4">
-                {MATCH_PLAN.map((day, i) => {
-                  const meta = s.days[i];
-                  if (!meta) return null;
+                {matchPlan.map((day, i) => {
+                  const meta = eventDays[i];
+                  if (!meta || !day.courts.length) return null;
                   const rounds = uniqueRounds(day);
                   const cols = COURT_COLS[day.courts.length] ?? "md:grid-cols-3";
+                  const startLabel = isStartTba(day.start) ? s.timeSoon : day.start;
 
                   return (
                     <article
@@ -154,7 +159,7 @@ export function Schedule({ hideIntro = false }: { hideIntro?: boolean }) {
                               {s.startsLabel}
                             </p>
                             <p className="mt-0.5 font-display text-2xl font-semibold tracking-[-0.04em] tabular-nums">
-                              {day.start}
+                              {startLabel}
                             </p>
                           </div>
                           <div>
@@ -173,12 +178,17 @@ export function Schedule({ hideIntro = false }: { hideIntro?: boolean }) {
                           <div key={court.id} className="bg-panel px-5 py-4 md:px-6">
                             <p className="text-[0.62rem] font-bold tracking-[0.14em] text-paper/55 uppercase">
                               {s.courts[court.id]}
+                              {s.courtNamed[court.id] ? ` · ${s.courtNamed[court.id]}` : ""}
                             </p>
                             <ol className="mt-3 space-y-2.5">
                               {court.slots.map((slot, slotIndex) => (
                                 <li key={`${court.id}-${slotIndex}`} className="flex items-center gap-3">
-                                  <span className="w-[4.6rem] shrink-0 text-[0.62rem] font-bold tracking-[0.08em] text-paper/35 uppercase tabular-nums">
-                                    {slotIndex === 0 ? court.start : s.followedBy}
+                                  <span className="w-[6.2rem] shrink-0 text-[0.62rem] font-bold tracking-[0.08em] text-paper/35 uppercase tabular-nums">
+                                    {slotIndex === 0
+                                      ? isStartTba(court.start)
+                                        ? s.timeSoon
+                                        : court.start
+                                      : s.followedBy}
                                   </span>
                                   <span
                                     className={`inline-flex rounded-full px-2.5 py-0.5 text-[0.72rem] font-semibold ${ROUND_CHIP[roundKind(slot)]}`}

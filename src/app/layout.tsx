@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { Providers } from "@/components/Providers";
 import { SkipLink } from "@/components/SkipLink";
+import { getSharedFacts } from "@/lib/facts";
 import { OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -26,7 +27,7 @@ const title = "Adana Open | WTA 125 Adana 2026";
 const description =
   "Adana Open, ATDSK ev sahipliğinde WTA 125 kadınlar tenis turnuvası. 26 Eylül – 4 Ekim 2026, Seyhan Baraj Gölü, Adana. Ödül havuzu 115.000 USD.";
 
-export const revalidate = 300;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -127,11 +128,12 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const facts = await getSharedFacts();
   return (
     <html
       lang="tr"
@@ -149,7 +151,7 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-full flex-col bg-paper text-ink">
         <JsonLd />
-        <Providers>
+        <Providers facts={facts}>
           <SkipLink />
           <Header />
           <div className="flex-1">{children}</div>

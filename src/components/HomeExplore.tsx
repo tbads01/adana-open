@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { ComponentType, SVGProps } from "react";
 import { useLanguage } from "@/lib/i18n";
+import { useFacts } from "@/lib/facts-context";
 import type { Messages } from "@/lib/content";
 import { ROUTES } from "@/lib/routes";
 import { IconCalendar, IconClub, IconPin, IconPlayers } from "./Icons";
@@ -41,7 +42,8 @@ const CARDS: {
 ];
 
 export function HomeExplore() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const facts = useFacts();
 
   return (
     <section id="explore" className="bg-paper py-14 md:py-20">
@@ -70,7 +72,9 @@ export function HomeExplore() {
                     <Icon className="pointer-events-none absolute right-4 bottom-4 h-24 w-24 text-yellow/15 md:h-28 md:w-28" />
                     <div className="relative z-10 max-w-md pr-16 text-paper">
                       <h2 className="font-display text-2xl font-bold tracking-[-0.03em]">{t.nav[card.key]}</h2>
-                      <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-paper/65">{card.blurb(t)}</p>
+                    <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-paper/65">
+                      {card.key === "schedule" ? facts.scheduleNote[locale] || card.blurb(t) : card.blurb(t)}
+                    </p>
                     </div>
                   </div>
                 </VectorCover>

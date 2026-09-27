@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/lib/i18n";
+import { useFacts } from "@/lib/facts-context";
 import { About } from "./About";
 import { Contact } from "./Contact";
 import { Experience } from "./Experience";
@@ -53,11 +54,12 @@ export function MekanPage() {
 }
 
 export function ProgramPage() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const facts = useFacts();
   return (
     <PageView
       title={t.nav.schedule}
-      description={t.schedule.note}
+      description={facts.scheduleNote[locale] || t.schedule.note}
       masthead={<PageMasthead eyebrow={t.hero.kicker} title={t.nav.schedule} icon={IconCalendar} />}
     >
       <Schedule hideIntro />

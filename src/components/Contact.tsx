@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { useLanguage } from "@/lib/i18n";
+import { useFacts } from "@/lib/facts-context";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { VectorCover } from "./VectorCover";
@@ -9,7 +10,8 @@ import { IconMail } from "./Icons";
 import { TicketsLink } from "./TicketsLink";
 
 export function Contact() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const facts = useFacts();
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
 
@@ -25,7 +27,7 @@ export function Contact() {
         <div className="section-pad mx-auto flex max-w-[1200px] flex-col gap-6 py-10 md:flex-row md:items-end md:justify-between md:py-14">
           <div className="max-w-2xl">
             <SectionHeading tone="dark" title={t.tickets.title} accent={t.tickets.titleAccent || undefined} />
-            <p className="mt-3 max-w-lg text-ink/60">{t.tickets.body}</p>
+            <p className="mt-3 max-w-lg text-ink/60">{facts.ticketsBody[locale] || t.tickets.body}</p>
           </div>
           <TicketsLink className="btn btn-primary">{t.tickets.cta}</TicketsLink>
         </div>

@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { useLanguage } from "@/lib/i18n";
 import { TICKETS_URL } from "@/lib/tickets";
+import { useFacts } from "@/lib/facts-context";
 
 export function TicketsLink({
   className,
@@ -14,9 +15,10 @@ export function TicketsLink({
   onClick?: () => void;
 }) {
   const { locale } = useLanguage();
+  const facts = useFacts();
   return (
     <a
-      href={TICKETS_URL[locale]}
+      href={facts.ticketsUrl[locale] || TICKETS_URL[locale]}
       target="_blank"
       rel="noreferrer"
       className={className}

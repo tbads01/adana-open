@@ -88,10 +88,12 @@ export type Messages = {
     startsLabel: string;
     followedBy: string;
     matchCount: string;
+    timeSoon: string;
     legendQual: string;
     legendSingles: string;
     legendDoubles: string;
     courts: Record<CourtId, string>;
+    courtNamed: Record<CourtId, string>;
     rounds: Record<MatchRound, string>;
     days: {
       weekday: string;
@@ -115,6 +117,8 @@ export type Messages = {
     lead: string;
     note: string;
     mainLabel: string;
+    qualLabel: string;
+    qualLead: string;
     turkeyLabel: string;
     watchLabel: string;
     rankLabel: string;
@@ -341,19 +345,21 @@ export const content: Record<Locale, Messages> = {
       eyebrow: "Program",
       title: "Dokuz gün,",
       titleAccent: "bir şampiyon.",
-      note: "Eleme maçları saat 10:30’da başlar. Ana tablo saatleri 28 Eylül’den itibaren duyurulacaktır.",
+      note: "Yan etkinlik programı açıklanmıştır. Maç saatleri güncellenebilir; güncel program bu sayfada yer alır.",
       matchEyebrow: "Maç takvimi",
       matchTitle: "Saatler ve",
       matchAccent: "turlar.",
       matchNote:
-        "Eleme 1. tur 26 Eylül saat 10:30’da Merkez Kort, Çağla Büyükakçay Kortu ve İpek Soylu Kortu’nda oynanır. İlk maç saati kesin; sonraki maçlar ardından gelir. Ana tablo saatleri 28 Eylül’den itibaren duyurulur.",
+        "Eleme 1. tur Cumartesi saat 10:30’da, eleme finalleri Pazar saat 15:00’de başlar. Ana tablo saatleri 28 Eylül’den itibaren duyurulacaktır. Program değişikliklerinde bu sayfa güncellenir.",
       startsLabel: "İlk maç",
       followedBy: "Ardından",
       matchCount: "maç",
+      timeSoon: "Duyurulacak",
       legendQual: "Eleme",
       legendSingles: "Tekler",
       legendDoubles: "Çiftler",
-      courts: { cc: "Merkez Kort", c1: "Çağla Büyükakçay Kortu", c2: "İpek Soylu Kortu" },
+      courts: { cc: "Merkez Kort", c1: "Kort A", c2: "Kort B" },
+      courtNamed: { cc: "", c1: "Çağla Büyükakçay Kortu", c2: "İpek Soylu Kortu" },
       rounds: {
         QS1: "Eleme 1. tur",
         QSF: "Eleme finali",
@@ -379,11 +385,11 @@ export const content: Record<Locale, Messages> = {
           date: "26 Eylül",
           stage: "Ön eleme",
           events: [
+            { time: "08:00–09:30", title: "Zumba", tag: "event" },
             { time: "08:00–13:00", title: "Yogakioo Yoga", tag: "event" },
-            { time: "08:00–13:00", title: "Lansman · Teras", tag: "event" },
-            { time: "08:00–13:00", title: "Inf Kahve", tag: "event" },
-            { time: "10:30", title: "Eleme 1. tur · 3 kort", tag: "match" },
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "10:30", title: "Eleme 1. tur · Merkez Kort · Çağla Büyükakçay · İpek Soylu", tag: "match" },
+            { time: "13:00–15:00", title: "Sürpriz yarışmalar · Fan Zone", tag: "event" },
+            { time: "15:00 sonrası", title: "DJ Yusuf Erdem", tag: "music" },
           ],
         },
         {
@@ -391,8 +397,10 @@ export const content: Record<Locale, Messages> = {
           date: "27 Eylül",
           stage: "Ön eleme",
           events: [
-            { time: "10:30", title: "Eleme finalleri · 2 kort", tag: "match" },
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "08:00–10:00", title: "Zumba", tag: "event" },
+            { time: "13:00–15:00", title: "Sürpriz yarışmalar · Fan Zone", tag: "event" },
+            { time: "15:00", title: "Eleme finalleri · Merkez Kort · İpek Soylu Kortu", tag: "match" },
+            { time: "15:00 sonrası", title: "DJ Yusuf Erdem", tag: "music" },
           ],
         },
         {
@@ -400,8 +408,9 @@ export const content: Record<Locale, Messages> = {
           date: "28 Eylül",
           stage: "Ana etap · ilk gün",
           events: [
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "16:30", title: "Tekler ve çiftler 1. tur", tag: "match" },
+            { time: "12:00", title: "Gösteri maçı · Fan Zone", tag: "match" },
+            { time: "15:00 sonrası", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "Duyurulacak", title: "Tekler ve çiftler 1. tur", tag: "match" },
           ],
         },
         {
@@ -409,8 +418,8 @@ export const content: Record<Locale, Messages> = {
           date: "29 Eylül",
           stage: "2. gün",
           events: [
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "17:00", title: "Tekler 1. tur", tag: "match" },
+            { time: "15:00 sonrası", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "Duyurulacak", title: "Tekler 1. tur", tag: "match" },
           ],
         },
         {
@@ -418,8 +427,8 @@ export const content: Record<Locale, Messages> = {
           date: "30 Eylül",
           stage: "3. gün",
           events: [
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "17:00", title: "Tekler 2. tur · Çiftler 1. tur", tag: "match" },
+            { time: "15:00 sonrası", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "Duyurulacak", title: "Tekler 2. tur · Çiftler 1. tur", tag: "match" },
           ],
         },
         {
@@ -427,8 +436,8 @@ export const content: Record<Locale, Messages> = {
           date: "1 Ekim",
           stage: "4. gün",
           events: [
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "17:00", title: "Tekler 2. tur · Çiftler çeyrek final", tag: "match" },
+            { time: "15:00 sonrası", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "Duyurulacak", title: "Tekler 2. tur · Çiftler çeyrek final", tag: "match" },
           ],
         },
         {
@@ -436,8 +445,8 @@ export const content: Record<Locale, Messages> = {
           date: "2 Ekim",
           stage: "Çeyrek final",
           events: [
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "17:00", title: "Tekler çeyrek final · Çiftler yarı final", tag: "match" },
+            { time: "15:00 sonrası", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "Duyurulacak", title: "Tekler çeyrek final · Çiftler yarı final", tag: "match" },
           ],
         },
         {
@@ -445,9 +454,10 @@ export const content: Record<Locale, Messages> = {
           date: "3 Ekim",
           stage: "Yarı final",
           events: [
-            { time: "08:00–10:00", title: "Cardio Fitness · Coffee Disco · DJ Yusuf Erdem", tag: "event" },
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "17:00", title: "Tekler yarı final · Çiftler final", tag: "match" },
+            { time: "08:00–10:00", title: "Zumba · Cardio Fitness · Coffee Disco", tag: "event" },
+            { time: "11:00–13:00", title: "Sürpriz yarışmalar · Fan Zone", tag: "event" },
+            { time: "15:00 sonrası", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "Duyurulacak", title: "Tekler yarı final · Çiftler final", tag: "match" },
           ],
         },
         {
@@ -456,8 +466,9 @@ export const content: Record<Locale, Messages> = {
           stage: "Final",
           events: [
             { time: "08:00–13:00", title: "Yogakioo Yoga", tag: "event" },
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "18:00", title: "Tekler final · Merkez Kort", tag: "match" },
+            { time: "12:00–14:00", title: "Sürpriz yarışmalar · Fan Zone", tag: "event" },
+            { time: "15:00 sonrası", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "Duyurulacak", title: "Tekler final · Merkez Kort", tag: "match" },
           ],
         },
       ],
@@ -466,13 +477,13 @@ export const content: Record<Locale, Messages> = {
       eyebrow: "Deneyim",
       title: "Kortun",
       titleAccent: "ötesi.",
-      body: "Merkez kort, fan zone, food court, havuz kenarı ve sponsor aktivasyon alanları.",
+      body: "Tesiste Fan Zone, food court, DJ performansları, yoga seansları, gösteri maçları ve havuz kenarı alanları bulunur.",
       disclaimer:
         "Bazı görseller konsept çalışmasıdır. Kulüp fotoğrafları ATDSK tesislerinden alınmıştır.",
       areas: [
         {
           title: "Fan Zone",
-          desc: "Yeşil-beyaz stantlar, yeme-içme ve seyirci alanı. Giriş ücretsizdir; maç izlemek için günün bileti gerekir.",
+          desc: "Yeşil-beyaz stantlar, fotoğraf alanları, sürpriz yarışmalar ve seyirci alanı. Giriş ücretsizdir; maç izlemek için günün bileti gerekir.",
           image: "/media/ai/concept-03.jpg",
         },
         {
@@ -492,7 +503,7 @@ export const content: Record<Locale, Messages> = {
         },
         {
           title: "Food Court",
-          desc: "Gün boyunca açık. Dokuz stand: Bun the Bun, Taco Maco, Ico Fried Chicken, Hayat Büfe, Bowl Art, Doğan Kaymaklı, Hüsnü Usta Et Döner, Major Chocolate, Maki.",
+          desc: "Gün boyu açık: Bun the Bun, Taco Maco, Ico Fried Chicken, Hayat Büfe, Bowl Art, Doğan Kaymaklı, Hüsnü Usta Et Döner, Major Chocolate ve Maki.",
           image: "/media/ai/food-court.jpg",
         },
         {
@@ -506,9 +517,11 @@ export const content: Record<Locale, Messages> = {
       eyebrow: "Oyuncu listesi",
       title: "Ana tablo",
       titleAccent: "açıklandı.",
-      lead: "Ana tabloya doğrudan kabul edilen 23 oyuncu belli. Dört wildcard, bir special exempt ve dört eleme kazananı henüz açıklanmadı.",
-      note: "Sıralamalar 17 Eylül 2026 tarihli WTA oyuncu profillerine göredir; kura yayınlanana kadar değişebilir.",
+      lead: "Ana tabloya doğrudan kabul edilen 23 oyuncu. Sıralamalar 21 Eylül 2026 WTA listesine göredir.",
+      note: "Sıralamalar 21 Eylül 2026 tarihli resmi WTA sıralamasına göredir. Kura yayınlanana kadar liste değişebilir.",
       mainLabel: "Ana tablo · doğrudan kabul",
+      qualLabel: "Eleme",
+      qualLead: "14 oyuncu eleme tablosunda. Dört kazanan ana tabloya yükselir. Wildcard ve special exempt henüz açıklanmadı.",
       turkeyLabel: "Türkiye’den",
       watchLabel: "Takipteki isimler",
       rankLabel: "WTA",
@@ -779,19 +792,21 @@ export const content: Record<Locale, Messages> = {
       eyebrow: "Schedule",
       title: "Nine days.",
       titleAccent: "One champion.",
-      note: "Qualifying matches start at 10:30. Main-draw times will be announced from 28 September.",
+      note: "The side-event programme is published. Match times may change; the current schedule is on this page.",
       matchEyebrow: "Match schedule",
       matchTitle: "Times and",
       matchAccent: "rounds.",
       matchNote:
-        "Qualifying round 1 is on 26 September at 10:30 on Centre Court, Çağla Büyükakçay Court and İpek Soylu Court. First-match times are set; later matches follow. Main-draw times will be announced from 28 September.",
+        "Qualifying round one begins Saturday at 10:30; qualifying finals begin Sunday at 15:00. Main-draw start times will be announced from 28 September. This page is updated when the order of play changes.",
       startsLabel: "First match",
       followedBy: "Then",
       matchCount: "matches",
+      timeSoon: "TBA",
       legendQual: "Qualifying",
       legendSingles: "Singles",
       legendDoubles: "Doubles",
-      courts: { cc: "Centre Court", c1: "Çağla Büyükakçay Court", c2: "İpek Soylu Court" },
+      courts: { cc: "Centre Court", c1: "Court A", c2: "Court B" },
+      courtNamed: { cc: "", c1: "Çağla Büyükakçay Court", c2: "İpek Soylu Court" },
       rounds: {
         QS1: "Qualifying R1",
         QSF: "Qualifying final",
@@ -817,11 +832,11 @@ export const content: Record<Locale, Messages> = {
           date: "26 September",
           stage: "Qualifying",
           events: [
+            { time: "08:00–09:30", title: "Zumba", tag: "event" },
             { time: "08:00–13:00", title: "Yogakioo Yoga", tag: "event" },
-            { time: "08:00–13:00", title: "Launch · Terrace", tag: "event" },
-            { time: "08:00–13:00", title: "Inf Kahve", tag: "event" },
-            { time: "10:30", title: "Qualifying R1 · 3 courts", tag: "match" },
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "10:30", title: "Qualifying R1 · Centre Court · Çağla Büyükakçay · İpek Soylu", tag: "match" },
+            { time: "13:00–15:00", title: "Surprise contests · Fan Zone", tag: "event" },
+            { time: "15:00 onwards", title: "DJ Yusuf Erdem", tag: "music" },
           ],
         },
         {
@@ -829,8 +844,10 @@ export const content: Record<Locale, Messages> = {
           date: "27 September",
           stage: "Qualifying",
           events: [
-            { time: "10:30", title: "Qualifying finals · 2 courts", tag: "match" },
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "08:00–10:00", title: "Zumba", tag: "event" },
+            { time: "13:00–15:00", title: "Surprise contests · Fan Zone", tag: "event" },
+            { time: "15:00", title: "Qualifying finals · Centre Court · İpek Soylu Court", tag: "match" },
+            { time: "15:00 onwards", title: "DJ Yusuf Erdem", tag: "music" },
           ],
         },
         {
@@ -838,8 +855,9 @@ export const content: Record<Locale, Messages> = {
           date: "28 September",
           stage: "Main draw · day 1",
           events: [
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "16:30", title: "Singles and doubles R1", tag: "match" },
+            { time: "12:00", title: "Exhibition match · Fan Zone", tag: "match" },
+            { time: "15:00 onwards", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "TBA", title: "Singles and doubles R1", tag: "match" },
           ],
         },
         {
@@ -847,8 +865,8 @@ export const content: Record<Locale, Messages> = {
           date: "29 September",
           stage: "Day 2",
           events: [
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "17:00", title: "Singles R1", tag: "match" },
+            { time: "15:00 onwards", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "TBA", title: "Singles R1", tag: "match" },
           ],
         },
         {
@@ -856,8 +874,8 @@ export const content: Record<Locale, Messages> = {
           date: "30 September",
           stage: "Day 3",
           events: [
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "17:00", title: "Singles R2 · Doubles R1", tag: "match" },
+            { time: "15:00 onwards", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "TBA", title: "Singles R2 · Doubles R1", tag: "match" },
           ],
         },
         {
@@ -865,8 +883,8 @@ export const content: Record<Locale, Messages> = {
           date: "1 October",
           stage: "Day 4",
           events: [
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "17:00", title: "Singles R2 · Doubles quarterfinals", tag: "match" },
+            { time: "15:00 onwards", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "TBA", title: "Singles R2 · Doubles quarterfinals", tag: "match" },
           ],
         },
         {
@@ -874,8 +892,8 @@ export const content: Record<Locale, Messages> = {
           date: "2 October",
           stage: "Quarterfinals",
           events: [
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "17:00", title: "Singles quarterfinals · Doubles semifinals", tag: "match" },
+            { time: "15:00 onwards", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "TBA", title: "Singles quarterfinals · Doubles semifinals", tag: "match" },
           ],
         },
         {
@@ -883,9 +901,10 @@ export const content: Record<Locale, Messages> = {
           date: "3 October",
           stage: "Semifinals",
           events: [
-            { time: "08:00–10:00", title: "Cardio Fitness · Coffee Disco · DJ Yusuf Erdem", tag: "event" },
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "17:00", title: "Singles semifinals · Doubles final", tag: "match" },
+            { time: "08:00–10:00", title: "Zumba · Cardio Fitness · Coffee Disco", tag: "event" },
+            { time: "11:00–13:00", title: "Surprise contests · Fan Zone", tag: "event" },
+            { time: "15:00 onwards", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "TBA", title: "Singles semifinals · Doubles final", tag: "match" },
           ],
         },
         {
@@ -894,8 +913,9 @@ export const content: Record<Locale, Messages> = {
           stage: "Final",
           events: [
             { time: "08:00–13:00", title: "Yogakioo Yoga", tag: "event" },
-            { time: "14:00–16:00", title: "DJ Yusuf Erdem", tag: "music" },
-            { time: "18:00", title: "Singles final · Centre Court", tag: "match" },
+            { time: "12:00–14:00", title: "Surprise contests · Fan Zone", tag: "event" },
+            { time: "15:00 onwards", title: "DJ Yusuf Erdem", tag: "music" },
+            { time: "TBA", title: "Singles final · Centre Court", tag: "match" },
           ],
         },
       ],
@@ -904,13 +924,13 @@ export const content: Record<Locale, Messages> = {
       eyebrow: "Experience",
       title: "Beyond",
       titleAccent: "the court.",
-      body: "Center court, fan zone, food court, poolside and partner activation spaces.",
+      body: "The grounds include a Fan Zone, food court, DJ sets, yoga sessions, exhibition matches and a poolside area.",
       disclaimer:
         "Some visuals are concept studies. Club photos are from ATDSK facilities.",
       areas: [
         {
           title: "Fan Zone",
-          desc: "Green-and-white stalls, food and spectator areas. Entry is free; a day’s ticket is required to watch matches.",
+          desc: "Green-and-white stalls, photo spots, surprise contests and spectator areas. Entry is free; a day’s ticket is required to watch matches.",
           image: "/media/ai/concept-03.jpg",
         },
         {
@@ -930,7 +950,7 @@ export const content: Record<Locale, Messages> = {
         },
         {
           title: "Food Court",
-          desc: "Open all day. Nine stands: Bun the Bun, Taco Maco, Ico Fried Chicken, Hayat Büfe, Bowl Art, Doğan Kaymaklı, Hüsnü Usta Et Döner, Major Chocolate, Maki.",
+          desc: "Open all day: Bun the Bun, Taco Maco, Ico Fried Chicken, Hayat Büfe, Bowl Art, Doğan Kaymaklı, Hüsnü Usta Et Döner, Major Chocolate and Maki.",
           image: "/media/ai/food-court.jpg",
         },
         {
@@ -944,9 +964,11 @@ export const content: Record<Locale, Messages> = {
       eyebrow: "Player list",
       title: "The main draw",
       titleAccent: "is set.",
-      lead: "Twenty-three direct acceptances into the main draw are confirmed. Four wildcards, one special exempt and four qualifiers are still to be named.",
-      note: "Rankings as of 17 September 2026 from WTA player profiles. Subject to change until the draw is published.",
+      lead: "Twenty-three players have direct acceptance into the main draw. Rankings are from the official WTA list of 21 September 2026.",
+      note: "Rankings as of 21 September 2026 from the official WTA ranking. The list may change until the draw is published.",
       mainLabel: "Main draw · direct acceptances",
+      qualLabel: "Qualifying",
+      qualLead: "Fourteen players are in the qualifying draw. Four winners will reach the main draw. Wildcards and the special exempt have not yet been named.",
       turkeyLabel: "From Türkiye",
       watchLabel: "Names to watch",
       rankLabel: "WTA",

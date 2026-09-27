@@ -20,86 +20,98 @@ export type MatchDay = {
   courts: { id: CourtId; start: string; slots: MatchRound[] }[];
 };
 
+export const TBA_START = "";
+
+export function isStartTba(start: string) {
+  return !start.trim();
+}
+
 export const MATCH_PLAN: MatchDay[] = [
+  {
+    dateKey: "25",
+    start: "18:00",
+    total: 0,
+    courts: [],
+  },
   {
     dateKey: "26",
     start: "10:30",
     total: 8,
     courts: [
       { id: "cc", start: "10:30", slots: ["QS1", "QS1", "QS1"] },
-      { id: "c1", start: "10:30", slots: ["QS1", "QS1", "QS1"] },
-      { id: "c2", start: "10:30", slots: ["QS1", "QS1"] },
+      { id: "c1", start: "10:30", slots: ["QS1", "QS1"] },
+      { id: "c2", start: "10:30", slots: ["QS1", "QS1", "QS1"] },
     ],
   },
   {
     dateKey: "27",
-    start: "10:30",
-    total: 4,
+    start: "15:00",
+    total: 3,
     courts: [
-      { id: "cc", start: "10:30", slots: ["QSF", "QSF"] },
-      { id: "c1", start: "10:30", slots: ["QSF", "QSF"] },
+      { id: "cc", start: "15:00", slots: ["QSF", "QSF"] },
+      { id: "c2", start: "16:00", slots: ["QSF"] },
     ],
   },
   {
     dateKey: "28",
-    start: "16:30",
+    start: TBA_START,
     total: 10,
     courts: [
-      { id: "cc", start: "17:00", slots: ["MS1", "MS1", "MS1", "MD1"] },
-      { id: "c1", start: "16:30", slots: ["MS1", "MS1", "MS1"] },
-      { id: "c2", start: "16:30", slots: ["MS1", "MD1", "MD1"] },
+      { id: "cc", start: TBA_START, slots: ["MS1", "MS1", "MS1", "MD1"] },
+      { id: "c1", start: TBA_START, slots: ["MS1", "MS1", "MS1"] },
+      { id: "c2", start: TBA_START, slots: ["MS1", "MD1", "MD1"] },
     ],
   },
   {
     dateKey: "29",
-    start: "17:00",
+    start: TBA_START,
     total: 9,
     courts: [
-      { id: "cc", start: "17:00", slots: ["MS1", "MS1", "MS1"] },
-      { id: "c1", start: "17:00", slots: ["MS1", "MS1", "MS1"] },
-      { id: "c2", start: "17:00", slots: ["MS1", "MS1", "MS1"] },
+      { id: "cc", start: TBA_START, slots: ["MS1", "MS1", "MS1"] },
+      { id: "c1", start: TBA_START, slots: ["MS1", "MS1", "MS1"] },
+      { id: "c2", start: TBA_START, slots: ["MS1", "MS1", "MS1"] },
     ],
   },
   {
     dateKey: "30",
-    start: "17:00",
+    start: TBA_START,
     total: 9,
     courts: [
-      { id: "cc", start: "17:00", slots: ["MS2", "MS2", "MS2"] },
-      { id: "c1", start: "17:00", slots: ["MS2", "MD1", "MD1"] },
-      { id: "c2", start: "17:00", slots: ["MD1", "MD1", "MD1"] },
+      { id: "cc", start: TBA_START, slots: ["MS2", "MS2", "MS2"] },
+      { id: "c1", start: TBA_START, slots: ["MS2", "MD1", "MD1"] },
+      { id: "c2", start: TBA_START, slots: ["MD1", "MD1", "MD1"] },
     ],
   },
   {
     dateKey: "01",
-    start: "17:00",
+    start: TBA_START,
     total: 8,
     courts: [
-      { id: "cc", start: "17:00", slots: ["MS2", "MS2", "MS2"] },
-      { id: "c1", start: "17:00", slots: ["MS2", "MDQF", "MDQF"] },
-      { id: "c2", start: "17:00", slots: ["MDQF", "MDQF"] },
+      { id: "cc", start: TBA_START, slots: ["MS2", "MS2", "MS2"] },
+      { id: "c1", start: TBA_START, slots: ["MS2", "MDQF", "MDQF"] },
+      { id: "c2", start: TBA_START, slots: ["MDQF", "MDQF"] },
     ],
   },
   {
     dateKey: "02",
-    start: "17:00",
+    start: TBA_START,
     total: 6,
     courts: [
-      { id: "cc", start: "17:00", slots: ["MSQF", "MSQF", "MSQF"] },
-      { id: "c1", start: "17:00", slots: ["MSQF", "MDSF", "MDSF"] },
+      { id: "cc", start: TBA_START, slots: ["MSQF", "MSQF", "MSQF"] },
+      { id: "c1", start: TBA_START, slots: ["MSQF", "MDSF", "MDSF"] },
     ],
   },
   {
     dateKey: "03",
-    start: "17:00",
+    start: TBA_START,
     total: 3,
-    courts: [{ id: "cc", start: "17:00", slots: ["MSSF", "MSSF", "MDF"] }],
+    courts: [{ id: "cc", start: TBA_START, slots: ["MSSF", "MSSF", "MDF"] }],
   },
   {
     dateKey: "04",
-    start: "18:00",
+    start: TBA_START,
     total: 1,
-    courts: [{ id: "cc", start: "18:00", slots: ["MSF"] }],
+    courts: [{ id: "cc", start: TBA_START, slots: ["MSF"] }],
   },
 ];
 

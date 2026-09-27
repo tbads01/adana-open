@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { FLAGS, countryLabel } from "@/lib/flags";
 import { useLanguage } from "@/lib/i18n";
+import { FLAGS, countryLabel } from "@/lib/flags";
+import { useFacts } from "@/lib/facts-context";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import data from "@/lib/players.json";
@@ -198,8 +199,11 @@ function RankBoard({
 
 export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
   const { t } = useLanguage();
-  const main = data.mainDraw as Player[];
-  const spotlight = data.spotlight as Player[];
+  const facts = useFacts();
+  const roster = facts.players ?? data;
+  const main = roster.mainDraw as Player[];
+  const qualifying = ((roster as typeof data & { qualifying?: Player[] }).qualifying ?? []) as Player[];
+  const spotlight = roster.spotlight as Player[];
   const turkish = spotlight.filter((p) => p.country === "TUR");
   const byId = new Map<number, Player>();
   [...main, ...spotlight].forEach((p) => byId.set(p.id, p));
@@ -299,6 +303,25 @@ export function Players({ hideIntro = false }: { hideIntro?: boolean }) {
             ))}
           </div>
         </div>
+
+        {qualifying.length > 0 ? (
+          <div className="mt-16">
+            <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-ink/40 uppercase">
+              {t.players.qualLabel}
+            </p>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink/55">{t.players.qualLead}</p>
+            <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+              {qualifying
+                .slice()
+                .sort((a, b) => (a.rank ?? 9999) - (b.rank ?? 9999))
+                .map((player, i) => (
+                  <Reveal key={player.id} delay={Math.min(i * 18, 120)}>
+                    <PlayerCard player={player} nowLabel={t.players.nowLabel} careerLabel={t.players.careerLabel} />
+                  </Reveal>
+                ))}
+            </div>
+          </div>
+        ) : null}
 
         <p className="mt-10 text-xs leading-relaxed text-ink/40">
           {t.players.note}{" "}
