@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useLanguage } from "@/lib/i18n";
-import { FLAGS, countryLabel } from "@/lib/flags";
+import { countryLabel, flagFor } from "@/lib/flags";
 import { useFacts } from "@/lib/facts-context";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
@@ -111,7 +111,7 @@ function PlayerCard({
           </div>
         )}
         <p className="absolute top-2.5 right-2.5 text-sm drop-shadow-sm">
-          {FLAGS[player.country] ?? player.country}
+          {flagFor(player.country)}
         </p>
       </div>
       <div className="mt-3 border-t border-line-dark pt-3">
@@ -176,7 +176,7 @@ function RankBoard({
                       {first} {last}
                     </span>
                     <span className="text-[0.68rem] text-paper/45">
-                      {FLAGS[player.country] ?? ""} {countryLabel(player.country, t.ui.world || "Dünya")}
+                      {flagFor(player.country)} {countryLabel(player.country, t.ui.world || "Dünya")}
                     </span>
                   </span>
                 </span>

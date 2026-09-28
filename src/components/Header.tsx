@@ -9,6 +9,7 @@ import { isExternalHref, NAV_LINKS } from "@/lib/routes";
 import { PlayerTicker } from "./PlayerTicker";
 import { SiteLink } from "./SiteLink";
 import { TicketsLink } from "./TicketsLink";
+import { OranionLink } from "./OranionLink";
 
 function linkPath(href: string) {
   return href.split("#")[0] || "/";
@@ -94,6 +95,13 @@ export function Header() {
             <TicketsLink className="btn btn-primary !px-2.5 !py-1.5 text-[0.62rem] sm:!px-3 sm:text-[0.65rem] md:!px-4 md:!py-2">
               {t.nav.tickets}
             </TicketsLink>
+            <OranionLink
+              className={`btn hidden !px-2.5 !py-1.5 text-[0.62rem] sm:inline-flex sm:!px-3 sm:text-[0.65rem] md:!px-4 md:!py-2 ${
+                home ? "btn-ghost-light" : "btn-ghost"
+              }`}
+            >
+              {t.nav.oranion}
+            </OranionLink>
             <button
               type="button"
               className="inline-flex h-9 w-9 items-center justify-center lg:hidden"
@@ -175,6 +183,9 @@ export function Header() {
           <TicketsLink onClick={() => setOpen(false)} className="btn btn-primary mt-6 w-full">
             {t.nav.tickets}
           </TicketsLink>
+          <OranionLink onClick={() => setOpen(false)} className={`btn mt-3 w-full ${home ? "btn-ghost-light" : "btn-ghost"}`}>
+            {t.nav.oranion}
+          </OranionLink>
         </div>
       )}
     </header>

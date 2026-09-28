@@ -70,10 +70,33 @@ export function localFacts(): SharedFacts {
       "Major Chocolate",
       "Maki",
     ],
-    players,
+    players: neutralizePlayers(players),
     faqs: [],
     announcements: [],
   };
+}
+
+function neutralizeCountry<T extends { country?: string }>(row: T): T {
+  if (row.country === "RUS" || row.country === "BLR") return { ...row, country: "WLD" };
+  return row;
+}
+
+function neutralizePlayers(data: SharedFacts["players"]): SharedFacts["players"] {
+  const mapList = <T extends { country?: string }>(list: T[] | undefined) =>
+    (list ?? []).map((row) => neutralizeCountry(row));
+  return {
+    ...data,
+    mainDraw: mapList(data.mainDraw),
+    qualifying: mapList(data.qualifying),
+    spotlight: mapList(data.spotlight),
+  };
+}
+
+function pickPlayers(remote: SharedFacts["players"] | undefined): SharedFacts["players"] {
+  const local = neutralizePlayers(players);
+  if (!remote) return local;
+  const incoming = neutralizePlayers(remote);
+  return (incoming.updated || "") >= (local.updated || "") ? incoming : local;
 }
 
 function isFacts(value: unknown): value is SharedFacts {
@@ -91,7 +114,7 @@ export async function getSharedFacts(): Promise<SharedFacts> {
     if (!res.ok) throw new Error(`facts ${res.status}`);
     const data: unknown = await res.json();
     if (!isFacts(data)) throw new Error("facts shape");
-    return data;
+    return { ...data, players: pickPlayers(data.players) };
   } catch {
     return localFacts();
   }

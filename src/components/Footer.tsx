@@ -7,6 +7,7 @@ import { NAV_LINKS, PORTAL, ROUTES } from "@/lib/routes";
 import { INSTAGRAM, SITE_EMAIL, WTA_URL } from "@/lib/site";
 import { SiteLink } from "./SiteLink";
 import { TicketsLink } from "./TicketsLink";
+import { OranionLink } from "./OranionLink";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -35,6 +36,9 @@ export function Footer() {
             <TicketsLink className="btn btn-ghost-light">
               {t.nav.tickets}
             </TicketsLink>
+            <OranionLink className="btn btn-ghost-light">
+              {t.nav.oranion}
+            </OranionLink>
           </div>
         </div>
 

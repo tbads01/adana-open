@@ -4,11 +4,13 @@ export const WORLD_FLAG = "🌐";
 const NEUTRAL_CODES = new Set(["RUS", "BLR", "WLD"]);
 
 export const FLAGS: Record<string, string> = {
+  AND: "🇦🇩",
   ARG: "🇦🇷",
   ARM: "🇦🇲",
-  AND: "🇦🇩",
+  AUS: "🇦🇺",
   AUT: "🇦🇹",
   BLR: WORLD_FLAG,
+  BUL: "🇧🇬",
   CAN: "🇨🇦",
   COL: "🇨🇴",
   CRO: "🇭🇷",
@@ -21,6 +23,7 @@ export const FLAGS: Record<string, string> = {
   LAT: "🇱🇻",
   NED: "🇳🇱",
   POL: "🇵🇱",
+  ROU: "🇷🇴",
   RUS: WORLD_FLAG,
   SRB: "🇷🇸",
   SUI: "🇨🇭",
@@ -30,6 +33,15 @@ export const FLAGS: Record<string, string> = {
   WLD: WORLD_FLAG,
 };
 
+export function flagFor(country: string) {
+  if (NEUTRAL_CODES.has(country)) return WORLD_FLAG;
+  return FLAGS[country] ?? "";
+}
+
 export function countryLabel(code: string, world: string) {
   return NEUTRAL_CODES.has(code) ? world : code;
+}
+
+export function displayCountry(code: string) {
+  return NEUTRAL_CODES.has(code) ? "WLD" : code;
 }
