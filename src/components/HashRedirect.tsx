@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { HASH_REDIRECTS } from "@/lib/routes";
+import { HASH_REDIRECTS, isExternalHref } from "@/lib/routes";
 
 export function HashRedirect() {
   const router = useRouter();
@@ -10,7 +10,12 @@ export function HashRedirect() {
   useEffect(() => {
     const hash = window.location.hash.replace(/^#/, "");
     const to = HASH_REDIRECTS[hash];
-    if (to) router.replace(to);
+    if (!to) return;
+    if (isExternalHref(to)) {
+      window.location.replace(to);
+      return;
+    }
+    router.replace(to);
   }, [router]);
 
   return null;

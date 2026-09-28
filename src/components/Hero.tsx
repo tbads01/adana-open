@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
-import { ROUTES } from "@/lib/routes";
+import { PORTAL } from "@/lib/routes";
+import { SiteLink } from "./SiteLink";
 import { TicketsLink } from "./TicketsLink";
 
 export function Hero() {
@@ -49,9 +49,9 @@ export function Hero() {
             {t.hero.place}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link href={`${ROUTES.program}#match-plan`} className="btn btn-primary">
+            <SiteLink href={PORTAL.matches} className="btn btn-primary">
               {t.nav.schedule}
-            </Link>
+            </SiteLink>
             <TicketsLink className="btn btn-ghost-light">
               {t.hero.ctaTickets}
             </TicketsLink>

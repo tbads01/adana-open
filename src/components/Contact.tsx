@@ -3,6 +3,8 @@
 import { useState, type FormEvent } from "react";
 import { useLanguage } from "@/lib/i18n";
 import { useFacts } from "@/lib/facts-context";
+import { isExternalHref, PORTAL, ROUTES } from "@/lib/routes";
+import { MOBILE_SITE_URL } from "@/lib/site";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { VectorCover } from "./VectorCover";
@@ -12,11 +14,19 @@ import { TicketsLink } from "./TicketsLink";
 function announcementHref(href?: string) {
   if (!href) return undefined;
   if (href.startsWith("http")) return href;
-  if (href === "/maclar") return "/program#match-plan";
-  if (href === "/etkinlikler") return "/program#etkinlikler";
-  if (href === "/oyuncular") return "/oyuncular";
-  if (href === "/bilgi") return "/iletisim";
+  if (href === "/maclar") return PORTAL.matches;
+  if (href === "/etkinlikler") return PORTAL.events;
+  if (href === "/canli") return PORTAL.live;
+  if (href === "/duyurular") return PORTAL.news;
+  if (href === "/bilgi") return PORTAL.info;
+  if (href === "/oyuncular") return ROUTES.oyuncular;
   return href;
+}
+
+function announcementTarget(href: string) {
+  if (href.startsWith(MOBILE_SITE_URL)) return undefined;
+  if (isExternalHref(href)) return "_blank";
+  return undefined;
 }
 
 export function Contact() {
@@ -66,7 +76,7 @@ export function Contact() {
                     return (
                       <li key={item.id} className="border border-line-dark bg-surface p-5">
                         {href ? (
-                          <a href={href} className="block hover:opacity-80" target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined}>
+                          <a href={href} className="block hover:opacity-80" target={announcementTarget(href)} rel={announcementTarget(href) ? "noreferrer" : undefined}>
                             {body}
                           </a>
                         ) : (

@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import { PAGE_PATHS } from "./src/lib/routes";
+import { PAGE_PATHS, PORTAL, ROUTES } from "./src/lib/routes";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -30,6 +30,15 @@ const nextConfig: NextConfig = {
       { source: "/icon-192.png", headers: mediaCache },
       { source: "/icon-512.png", headers: mediaCache },
       { source: "/apple-touch-icon.png", headers: mediaCache },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: ROUTES.program,
+        destination: PORTAL.matches,
+        permanent: false,
+      },
     ];
   },
 };

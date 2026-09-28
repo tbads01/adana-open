@@ -5,8 +5,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/i18n";
-import { NAV_LINKS, ROUTES } from "@/lib/routes";
+import { isExternalHref, NAV_LINKS } from "@/lib/routes";
 import { PlayerTicker } from "./PlayerTicker";
+import { SiteLink } from "./SiteLink";
 import { TicketsLink } from "./TicketsLink";
 
 function linkPath(href: string) {
@@ -17,7 +18,6 @@ export function Header() {
   const { t, locale, setLocale } = useLanguage();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [hash, setHash] = useState("");
   const home = pathname === "/";
 
   useEffect(() => {
@@ -31,23 +31,9 @@ export function Header() {
     setOpen(false);
   }, [pathname]);
 
-  useEffect(() => {
-    const sync = () => setHash(window.location.hash);
-    sync();
-    window.addEventListener("hashchange", sync);
-    return () => window.removeEventListener("hashchange", sync);
-  }, [pathname]);
-
   function isActive(href: string) {
-    const path = linkPath(href);
-    if (path !== pathname) return false;
-    if (path === "/") return true;
-    const targetHash = href.includes("#") ? `#${href.split("#")[1]}` : "";
-    if (path === ROUTES.program) {
-      if (targetHash === "#match-plan") return hash === "#match-plan";
-      if (targetHash === "#etkinlikler") return hash !== "#match-plan";
-    }
-    return true;
+    if (isExternalHref(href)) return false;
+    return linkPath(href) === pathname;
   }
 
   const bar = home ? "bg-ink text-paper" : "bg-paper/95 text-ink backdrop-blur-md";
@@ -132,17 +118,16 @@ export function Header() {
             {NAV_LINKS.map((link) => {
               const active = isActive(link.href);
               return (
-                <Link
+                <SiteLink
                   key={link.href}
                   href={link.href}
-                  prefetch={false}
                   className={`relative shrink-0 py-2.5 text-[0.68rem] font-semibold tracking-wide whitespace-nowrap transition xl:text-[0.78rem] ${
                     active ? strong : muted
                   }`}
                 >
                   {t.nav[link.key]}
                   {active ? <span className="absolute inset-x-0 bottom-0 h-0.5 bg-yellow" /> : null}
-                </Link>
+                </SiteLink>
               );
             })}
           </div>
@@ -153,17 +138,16 @@ export function Header() {
         <div className={`flex min-h-[calc(100svh-7.5rem)] flex-col px-6 py-6 lg:hidden ${home ? "bg-ink text-paper" : "bg-paper text-ink"}`}>
           <div className="flex flex-col">
             {NAV_LINKS.map((link) => (
-              <Link
+              <SiteLink
                 key={link.href}
                 href={link.href}
-                prefetch={false}
                 onClick={() => setOpen(false)}
                 className={`border-b py-3.5 font-display text-[1.45rem] font-bold ${line} ${
                   isActive(link.href) ? "" : home ? "text-paper/70" : "text-ink/70"
                 }`}
               >
                 {t.nav[link.key]}
-              </Link>
+              </SiteLink>
             ))}
           </div>
           <div className="mt-8 flex flex-col gap-4 sm:hidden">

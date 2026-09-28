@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
-import { NAV_LINKS, ROUTES } from "@/lib/routes";
+import { NAV_LINKS, PORTAL, ROUTES } from "@/lib/routes";
 import { INSTAGRAM, SITE_EMAIL, WTA_URL } from "@/lib/site";
+import { SiteLink } from "./SiteLink";
 import { TicketsLink } from "./TicketsLink";
 
 export function Footer() {
@@ -28,9 +29,9 @@ export function Footer() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href={ROUTES.program} prefetch={false} className="btn btn-primary">
+            <SiteLink href={PORTAL.matches} className="btn btn-primary">
               {t.nav.schedule}
-            </Link>
+            </SiteLink>
             <TicketsLink className="btn btn-ghost-light">
               {t.nav.tickets}
             </TicketsLink>
@@ -42,9 +43,9 @@ export function Footer() {
             <p className="text-[0.68rem] font-bold tracking-[0.14em] text-yellow uppercase">{t.ui.explore}</p>
             <div className="mt-4 grid gap-2 text-sm text-paper/70">
               {NAV_LINKS.map((link) => (
-                <Link key={link.href} href={link.href} prefetch={false} className="hover:text-paper">
+                <SiteLink key={link.href} href={link.href} className="hover:text-paper">
                   {t.nav[link.key]}
-                </Link>
+                </SiteLink>
               ))}
               <Link href={ROUTES.mekan} prefetch={false} className="hover:text-paper">
                 {t.nav.venue}

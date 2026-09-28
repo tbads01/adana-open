@@ -5,7 +5,8 @@ import type { ComponentType, SVGProps } from "react";
 import { useLanguage } from "@/lib/i18n";
 import { useFacts } from "@/lib/facts-context";
 import type { Messages } from "@/lib/content";
-import { ROUTES } from "@/lib/routes";
+import { PORTAL, ROUTES } from "@/lib/routes";
+import { SiteLink } from "./SiteLink";
 import { IconCalendar, IconClub, IconPin, IconPlayers } from "./Icons";
 import { VectorCover } from "./VectorCover";
 
@@ -16,7 +17,7 @@ const CARDS: {
   blurb: (t: Messages) => string;
 }[] = [
   {
-    href: ROUTES.program,
+    href: PORTAL.matches,
     key: "schedule",
     icon: IconCalendar,
     blurb: (t) => t.schedule.note,
@@ -58,10 +59,9 @@ export function HomeExplore() {
           {CARDS.map((card) => {
             const Icon = card.icon;
             return (
-              <Link
+              <SiteLink
                 key={card.href}
                 href={card.href}
-                prefetch={false}
                 className="group block"
               >
                 <VectorCover className="min-h-[220px] transition group-hover:brightness-[1.08] md:min-h-[250px]">
@@ -78,7 +78,7 @@ export function HomeExplore() {
                     </div>
                   </div>
                 </VectorCover>
-              </Link>
+              </SiteLink>
             );
           })}
         </div>
