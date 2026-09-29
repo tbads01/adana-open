@@ -16,7 +16,6 @@ export type Messages = {
     partners: string;
     contact: string;
     tickets: string;
-    oranion: string;
   };
   countdown: {
     kicker: string;
@@ -219,7 +218,6 @@ export const content: Record<Locale, Messages> = {
       partners: "Sponsorluk",
       contact: "İletişim",
       tickets: "Biletler",
-      oranion: "Oranion",
     },
     countdown: {
       kicker: "Geri sayım",
@@ -669,7 +667,6 @@ export const content: Record<Locale, Messages> = {
       partners: "Partners",
       contact: "Contact",
       tickets: "Tickets",
-      oranion: "Oranion",
     },
     countdown: {
       kicker: "Countdown",

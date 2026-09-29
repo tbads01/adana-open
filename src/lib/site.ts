@@ -4,7 +4,6 @@ export const SITE_NAME = "Adana Open";
 export const SITE_EMAIL = "info@adanaopen.com";
 export const INSTAGRAM = "https://www.instagram.com/adana.open";
 export const WTA_URL = "https://www.wtatennis.com/tournaments/1179/adana-125/2026";
-export const ORANION_URL = "https://oranion.com";
 
 export const OG_IMAGE = {
   url: "/media/brand/adana-open-logo.png",
