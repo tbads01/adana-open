@@ -17,6 +17,7 @@ export const PORTAL = {
   live: `${MOBILE_SITE_URL}/canli`,
   news: `${MOBILE_SITE_URL}/duyurular`,
   info: `${MOBILE_SITE_URL}/bilgi`,
+  contest: `${MOBILE_SITE_URL}/tahmin`,
 } as const;
 
 export function isExternalHref(href: string) {
@@ -59,4 +60,6 @@ export const HASH_REDIRECTS: Record<string, string> = {
   significance: ROUTES.turnuva,
   etkinlikler: PORTAL.events,
   events: PORTAL.events,
+  tahmin: PORTAL.contest,
+  contest: PORTAL.contest,
 };

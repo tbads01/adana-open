@@ -7,22 +7,24 @@ export function SiteLink({
   className,
   children,
   onClick,
+  "aria-label": ariaLabel,
 }: {
   href: string;
   className?: string;
   children: ReactNode;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
+  "aria-label"?: string;
 }) {
   if (isExternalHref(href)) {
     return (
-      <a href={href} className={className} onClick={onClick}>
+      <a href={href} className={className} onClick={onClick} aria-label={ariaLabel}>
         {children}
       </a>
     );
   }
 
   return (
-    <Link href={href} prefetch={false} className={className} onClick={onClick}>
+    <Link href={href} prefetch={false} className={className} onClick={onClick} aria-label={ariaLabel}>
       {children}
     </Link>
   );

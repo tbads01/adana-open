@@ -16,6 +16,7 @@ export type Messages = {
     partners: string;
     contact: string;
     tickets: string;
+    contest: string;
   };
   countdown: {
     kicker: string;
@@ -197,6 +198,14 @@ export type Messages = {
     skip: string;
     world: string;
   };
+  contest: {
+    title: string;
+    lead: string;
+    cta: string;
+    join: string;
+    deadline: string;
+    close: string;
+  };
 };
 
 export const content: Record<Locale, Messages> = {
@@ -218,6 +227,7 @@ export const content: Record<Locale, Messages> = {
       partners: "Sponsorluk",
       contact: "İletişim",
       tickets: "Biletler",
+      contest: "Yarışma",
     },
     countdown: {
       kicker: "Geri sayım",
@@ -648,6 +658,14 @@ export const content: Record<Locale, Messages> = {
       skip: "İçeriğe geç",
       world: "Dünya",
     },
+    contest: {
+      title: "Adana Open Tahmin Yarışması",
+      lead: "Turnuvaya dair tahminlerini paylaş. Doğru veya en yakın tahminleri yapanlar arasındaki çekilişle toplam 20 kişiye sürpriz hediye verilecek. Ödüller değişkenlik gösterebilir.",
+      cta: "Tahmin et, kazan",
+      join: "Yarışmaya katıl",
+      deadline: "Son katılım: 4 Ekim 2026, 10:00",
+      close: "Kapat",
+    },
   },
   en: {
     meta: {
@@ -667,6 +685,7 @@ export const content: Record<Locale, Messages> = {
       partners: "Partners",
       contact: "Contact",
       tickets: "Tickets",
+      contest: "Contest",
     },
     countdown: {
       kicker: "Countdown",
@@ -1096,6 +1115,14 @@ export const content: Record<Locale, Messages> = {
       explore: "Explore",
       skip: "Skip to content",
       world: "World",
+    },
+    contest: {
+      title: "Adana Open Prediction Contest",
+      lead: "Share your tournament predictions. A raffle among the closest guesses will send surprise gifts to 20 people. Prizes may vary.",
+      cta: "Predict and win",
+      join: "Enter the contest",
+      deadline: "Entries close: 4 October 2026, 10:00",
+      close: "Close",
     },
   },
 };

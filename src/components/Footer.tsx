@@ -6,6 +6,7 @@ import { useLanguage } from "@/lib/i18n";
 import { NAV_LINKS, PORTAL, ROUTES } from "@/lib/routes";
 import { INSTAGRAM, SITE_EMAIL, WTA_URL } from "@/lib/site";
 import { SiteLink } from "./SiteLink";
+import { ContestLink } from "./ContestPromo";
 import { TicketsLink } from "./TicketsLink";
 
 export function Footer() {
@@ -32,6 +33,7 @@ export function Footer() {
             <SiteLink href={PORTAL.matches} className="btn btn-primary">
               {t.nav.schedule}
             </SiteLink>
+            <ContestLink className="btn btn-ghost-light">{t.nav.contest}</ContestLink>
             <TicketsLink className="btn btn-ghost-light">
               {t.nav.tickets}
             </TicketsLink>

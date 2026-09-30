@@ -19,6 +19,7 @@ function announcementHref(href?: string) {
   if (href === "/canli") return PORTAL.live;
   if (href === "/duyurular") return PORTAL.news;
   if (href === "/bilgi") return PORTAL.info;
+  if (href === "/tahmin") return PORTAL.contest;
   if (href === "/oyuncular") return ROUTES.oyuncular;
   return href;
 }

@@ -15,3 +15,5 @@ export const OG_IMAGE = {
 /** Qualifying start, Adana (UTC+3). */
 export const TOURNAMENT_START = "2026-09-26T09:00:00+03:00";
 export const TOURNAMENT_END = "2026-10-04T21:00:00+03:00";
+/** Prediction contest close, Adana (UTC+3). Same as m.adanaopen.com/tahmin. */
+export const CONTEST_CLOSE = "2026-10-04T10:00:00+03:00";

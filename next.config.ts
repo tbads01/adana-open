@@ -39,6 +39,11 @@ const nextConfig: NextConfig = {
         destination: PORTAL.matches,
         permanent: false,
       },
+      {
+        source: "/tahmin",
+        destination: PORTAL.contest,
+        permanent: false,
+      },
     ];
   },
 };

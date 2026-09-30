@@ -8,7 +8,9 @@ import { useLanguage } from "@/lib/i18n";
 import { isExternalHref, NAV_LINKS } from "@/lib/routes";
 import { PlayerTicker } from "./PlayerTicker";
 import { SiteLink } from "./SiteLink";
+import { ContestLink } from "./ContestPromo";
 import { TicketsLink } from "./TicketsLink";
+import { IconTrophy } from "./Icons";
 
 function linkPath(href: string) {
   return href.split("#")[0] || "/";
@@ -94,6 +96,15 @@ export function Header() {
             <TicketsLink className="btn btn-primary !px-2.5 !py-1.5 text-[0.62rem] sm:!px-3 sm:text-[0.65rem] md:!px-4 md:!py-2">
               {t.nav.tickets}
             </TicketsLink>
+            <ContestLink
+              aria-label={t.nav.contest}
+              className={`btn !px-2 !py-1.5 text-[0.62rem] sm:!px-3 sm:text-[0.65rem] md:!px-4 md:!py-2 ${
+                home ? "btn-ghost-light" : "btn-ghost"
+              }`}
+            >
+              <IconTrophy className="h-3.5 w-3.5 sm:hidden" />
+              <span className="hidden sm:inline">{t.nav.contest}</span>
+            </ContestLink>
             <button
               type="button"
               className="inline-flex h-9 w-9 items-center justify-center lg:hidden"
@@ -172,7 +183,10 @@ export function Header() {
               </button>
             </div>
           </div>
-          <TicketsLink onClick={() => setOpen(false)} className="btn btn-primary mt-6 w-full">
+          <ContestLink onClick={() => setOpen(false)} className={`btn mt-6 w-full ${home ? "btn-ghost-light" : "btn-ghost"}`}>
+            {t.contest.join}
+          </ContestLink>
+          <TicketsLink onClick={() => setOpen(false)} className="btn btn-primary mt-3 w-full">
             {t.nav.tickets}
           </TicketsLink>
         </div>

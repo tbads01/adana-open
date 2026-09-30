@@ -80,6 +80,14 @@ export function IconSpark(props: IconProps) {
   );
 }
 
+export function IconClose(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M6 6l12 12M18 6 6 18" />
+    </Svg>
+  );
+}
+
 export function IconMail(props: IconProps) {
   return (
     <Svg {...props}>
